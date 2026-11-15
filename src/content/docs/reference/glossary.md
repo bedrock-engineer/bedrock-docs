@@ -44,9 +44,13 @@ TNO's 3D voxel model of the shallow subsurface of the Netherlands. Each 100 m by
 
 The engineering geological model turned into design values for one structure: units with parameters, groundwater levels and loads, set up for the checks that structure needs.
 
+### Geotechnical parameter
+
+A number that describes how a ground unit behaves, such as unit weight, friction angle, undrained shear strength or stiffness. Each analysis method needs its own set, and the ground investigation has to deliver it.
+
 ### Ground investigation
 
-The fieldwork and lab testing that tell you what the ground is: boreholes, CPTs, geophysics, samples and lab tests. It is the first step of every geotechnical job.
+The fieldwork and lab testing that tell you what the ground is: boreholes, samples and lab tests, CPTs and geophysics. It is the first step of every geotechnical job.
 
 ## Geostatistics
 
@@ -60,6 +64,16 @@ A function that says how different two measurements are, on average, as the dist
 
 ## Design
 
+### Action
+
+The Eurocode word for anything that loads or deforms a structure. Direct actions are forces, such as self-weight, traffic and water pressure; indirect actions are imposed deformations or accelerations, such as settlement, temperature and an earthquake.
+
+EN 1990 sorts actions by how long they last: permanent, variable, accidental and seismic. Actions that the ground, fill or groundwater exert, such as earth pressure and water pressure, are geotechnical actions in EN 1997. NEN-EN 1990 translates action as *belasting*.
+
+### Analysis method
+
+The calculation that answers a check, from a design chart or a hand calculation to a finite element model. The project phase and the ground investigation available decide which method fits, and the method decides which parameters you need.
+
 ### Bearing resistance
 
 The pressure under a footing at which the ground fails in shear and the footing punches in. EC7 calls it bearing resistance; textbooks call it bearing capacity.
@@ -71,6 +85,14 @@ See [Bearing capacity](../fundamentals/bearing-capacity.mdx) for what controls i
 A document that shows how a design value was reached: each formula, the input values with their units and sources, and the result, so a checker can follow and repeat every step.
 
 See [SymEval](../tools/symeval/index.md) for writing one in Python.
+
+### Check
+
+A verification that the structure, or something around it, stays within one limit state for one way it can fail. The project gives the candidate checks; the ground conditions, actions and project requirements decide which ones apply.
+
+### Geotechnical structure
+
+A structure whose design depends on the ground it is built in or on, such as a foundation, a slope, a retaining wall, a dike or a tunnel. EN 1997-3 has a clause for most kinds.
 
 ### Limit state
 
@@ -112,7 +134,7 @@ The words these docs use for their own parts.
 
 ### Docs Atlas
 
-The home page: one picture of how geotechnical work fits together, from ground investigation to the design of each structure, with a way into every hub.
+The home page: one picture of how geotechnical work fits together, as a cycle of planning back from the project and doing forward from the ground investigation, with a way into every section.
 
 ### Case study
 
