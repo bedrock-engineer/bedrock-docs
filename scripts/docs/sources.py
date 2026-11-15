@@ -40,6 +40,9 @@ def checkout(repo: str, rev: str, folder: str) -> Path:
     shutil.rmtree(work, ignore_errors=True)
     work.mkdir(parents=True)
     git("init", "--quiet", cwd=work)
+    # Check out the bytes as committed: a global core.autocrlf=true (Git for
+    # Windows' default) would give CRLF files that differ from the copies CI makes.
+    git("config", "core.autocrlf", "false", cwd=work)
     git("remote", "add", "origin", f"https://github.com/{repo}.git", cwd=work)
     git("sparse-checkout", "set", "--no-cone", f"/{folder}/", cwd=work)
     git("fetch", "--quiet", "--depth", "1", "--filter=blob:none", "origin", rev, cwd=work)
