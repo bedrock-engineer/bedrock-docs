@@ -48,8 +48,8 @@ from scipy.spatial.distance import cdist
 alt.data_transformers.disable_max_rows()
 ```
 
-<details class="notebook-cell">
-<summary>Hidden cell</summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell</summary>
 
 ```python
 # marimo-lens: select a region of any output and add a note for the notebook agent
@@ -71,8 +71,8 @@ variograms_json = mo.watch.file(VARIOGRAMS_JSON)
 voxels_parquet = mo.watch.file(DATA_DIR / "voxel_domains.parquet")
 ```
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>read_inputs</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>read_inputs</code></summary>
 
 ```python
 mo.stop(
@@ -153,8 +153,8 @@ mo.vstack(
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>legends</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>legends</code></summary>
 
 ```python
 # GeoTOP's colors per stratigraphic unit and lithology class, as in 02
@@ -185,8 +185,8 @@ Simulate saves one run with the chosen parameters, unless the same run was saved
 4). The table below the form lists the saved runs, the latest first; the selected run is shown in the
 cross-sections and checks below. After Simulate, its run is selected.
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>settings</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>settings</code></summary>
 
 ```python
 # The parameters, as 03 names them, and the covariance models of their variograms
@@ -261,8 +261,8 @@ simulation_settings
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>simulate</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>simulate</code></summary>
 
 ```python
 def _variogram_model(name, domain):
@@ -511,8 +511,8 @@ mo.md(simulation_report)
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>saved_runs</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>saved_runs</code></summary>
 
 ```python
 # The runs saved in SIMULATIONS_DIR, the latest first, with the run of the last Simulate selected. A run
@@ -560,8 +560,8 @@ saved_runs
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>selected_run</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>selected_run</code></summary>
 
 ```python
 mo.stop(saved_runs.value.is_empty(), mo.md("Select a run in the table above."))
@@ -625,8 +625,8 @@ in the plan for its own qc, and over a cell for its value. Near a CPT the realiz
 click a CPT in the plan to show below the sections the realizations in the cells it lies in, each realization
 a thin line, the median a thick one, P10 to P90 shaded, and the CPT samples as dots.
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>cross_sections_widget</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>cross_sections_widget</code></summary>
 
 ```python
 class CrossSections(anywidget.AnyWidget):
@@ -661,8 +661,8 @@ class CrossSections(anywidget.AnyWidget):
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>view_controls</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>view_controls</code></summary>
 
 ```python
 # What the cross-sections are colored by: the median or the spread of a parameter's realizations per
@@ -681,8 +681,8 @@ color_by
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>cross_sections</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>cross_sections</code></summary>
 
 ```python
 # Made once per selected run; section_values colors it. The stratigraphic units from the top down in
@@ -733,8 +733,8 @@ cross_sections
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>cpt_check</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>cpt_check</code></summary>
 
 ```python
 _name = check_parameter.value
@@ -784,8 +784,8 @@ mo.vstack(
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>check_parameter</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>check_parameter</code></summary>
 
 ```python
 _labels = {_name: _label for _label, _name in PARAMETERS.items()}
@@ -795,8 +795,8 @@ check_parameter
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>section_values</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>section_values</code></summary>
 
 ```python
 # The cross-sections colored by what color_by shows: the cells' domain, unit or lithology class, or a
@@ -826,8 +826,8 @@ else:
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>selected_cpt</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>selected_cpt</code></summary>
 
 ```python
 # The CPT clicked in the cross-sections
@@ -836,8 +836,8 @@ get_selected_cpt, set_selected_cpt = mo.state(None)
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>follow_selected_cpt</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>follow_selected_cpt</code></summary>
 
 ```python
 # cross_sections also changes when the sections move; only another CPT goes on to what shows it
@@ -852,8 +852,8 @@ if cross_sections.selected_cpt != get_selected_cpt():
 The realizations should reproduce each domain's distribution of the CPT values. The table compares the
 percentiles of the CPT samples with those of all realizations per domain.
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>distribution</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>distribution</code></summary>
 
 ```python
 def _percentiles(values):

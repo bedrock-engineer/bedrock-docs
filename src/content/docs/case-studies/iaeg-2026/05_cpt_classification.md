@@ -44,8 +44,8 @@ from cpt_robertson_classification import GROUNDWATER_DEPTH, SOIL_BEHAVIOR_COLORS
 alt.data_transformers.disable_max_rows()
 ```
 
-<details class="notebook-cell">
-<summary>Hidden cell</summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell</summary>
 
 ```python
 # marimo-lens: select a region of any output and add a note for the notebook agent
@@ -70,8 +70,8 @@ VOXEL = 0.5
 GAMMA_MISSING = 18.0
 ```
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>read_inputs</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>read_inputs</code></summary>
 
 ```python
 mo.stop(
@@ -90,8 +90,8 @@ ZONE_LABELS = {_zone: f"{_zone} {_name}" for _zone, _name in SOIL_BEHAVIOR_TYPES
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>run_intro</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>run_intro</code></summary>
 
 ```python
 mo.md(rf"""
@@ -112,8 +112,8 @@ At the CPTs, this keeps 96 % of the zones they get with their own reference leve
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>saved_runs</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>saved_runs</code></summary>
 
 ```python
 # The runs with fs co-simulated with qc. A run has current inputs when its variograms and simulation
@@ -157,8 +157,8 @@ saved_runs
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>classify</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>classify</code></summary>
 
 ```python
 mo.stop(saved_runs.value.is_empty(), mo.md("Select a run in the table above."))
@@ -258,8 +258,8 @@ mo.md(_report)
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>classified</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>classified</code></summary>
 
 ```python
 # The selected run's classification at its cells (where the grid has a domain): the probabilities as
@@ -321,8 +321,8 @@ Hover over a cell for its zone and how likely it is. Click a CPT in the plan to 
 in its column of cells: Ic of the realizations, the probabilities of the zones and the zones of the CPT
 samples, which are classified the same way as the cells (section 3).
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>cross_sections_widget</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>cross_sections_widget</code></summary>
 
 ```python
 class CrossSections(anywidget.AnyWidget):
@@ -357,8 +357,8 @@ class CrossSections(anywidget.AnyWidget):
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>view_controls</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>view_controls</code></summary>
 
 ```python
 # The zones that occur in some realization, for the probability of one of them
@@ -385,8 +385,8 @@ probability_of = mo.ui.dropdown(
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>color_controls</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>color_controls</code></summary>
 
 ```python
 # The zone can only be chosen when the cells show its probability
@@ -395,8 +395,8 @@ mo.vstack([color_by, probability_of] if color_by.value == "probability" else [co
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>cross_sections</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>cross_sections</code></summary>
 
 ```python
 # Made once per selected run; section_values colors it. The zones that are most likely somewhere, with
@@ -447,8 +447,8 @@ cross_sections
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>cpt_profile</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>cpt_profile</code></summary>
 
 ```python
 _bro_id = get_selected_cpt()
@@ -546,8 +546,8 @@ mo.vstack(
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>section_values</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>section_values</code></summary>
 
 ```python
 # The cross-sections colored by what color_by shows. Colored by a class, the value under the pointer is
@@ -568,8 +568,8 @@ section_view.color_by = {"most likely": "lithology", "domain": "domain"}.get(col
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>selected_cpt</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>selected_cpt</code></summary>
 
 ```python
 # The CPT clicked in the cross-sections
@@ -578,8 +578,8 @@ get_selected_cpt, set_selected_cpt = mo.state(None)
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>follow_selected_cpt</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>follow_selected_cpt</code></summary>
 
 ```python
 # cross_sections also changes when the sections move; only another CPT goes on to what shows it
@@ -598,8 +598,8 @@ in the domain. The table asks the same of the cells the CPT samples lie in. Sinc
 conditioned on those samples, it shows that the classification keeps what the simulation honors, not how
 well it predicts the soil behavior type away from the CPTs.
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>measured</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>measured</code></summary>
 
 ```python
 def classified_samples(samples, height):
@@ -629,8 +629,8 @@ measured = classified_samples(samples, SAMPLE_HEIGHT)
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>zone_shares</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>zone_shares</code></summary>
 
 ```python
 def _shares(source, frame):
@@ -708,8 +708,8 @@ alt.Chart(_frame.filter(pl.col("share") > 0)).mark_bar().encode(
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>at_the_cpts</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>at_the_cpts</code></summary>
 
 ```python
 # Each CPT sample with the cell at its center, of the same height
@@ -751,8 +751,8 @@ class, the share of its cells in each zone. They answer different questions: Geo
 what the soil is made of, Robertson's zones how it behaves under the cone. The chart shows where they
 differ, not which is right.
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>geotop_comparison</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>geotop_comparison</code></summary>
 
 ```python
 _frame = (
@@ -794,8 +794,8 @@ the data says little, two zones can be about equally likely, and the most likely
 only a few realizations to count. A real layer should be more likely than such a flip, so look at the probabilities
 too. A single realization has layers everywhere, but those are one possible outcome and lie elsewhere in the next.
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>vertical_detail</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>vertical_detail</code></summary>
 
 ```python
 # The classified runs with the selected run's horizontal resolution
@@ -918,8 +918,8 @@ detail_table = (
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>vertical_detail_charts</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>vertical_detail_charts</code></summary>
 
 ```python
 # The CPT samples have no distance: a level line over all distances of their domain and height

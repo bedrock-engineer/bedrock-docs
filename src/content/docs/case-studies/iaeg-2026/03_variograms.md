@@ -42,8 +42,8 @@ from marimo_lens import Lens
 alt.data_transformers.disable_max_rows()
 ```
 
-<details class="notebook-cell">
-<summary>Hidden cell</summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell</summary>
 
 ```python
 # marimo-lens: select a region of any output and add a note for the notebook agent
@@ -90,8 +90,8 @@ simulation, and a finer height means more samples to condition on in `04`, so a 
 trend removed, each domain's linear trend with depth comes off before
 the normal-score transform, so the variograms describe what varies around it; `04` adds the trend back.
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>parameter</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>parameter</code></summary>
 
 ```python
 # The CPT parameters, each with how it is transformed before its normal scores. Rf is not simulated, so
@@ -130,8 +130,8 @@ mo.hstack([parameters, sample_height, detrend], justify="start", gap=2)
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>samples</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>samples</code></summary>
 
 ```python
 _height = sample_height.value
@@ -210,8 +210,8 @@ scores = (
 )
 ```
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>data_table</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>data_table</code></summary>
 
 ```python
 # The parameters in the order they were chosen, each with its domains from the top down, in their colors
@@ -354,8 +354,8 @@ saved_variograms = json.loads(Path(variograms_json).read_text(encoding="utf-8"))
 saved_at_height = saved_variograms.get(f"{sample_height.value:g}", {})
 ```
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>variograms_intro</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>variograms_intro</code></summary>
 
 ```python
 reset_to_fit = mo.ui.run_button(label="Start again from the best fits")
@@ -382,8 +382,8 @@ directions share the nugget. Each chosen parameter has its own models and slider
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>model_choice</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>model_choice</code></summary>
 
 ```python
 def _start_model(name, domain):
@@ -407,8 +407,8 @@ model_choice = mo.ui.dictionary(
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>moved_sliders</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>moved_sliders</code></summary>
 
 ```python
 # The sliders as they were last moved, per parameter with each domain's model, so that choosing another
@@ -418,8 +418,8 @@ get_moved_sliders, set_moved_sliders = mo.state({})
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>variogram_controls</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>variogram_controls</code></summary>
 
 ```python
 # Where a domain's sliders start for one parameter: where they were last moved with its model; otherwise
@@ -489,8 +489,8 @@ variogram_controls = mo.ui.dictionary(
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>variogram_rows</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>variogram_rows</code></summary>
 
 ```python
 def model_of(name, domain, direction):
@@ -559,8 +559,8 @@ mo.vstack([_row(shown_parameter.value, _domain) for _domain in DOMAIN_COLORS], g
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>variograms</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>variograms</code></summary>
 
 ```python
 # The variograms of the models and sliders, per parameter and domain, in GSTools' terms: the nugget and
@@ -606,8 +606,8 @@ are; saving again at one height replaces that height's variograms of the chosen 
 its transform, its sample height and, per domain, its model, nugget, length scales and trend, with the date it
 was saved and the date of the simulation domains it was fitted on.
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>variogram_definition</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>variogram_definition</code></summary>
 
 ```python
 # The variograms of the chosen parameters as variograms.json holds them
@@ -636,8 +636,8 @@ save_variograms
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>saved_status</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>saved_status</code></summary>
 
 ```python
 def _status(name):
@@ -665,8 +665,8 @@ mo.vstack([_status(_name) for _name in parameters.value])
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>save</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>save</code></summary>
 
 ```python
 mo.stop(not save_variograms.value)
@@ -689,8 +689,8 @@ VARIOGRAMS_JSON.write_text(
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>saved_table</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>saved_table</code></summary>
 
 ```python
 # The variograms in variograms.json, per sample height, parameter and domain

@@ -1,6 +1,7 @@
 // Glossary links and relative page links.
-// - A link to glossary.md#<term> is wrapped in <span class="glossary-term">
+// - A link to glossary.md#<term> is wrapped in a <span data-term data-definition>
 //   carrying the term's first paragraph, which src/scripts/glossary.js shows on hover.
+//   The span's classes give the link inside a dotted underline and a help cursor.
 //   A term is a ### heading in the glossary; its first paragraph is the hover text.
 // - Any relative .md or .mdx link, or .py link to a marimo notebook, is rewritten to
 //   its Starlight route, so the source stays a plain link that works on GitHub and in
@@ -15,12 +16,27 @@ import remarkParse from "remark-parse";
 import { unified } from "unified";
 import { visit } from "unist-util-visit";
 
+const classNames = [
+  "*:underline",
+  "*:decoration-dotted",
+  "*:decoration-2",
+  "*:underline-offset-3",
+  "*:cursor-help",
+];
+
+const glossaryTerm = ({ title, definition }) => ({
+  hName: "span",
+  hProperties: { className: [...classNames], dataTerm: title, dataDefinition: definition },
+});
+
 function readGlossary(file) {
   const tree = unified().use(remarkParse).parse(readFileSync(file, "utf8"));
   const slugger = new GithubSlugger();
   const terms = {};
   tree.children.forEach((node, index) => {
-    if (node.type !== "heading") return;
+    if (node.type !== "heading") {
+      return;
+    }
     const id = slugger.slug(toString(node));
     const next = tree.children[index + 1];
     if (node.depth === 3 && next?.type === "paragraph") {
@@ -35,9 +51,15 @@ export function remarkGlossary({ base = "", contentDir, glossaryFile }) {
   const prefix = base.replace(/\/$/, "");
   const route = (from, href) => {
     const [target, hash] = href.split("#");
-    if (/^[a-z]+:|^\/\//i.test(target)) return undefined;
-    if (target.startsWith("/")) return target.startsWith(prefix + "/") ? undefined : prefix + href;
-    if (!/\.(mdx?|py)$/.test(target)) return undefined;
+    if (/^[a-z]+:|^\/\//i.test(target)) {
+      return undefined;
+    }
+    if (target.startsWith("/")) {
+      return target.startsWith(prefix + "/") ? undefined : prefix + href;
+    }
+    if (!/\.(mdx?|py)$/.test(target)) {
+      return undefined;
+    }
     const absolute = path.resolve(path.dirname(from), target);
     // Astro's content IDs: the path without its extension, each segment slugified.
     const slug = path.relative(contentDir, absolute).replace(/\.(mdx?|py)$/, "").split(path.sep)
@@ -51,15 +73,18 @@ export function remarkGlossary({ base = "", contentDir, glossaryFile }) {
     visit(tree, "link", (node, index, parent) => {
       const term = node.url.match(/glossary\.mdx?#([\w-]+)$/)?.[1];
       const url = route(from, node.url);
-      if (url) node.url = url;
-      if (!term || !terms[term] || parent.type === "glossaryTerm") return;
-      if (!used.has(term)) used.set(term, node.url);
+      if (url) {
+        node.url = url;
+      }
+      if (!term || !terms[term] || parent.type === "glossaryTerm") {
+        return;
+      }
+      if (!used.has(term)) {
+        used.set(term, node.url);
+      }
       parent.children[index] = {
         type: "glossaryTerm",
-        data: {
-          hName: "span",
-          hProperties: { className: ["glossary-term"], dataTerm: terms[term].title, dataDefinition: terms[term].definition },
-        },
+        data: glossaryTerm(terms[term]),
         children: [node],
       };
     });
@@ -69,7 +94,9 @@ export function remarkGlossary({ base = "", contentDir, glossaryFile }) {
         return url ? `href="${url}"` : all;
       });
     });
-    if (isGlossary || used.size === 0) return;
+    if (isGlossary || used.size === 0) {
+      return;
+    }
     tree.children.push(
       { type: "heading", depth: 2, children: [{ type: "text", value: "Key terms" }] },
       {
@@ -83,7 +110,7 @@ export function remarkGlossary({ base = "", contentDir, glossaryFile }) {
             type: "paragraph",
             children: [{
               type: "glossaryTerm",
-              data: { hName: "span", hProperties: { className: ["glossary-term"], dataTerm: terms[term].title, dataDefinition: terms[term].definition } },
+              data: glossaryTerm(terms[term]),
               children: [{ type: "link", url, children: [{ type: "text", value: terms[term].title }] }],
             }],
           }],

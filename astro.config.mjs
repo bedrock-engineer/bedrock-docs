@@ -37,8 +37,12 @@ process.env.MDX_MARIMO_UV ??= "uv";
 // Starlight still opens the group that holds the current page.
 const collapseEveryGroup = (entries) =>
   entries.map((entry) => {
-    if (entry.autogenerate) return { ...entry, autogenerate: { ...entry.autogenerate, collapsed: true } };
-    if (entry.items) return { ...entry, collapsed: true, items: collapseEveryGroup(entry.items) };
+    if (entry.autogenerate) {
+      return { ...entry, autogenerate: { ...entry.autogenerate, collapsed: true } };
+    }
+    if (entry.items) {
+      return { ...entry, collapsed: true, items: collapseEveryGroup(entry.items) };
+    }
     return entry;
   });
 
@@ -76,7 +80,6 @@ export default defineConfig({
       // copied unchanged from bedrock-web (784accf); change them there and copy again.
       customCss: [
         "./src/styles/custom.css",
-        "./src/styles/docs.css",
         "katex/dist/katex.min.css",
         "@marimo-team/mdx-marimo/styles.css",
       ],

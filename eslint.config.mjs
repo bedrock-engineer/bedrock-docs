@@ -9,6 +9,7 @@ import babelParser from "@babel/eslint-parser";
 import js from "@eslint/js";
 import * as astroParser from "astro-eslint-parser";
 import betterTailwindcss from "eslint-plugin-better-tailwindcss";
+import { getDefaultSelectors } from "eslint-plugin-better-tailwindcss/defaults";
 import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
 
@@ -30,7 +31,9 @@ const tsSyntaxRules = {
 };
 
 export default defineConfig(
-  globalIgnores(["dist/", ".astro/", "public/", ".venv/"]),
+  // The ignored folders of .gitignore (ESLint doesn't read it), plus public/.
+  // .cache/ holds the upstream repositories `just sources` copies from.
+  globalIgnores(["dist/", ".astro/", ".cache/", ".venv/", "__marimo__/", "public/"]),
 
   js.configs.recommended,
   { rules: { curly: ["error", "all"] } },
@@ -72,6 +75,14 @@ export default defineConfig(
         // Keep false: true would accept every class *defined* in the CSS,
         // i.e. exactly the invented class names the rule is meant to stop.
         detectComponentClasses: false,
+        // The defaults read class attributes and variables named classNames,
+        // classes or styles. The remark plugins and glossary.js build markup
+        // in JS, so they keep their classes in a `classNames` variable; this
+        // also reads it when it is an object of class strings.
+        selectors: [
+          ...getDefaultSelectors(),
+          { kind: "variable", name: "^classNames$", match: [{ type: "objectValues" }] },
+        ],
       },
     },
     rules: {

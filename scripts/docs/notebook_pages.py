@@ -146,7 +146,11 @@ def as_code(body: str) -> str:
             return block
         name = re.search(r"name=(\S+)", options)
         label = f"Hidden cell: <code>{name.group(1)}</code>" if name else "Hidden cell"
-        return f'<details class="notebook-cell">\n<summary>{label}</summary>\n\n{block}\n\n</details>'
+        return (
+            '<details class="group">\n'
+            f'<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">{label}</summary>\n\n'
+            f"{block}\n\n</details>"
+        )
 
     return CELL.sub(cell, body)
 

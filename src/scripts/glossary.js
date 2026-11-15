@@ -1,15 +1,20 @@
 // Glossary hover cards. The build (src/plugins/remark-glossary.mjs)
-// wraps every link to a glossary term in <span class="glossary-term"
-// data-term data-definition>. This script shows one shared card while such a
-// link is hovered or focused, and makes the card the link's accessible
-// description.
+// wraps every link to a glossary term in <span data-term data-definition>.
+// This script shows one shared card while such a link is hovered or focused,
+// and makes the card the link's accessible description.
 (() => {
+  const classNames = {
+    card: "fixed z-1000 w-max max-w-card rounded-lg border border-doc-border bg-doc-surface px-3 py-2.5 text-sm leading-normal text-doc-muted shadow-md",
+    title: "mb-0.5 block font-semibold text-doc-text",
+  };
+
   const card = document.createElement("div");
-  card.className = "glossary-card";
+  card.className = classNames.card;
   card.id = "glossary-card";
   card.setAttribute("role", "tooltip");
   card.hidden = true;
   const title = document.createElement("strong");
+  title.className = classNames.title;
   const body = document.createElement("span");
   card.append(title, body);
 
@@ -20,7 +25,9 @@
 
   const place = () => {
     const link = current?.querySelector("a")?.getClientRects()[0];
-    if (!link) return;
+    if (!link) {
+      return;
+    }
     const size = card.getBoundingClientRect();
     const above = link.top - gap - size.height;
     const left = Math.min(link.left, window.innerWidth - margin - size.width);
@@ -30,7 +37,9 @@
 
   const show = (term) => {
     clearTimeout(timer);
-    if (current === term && !card.hidden) return;
+    if (current === term && !card.hidden) {
+      return;
+    }
     current = term;
     title.textContent = term.dataset.term;
     body.textContent = term.dataset.definition;
@@ -51,7 +60,7 @@
 
   const init = () => {
     document.body.append(card);
-    for (const term of document.querySelectorAll(".glossary-term[data-definition]")) {
+    for (const term of document.querySelectorAll("span[data-definition]")) {
       term.querySelector("a")?.setAttribute("aria-describedby", card.id);
       term.addEventListener("mouseenter", () => later(() => show(term), 200));
       term.addEventListener("mouseleave", () => later(hide, 150));
