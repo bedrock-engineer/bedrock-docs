@@ -1,8 +1,8 @@
 # AGENTS.md
 
-These docs are for people and agents alike, so the instructions live in the docs:
-read `src/content/docs/contributing/` before changing anything. It covers page
-types, front matter, links, the glossary, notebook pages and sources.
+The instructions for people and agents are the same: read `CONTRIBUTING.md`
+before changing anything. It covers page types, front matter, links, the
+glossary, notebook pages and sources.
 
 - Commands: `just install`, `just dev`, `just check` (run it before a pull request).
 - Pages are in `src/content/docs/`; every term is in `reference/glossary.md`.

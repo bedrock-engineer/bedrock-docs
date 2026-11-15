@@ -108,7 +108,7 @@ See [marimo](../tools/marimo/index.md) and the [Learn marimo](../tools/marimo/ge
 
 ## These docs
 
-The words these docs use for their own parts. [Contributing](../contributing/index.md) says how to write each one.
+The words these docs use for their own parts.
 
 ### Docs Atlas
 
@@ -138,8 +138,6 @@ A closed box under a paragraph that holds the next level of detail, for the read
 
 How a notebook becomes a page. In islands mode its cells run in your browser through Pyodide, so you can change them; in static mode the page shows its text and code, and nothing runs.
 
-Each notebook's mode is set in `sources.yaml`; see [Notebook pages](../contributing/notebooks.md).
-
 ### Reference page
 
 A page you look things up in rather than read through, such as this glossary or a tool page. Diátaxis uses the same word.
@@ -147,8 +145,6 @@ A page you look things up in rather than read through, such as this glossary or 
 ### Source
 
 Files these docs copy from another repository, pinned to a tag or commit, as listed in `sources.yaml`. They are fixed upstream, never here.
-
-See [Sources](../contributing/sources.md).
 
 ### Tutorial
 

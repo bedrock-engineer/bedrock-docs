@@ -11,8 +11,7 @@ src/content/docs/       the pages (Starlight reads only this folder)
 ├── index.md            the Docs Atlas
 ├── structures/  fundamentals/  case-studies/
 ├── tools/<tool>/       tool page, getting started, guides, examples, reference
-├── reference/          glossary and other look-up pages
-└── contributing/       how to write a page: for people and agents alike
+└── reference/          glossary and other look-up pages
 src/components/ plugins/ scripts/ styles/   glossary hovers, Learn more folds, marimo runtime
 sources.yaml            files copied from other repositories, pinned, and notebook page modes
 scripts/docs/           Python, run with uv: copy sources, turn notebooks into pages
@@ -35,4 +34,4 @@ Pages with marimo cells compile them with uv on first build, which takes a minut
 later builds reuse the result. In the browser the cells run in Pyodide, loaded from
 cdn.jsdelivr.net, so the first page with cells takes a while to open.
 
-See [Writing a page](src/content/docs/contributing/index.md) for everything else.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for how to write a page, for people and agents alike.

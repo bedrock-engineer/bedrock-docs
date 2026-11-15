@@ -9,7 +9,7 @@ sidebar:
 
 **Where this fits:** [Docs Atlas](../index.md) › Tools
 
-Every tool has a folder of the same shape: a tool page that says what it's for and where it shows up on these pages, then getting started, guides, examples and reference. For our own packages, all but the tool page come from the package's repository, at its release (see [Sources](../contributing/sources.md)). The analysis software for a particular check is listed on its structure hub instead, for example under Software on [Spread foundations](../structures/spread-foundations.md).
+Every tool has a folder of the same shape: a tool page that says what it's for and where it shows up on these pages, then getting started, guides, examples and reference. For our own packages, all but the tool page come from the package's repository, at its release (see [source](../reference/glossary.md#source)). The analysis software for a particular check is listed on its structure hub instead, for example under Software on [Spread foundations](../structures/spread-foundations.md).
 
 ## Explain and explore
 

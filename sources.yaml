@@ -18,7 +18,7 @@
 #   mode:   islands (cells run in the reader's browser) or static (code only,
 #           nothing runs); notebooks in no entry are islands
 #
-# See src/content/docs/contributing/sources.md.
+# See the Sources section of CONTRIBUTING.md.
 
 - to: tools/marimo/getting-started
   repo: marimo-team/marimo

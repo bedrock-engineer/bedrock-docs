@@ -63,11 +63,6 @@ export default defineConfig({
           ].join(" "),
           customSets: [
             { label: "Glossary", paths: ["reference/glossary"], description: "every term, with one meaning each" },
-            {
-              label: "Contributing",
-              paths: ["contributing/**"],
-              description: "how to write and change these docs: page types, front matter, notebooks, sources",
-            },
           ],
         }),
       ],
@@ -132,7 +127,6 @@ export default defineConfig({
           ],
         },
         { label: "Reference", items: [{ autogenerate: { directory: "reference" } }] },
-        { label: "Contributing", items: [{ autogenerate: { directory: "contributing" } }] },
       ]),
     }),
     // .mdx shares the Markdown processor, so Starlight's asides and the link check run

@@ -25,7 +25,7 @@ cpt-anywidget is Bedrock.engineer's set of notebook viewers for [CPTs](../../ref
 
 The [reference pages](reference/cpt-viewer.md) describe each viewer's options and data contract.
 
-All pages but this one come from the package's repository, at its release v0.3.0 (see [Sources](../../contributing/sources.md)).
+All pages but this one come from the package's repository, at its release v0.3.0 (see [source](../../reference/glossary.md#source)).
 
 ## Where it fits on these pages
 
