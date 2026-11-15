@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 import { rehypeHeadingIds, unified } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import starlight from "@astrojs/starlight";
+import tailwindcss from "@tailwindcss/vite";
 import { remarkMarimo } from "@marimo-team/mdx-marimo/remark";
 import { defineConfig } from "astro/config";
 import rehypeKatex from "rehype-katex";
@@ -47,7 +48,7 @@ export default defineConfig({
         starlightLlmsTxt({
           projectName: "Bedrock.engineer docs",
           details: [
-            "The docs are a graph: the atlas links to one hub per structure or ground stage, hubs link to",
+            "The docs are a graph: the Docs Atlas links to one hub per structure or ground stage, hubs link to",
             "fundamentals, how-tos, case studies and tools, and every term links to the one glossary,",
             "where each term keeps one meaning. Start from the set that fits your question.",
           ].join(" "),
@@ -64,15 +65,26 @@ export default defineConfig({
       components: {
         // Adds the marimo runtime to pages with marimo cells, so pages need no imports.
         MarkdownContent: "./src/components/MarkdownContent.astro",
+        // bedrock-web's triangle light/auto/dark toggle.
+        ThemeSelect: "./src/components/ThemeToggle.astro",
       },
-      customCss: ["./src/styles/docs.css", "katex/dist/katex.min.css", "@marimo-team/mdx-marimo/styles.css"],
+      // bedrock-web's look: custom.css, tokens.css, ThemeToggle.astro and the logo are
+      // copied unchanged from bedrock-web (784accf); change them there and copy again.
+      customCss: [
+        "./src/styles/custom.css",
+        "./src/styles/docs.css",
+        "katex/dist/katex.min.css",
+        "@marimo-team/mdx-marimo/styles.css",
+      ],
+      logo: { src: "./src/assets/bedrock.svg" },
+      favicon: "/bedrock.svg",
       head: [{ tag: "script", content: glossaryScript }],
       lastUpdated: true,
       editLink: { baseUrl: "https://github.com/bedrock-engineer/bedrock-docs/edit/main/" },
       social: [{ icon: "github", label: "GitHub", href: "https://github.com/bedrock-engineer/bedrock-docs" }],
       // Internal entries use `slug`, which Starlight resolves with the base path; `link` doesn't.
       sidebar: [
-        { label: "Atlas", slug: "index" },
+        { label: "Docs Atlas", slug: "index" },
         { label: "Structures", items: [{ autogenerate: { directory: "structures" } }] },
         { label: "Fundamentals", items: [{ autogenerate: { directory: "fundamentals" } }] },
         {
@@ -122,4 +134,5 @@ export default defineConfig({
     mdx(),
   ],
   markdown: { processor: unified({ remarkPlugins, rehypePlugins }) },
+  vite: { plugins: [tailwindcss()] },
 });

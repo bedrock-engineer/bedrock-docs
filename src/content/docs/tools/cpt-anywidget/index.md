@@ -7,7 +7,7 @@ sidebar:
   order: 0
 ---
 
-**Where this fits:** [Atlas](../../index.md) › [Tools](../index.md) › cpt-anywidget
+**Where this fits:** [Docs Atlas](../../index.md) › [Tools](../index.md) › cpt-anywidget
 
 cpt-anywidget is Bedrock.engineer's set of notebook viewers for [CPTs](../../reference/glossary.md#cpt) and geotechnical borehole logs, for [marimo](../marimo/index.md) and Jupyter. It plots any CPT data you can load into Python, lets you draw and edit soil layers on it, and lines CPTs up along a profile.
 

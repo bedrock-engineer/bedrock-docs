@@ -8,7 +8,7 @@ your browser. Built with [Astro Starlight](https://starlight.astro.build) and
 
 ```
 src/content/docs/       the pages (Starlight reads only this folder)
-├── index.md            the atlas
+├── index.md            the Docs Atlas
 ├── structures/  fundamentals/  case-studies/
 ├── tools/<tool>/       tool page, getting started, guides, examples, reference
 ├── reference/          glossary and other look-up pages

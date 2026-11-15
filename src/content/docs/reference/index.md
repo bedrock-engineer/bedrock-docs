@@ -7,7 +7,7 @@ sidebar:
   order: 0
 ---
 
-**Where this fits:** [Atlas](../index.md) › Reference
+**Where this fits:** [Docs Atlas](../index.md) › Reference
 
 Reference pages are for looking things up. They are short, precise and complete, and they explain little: the [fundamentals](glossary.md#fundamental) and [hubs](glossary.md#hub) do that.
 

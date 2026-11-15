@@ -1,5 +1,5 @@
 ---
-title: Atlas
+title: Docs Atlas
 description: How geotechnical engineering fits together, from ground investigation to the design of each structure.
 type: atlas
 ---

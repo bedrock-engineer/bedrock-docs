@@ -10,7 +10,7 @@ These pages are the docs for people and for coding agents alike: there is no sep
 
 ## How the docs fit together
 
-The docs are a graph, not a book. The [atlas](../reference/glossary.md#atlas) shows how geotechnical work fits together and links to the [hubs](../reference/glossary.md#hub), one per structure or ground stage. A hub links to the [fundamentals](../reference/glossary.md#fundamental), [how-tos](../reference/glossary.md#how-to), [case studies](../reference/glossary.md#case-study) and [tools](../tools/index.md) that go deeper. Every page links its terms to the [glossary](../reference/glossary.md).
+The docs are a graph, not a book. The [Docs Atlas](../reference/glossary.md#docs-atlas) shows how geotechnical work fits together and links to the [hubs](../reference/glossary.md#hub), one per structure or ground stage. A hub links to the [fundamentals](../reference/glossary.md#fundamental), [how-tos](../reference/glossary.md#how-to), [case studies](../reference/glossary.md#case-study) and [tools](../tools/index.md) that go deeper. Every page links its terms to the [glossary](../reference/glossary.md).
 
 A reader goes only as deep as they need:
 

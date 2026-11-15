@@ -110,7 +110,7 @@ See [marimo](../tools/marimo/index.md) and the [Learn marimo](../tools/marimo/ge
 
 The words these docs use for their own parts. [Contributing](../contributing/index.md) says how to write each one.
 
-### Atlas
+### Docs Atlas
 
 The home page: one picture of how geotechnical work fits together, from ground investigation to the design of each structure, with a way into every hub.
 

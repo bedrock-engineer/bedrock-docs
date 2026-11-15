@@ -6,7 +6,7 @@ eurocode: EN 1997-3:2025 Clause 5
 analysis_types: [stability, deformation, groundwater-flow, dynamics]
 ---
 
-**Where this fits:** [Atlas](../index.md) › Design per structure › Spread foundations (EN 1997-3 Clause 5)
+**Where this fits:** [Docs Atlas](../index.md) › Design per structure › Spread foundations (EN 1997-3 Clause 5)
 
 A [spread foundation](../reference/glossary.md#spread-foundation) carries a building's load onto the ground close to the surface, through a pad, a strip or a raft. Design checks that the ground can carry that load without failing, the ultimate [limit states](../reference/glossary.md#limit-state), and without the building [settling](../reference/glossary.md#settlement) too much, the serviceability limit states.
 

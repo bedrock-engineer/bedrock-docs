@@ -8,7 +8,7 @@ sidebar:
   order: 0
 ---
 
-**Where this fits:** [Atlas](../../../index.md) › [Tools](../../index.md) › [marimo](../index.md) › Learn marimo
+**Where this fits:** [Docs Atlas](../../../index.md) › [Tools](../../index.md) › [marimo](../index.md) › Learn marimo
 
 [marimo](../index.md) is the [reactive notebook](../../../reference/glossary.md#reactive-notebook) behind every notebook and explorable on this site. These are marimo's own tutorials, unchanged. Each part runs in your browser, so you can change the code and see what happens.
 

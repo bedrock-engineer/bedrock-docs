@@ -11,7 +11,7 @@ sidebar:
   order: 0
 ---
 
-**Where this fits:** [Atlas](../../index.md) › Engineering geological model
+**Where this fits:** [Docs Atlas](../../index.md) › Engineering geological model
 
 For the IAEG 2026 conference we built an open-source workflow that turns [GeoTOP](../../reference/glossary.md#geotop) voxels and BRO [CPTs](../../reference/glossary.md#cpt) into a probabilistic soil model under a building in soft Dutch ground, and shows it next to the building's BIM model.
 

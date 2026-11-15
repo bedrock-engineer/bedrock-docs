@@ -7,7 +7,7 @@ sidebar:
   order: 0
 ---
 
-**Where this fits:** [Atlas](../../index.md) › [Tools](../index.md) › marimo
+**Where this fits:** [Docs Atlas](../../index.md) › [Tools](../index.md) › marimo
 
 marimo is a [reactive notebook](../../reference/glossary.md#reactive-notebook) for Python. Change a value and every cell that depends on it runs again, so what you see always matches the code. We use it for job calculations, for R&D, and for every [explorable explanation](../../reference/glossary.md#explorable-explanation) on this site.
 

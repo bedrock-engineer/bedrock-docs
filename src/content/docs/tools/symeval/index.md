@@ -7,7 +7,7 @@ sidebar:
   order: 0
 ---
 
-**Where this fits:** [Atlas](../../index.md) › [Tools](../index.md) › SymEval
+**Where this fits:** [Docs Atlas](../../index.md) › [Tools](../index.md) › SymEval
 
 SymEval is Bedrock.engineer's Python package for [calculation reports](../../reference/glossary.md#calculation-report). You write a formula with SymPy and give the inputs as [physical quantities](../../reference/glossary.md#physical-quantity): values with units. SymEval then shows the three lines of a hand calculation. For the bearing capacity factor N_q with a friction angle of 30°, those lines are:
 
