@@ -23,6 +23,11 @@ pages:
 build:
     pnpm build
 
+# Tailwind rule: utilities only, no invented class names, no arbitrary values
+lint:
+    pnpm lint
+    pnpm stylelint
+
 # what CI runs: copied files and generated pages are current, and the site builds
 check: sources pages
     @git status --porcelain -- src/content/docs | (! grep .) || (echo "Out of date: commit what just sources and just pages changed." && exit 1)
