@@ -46,8 +46,8 @@ pyproj.network.set_network_enabled(True)
 alt.data_transformers.disable_max_rows()
 ```
 
-<details class="notebook-cell">
-<summary>Hidden cell</summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell</summary>
 
 ```python
 # marimo-lens: select a region of any output and add a note for the notebook agent
@@ -91,8 +91,8 @@ split by lithology group, and how deep the model is simulated. Each stratigraphi
 GeoTOP color, with the share of its voxels in each GeoTOP lithology class; hover over the bar for
 the numbers.
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>legends</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>legends</code></summary>
 
 ```python
 # GeoTOP's colors per stratigraphic unit and lithology class
@@ -112,8 +112,8 @@ LITH_GROUP_COLORS = {_group: LITH_COLORS[_code] for _code, _group in [("v", "pea
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>presets</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>presets</code></summary>
 
 ```python
 # The small stratigraphic units pooled with the unit their CPT data match (median qc in MPa):
@@ -162,8 +162,8 @@ preset
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>controls</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>controls</code></summary>
 
 ```python
 # The stratigraphic units in the model from the top down, each with the domain the preset puts it in
@@ -395,8 +395,8 @@ domain_summary = (
 )
 ```
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>domain_table</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>domain_table</code></summary>
 
 ```python
 _not_simulated = voxel_domains["domain"].null_count()
@@ -419,8 +419,8 @@ mo.vstack(
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>coverage</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>coverage</code></summary>
 
 ```python
 # How much of the model each domain fills, and how many CPTs condition it
@@ -460,8 +460,8 @@ the sections, each column they cross shows the median qc of its CPTs, in a band 
 their 90th percentile. Hover over a CPT in the plan for its own qc, and over a voxel for its domain,
 stratigraphic unit and lithology class.
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>cross_sections_widget</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>cross_sections_widget</code></summary>
 
 ```python
 class CrossSections(anywidget.AnyWidget):
@@ -490,8 +490,8 @@ class CrossSections(anywidget.AnyWidget):
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>cross_sections</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>cross_sections</code></summary>
 
 ```python
 # Made once for the voxels, so the sections stay where they were dragged when the domains change
@@ -536,8 +536,8 @@ cross_sections
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>domain_viewer</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>domain_viewer</code></summary>
 
 ```python
 # Made once, so it keeps its camera and its WebGL context; domain_viewer_objects fills it
@@ -549,8 +549,8 @@ mo.vstack([cut_sections, domain_viewer])
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>domain_viewer_objects</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>domain_viewer_objects</code></summary>
 
 ```python
 # The voxels into the 3D viewer, colored like the cross-sections: by simulation domain (the simulated
@@ -576,8 +576,8 @@ speckle_view.objects_gz = models_gz(bim_objects(viewer_bimdf))
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>viewer_selection</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>viewer_selection</code></summary>
 
 ```python
 # The voxels and CPTs selected in the GeoSpeckleViewer
@@ -588,8 +588,8 @@ viewer_bimdf.filter(
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>cross_sections_domains</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>cross_sections_domains</code></summary>
 
 ```python
 # The domains into the cross-sections, without making them again
@@ -662,8 +662,8 @@ The 0.5 m CPT samples per domain, from the softest to the stiffest. Domains are 
 boxes differ from their neighbors' and are narrow inside. Click a domain in the legend of the qc–Rf
 plot to pick it out.
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>separation</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>separation</code></summary>
 
 ```python
 _order = domain_summary.sort("median qc (MPa)")["domain"].to_list()
@@ -682,8 +682,8 @@ alt.hconcat(_qc, _rf).resolve_scale(y="shared")
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>qc_rf</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>qc_rf</code></summary>
 
 ```python
 _pick = alt.selection_point(fields=["domain"], bind="legend")
@@ -711,8 +711,8 @@ Saving pins the domains chosen above for the next notebooks. It writes their def
 first preset, and the domain of each voxel and CPT sample to `data/voxel_domains.parquet` and
 `data/sample_domains.parquet`, which `03` reads.
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>domain_definition</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>domain_definition</code></summary>
 
 ```python
 # The chosen simulation domains as simulation_domains.json holds them
@@ -730,8 +730,8 @@ save_domains
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>saved_status</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>saved_status</code></summary>
 
 ```python
 # Whether the saved simulation domains are the ones chosen above; runs again when they are saved
@@ -753,8 +753,8 @@ _status
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>save</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>save</code></summary>
 
 ```python
 mo.stop(not save_domains.value)

@@ -48,8 +48,8 @@ from cpt_robertson_classification import SOIL_BEHAVIOR_COLORS, SOIL_BEHAVIOR_TYP
 pyproj.network.set_network_enabled(True)
 ```
 
-<details class="notebook-cell">
-<summary>Hidden cell</summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell</summary>
 
 ```python
 # marimo-lens: select a region of any output and add a note for the notebook agent
@@ -71,8 +71,8 @@ CPT_RADIUS = 1.0
 CPT_SIDES = 16
 ```
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>read_inputs</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>read_inputs</code></summary>
 
 ```python
 _voxels_path, _geotop_path = DATA_DIR / "voxel_domains.parquet", DATA_DIR / "geotop_bimdf.parquet"
@@ -90,8 +90,8 @@ SBTN_LABELS = {_zone: f"{_zone} {_name}" for _zone, _name in SOIL_BEHAVIOR_TYPES
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>saved_runs</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>saved_runs</code></summary>
 
 ```python
 _rows = []
@@ -124,8 +124,8 @@ saved_runs
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>merge_statistics</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>merge_statistics</code></summary>
 
 ```python
 def statistics(columns):
@@ -155,8 +155,8 @@ def dominant(columns):
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>bim_elements</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>bim_elements</code></summary>
 
 ```python
 def elements(frame, vertices, faces, property_set):
@@ -200,8 +200,8 @@ def elements(frame, vertices, faces, property_set):
 
 ## 1 · The interpreted CPTs
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>classified</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>classified</code></summary>
 
 ```python
 mo.stop(saved_runs.value.is_empty(), mo.md("Select a run in the table above."))
@@ -235,8 +235,8 @@ classified_cpts = _usable.with_columns(
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>cpt_layers</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>cpt_layers</code></summary>
 
 ```python
 # Consecutive samples of a CPT of the same SBTn, from the top down, with the statistics of what they merge. A
@@ -272,8 +272,8 @@ cpt_layers
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>cpt_cylinders</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>cpt_cylinders</code></summary>
 
 ```python
 # One cylinder of height 1 at the origin, stretched and moved to each layer. PyVista's points are single
@@ -295,8 +295,8 @@ cpts_bimdf
 
 ## 2 · The SBTn volumes
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>run_cells</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>run_cells</code></summary>
 
 ```python
 # The cells in a simulation domain and outside the pit with their values, and the stratigraphic unit and lithology class of the
@@ -342,8 +342,8 @@ run_cells = (
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>sbtn_volumes</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>sbtn_volumes</code></summary>
 
 ```python
 # The grid as PyVista cells, around its first cell: PyVista's points are single precision, which RD New's
@@ -403,8 +403,8 @@ volume_statistics
 Among the buildings of PDOK's 3D BAG. Check what to show on the right, and uncheck an SBTn to see into the volumes:
 the view then goes back to the whole model. Click an element to see its row below.
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>revit_model</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>revit_model</code></summary>
 
 ```python
 # Revit's advanced sample project, architecture and structure, placed in Amsterdam Noord, in the site's CRS, and
@@ -422,8 +422,8 @@ revit_bimdf.write_parquet(BIMDATAFRAMES_DIR / "rvt_advanced_sample_combined_arch
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>viewer_controls</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>viewer_controls</code></summary>
 
 ```python
 # What the viewer shows. An SBTn in the legend shows or hides its volume; the CPTs' cylinders have the same colors.
@@ -461,8 +461,8 @@ foundation_model = bim_objects(foundations_bimdf)
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>viewer</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>viewer</code></summary>
 
 ```python
 # One viewer that keeps its 3D BAG when the checkboxes change what it shows
@@ -473,8 +473,8 @@ mo.hstack([bim_viewer, viewer_controls], widths=[5, 2], align="start")
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>viewer_models</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>viewer_models</code></summary>
 
 ```python
 # Through viewer_widget, not bim_viewer, so that this cell does not run again each time the viewer reports back
@@ -488,8 +488,8 @@ viewer_widget.objects_gz = models_gz(*_models) if _models else b""
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>viewer_selection</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>viewer_selection</code></summary>
 
 ```python
 # The elements selected in the GeoSpeckleViewer, with the statistics of what they merge
@@ -515,8 +515,8 @@ The notebook signs in with this machine's Speckle account for the server. Withou
 with the scopes `profile:read`, `streams:read` and `streams:write` into the field that appears: it stays in this
 notebook's memory and is never written to disk. Setting `SPECKLE_TOKEN` before starting the notebook fills the field.
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>speckle_server_input</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>speckle_server_input</code></summary>
 
 ```python
 speckle_server = mo.ui.text(value=DEFAULT_SERVER, label="Server", full_width=True)
@@ -525,8 +525,8 @@ speckle_server
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>speckle_sign_in</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>speckle_sign_in</code></summary>
 
 ```python
 local_speckle = local_client(speckle_server.value)
@@ -546,8 +546,8 @@ None if local_speckle else mo.vstack(
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>speckle_signed_in_as</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>speckle_signed_in_as</code></summary>
 
 ```python
 mo.stop(local_speckle is None and not speckle_token.all_valid)
@@ -560,8 +560,8 @@ mo.md(
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>speckle_targets</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>speckle_targets</code></summary>
 
 ```python
 # Speckle only indexes what is under an object's properties for its filters, and a property set's dotted name is
@@ -582,8 +582,8 @@ speckle_project
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>speckle_model_choices</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>speckle_model_choices</code></summary>
 
 ```python
 mo.stop(speckle_project.value is None, mo.md("Choose a project."))
@@ -601,8 +601,8 @@ mo.vstack([*(speckle_models[_label] for _label in speckle_bimdfs), speckle_messa
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>publish</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>publish</code></summary>
 
 ```python
 mo.stop(not publish_button.value, mo.md("Choose the models to publish to and press **Publish**."))

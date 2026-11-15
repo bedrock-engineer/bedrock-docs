@@ -15,8 +15,8 @@ This page shows the notebook's text and code. It is [static](../../reference/glo
 
 Start from the approximate footprint of the model's Floors elements. Adjust the buffer, inspect the touched GeoTOP columns and the BRO's CPTs and geotechnical boreholes in them, then download the selected data. Everything under `data/` is downloaded, so Git ignores it.
 
-<details class="notebook-cell">
-<summary>Hidden cell</summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell</summary>
 
 ```python
 import io
@@ -46,8 +46,8 @@ pyproj.network.set_network_enabled(True)
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>lens</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>lens</code></summary>
 
 ```python
 # marimo-lens: select a region of any output and add a note for the notebook agent
@@ -57,8 +57,8 @@ lens
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>settings</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>settings</code></summary>
 
 ```python
 DATA_DIR = Path(mo.notebook_dir()).parent / "data"
@@ -78,8 +78,8 @@ buffer_distance
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>building_footprint</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>building_footprint</code></summary>
 
 ```python
 _floors = pl.scan_parquet(BIM_URL).filter(pl.col("class").cast(pl.String) == "Floors").select("geog").collect()
@@ -93,8 +93,8 @@ footprint_rd = max(
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>selection_functions</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>selection_functions</code></summary>
 
 ```python
 def geotop_cells(x, y):
@@ -170,8 +170,8 @@ def read_bro_cpt(path):
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>selection</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>selection</code></summary>
 
 ```python
 buffer_rd = footprint_rd.buffer(buffer_distance.value)
@@ -200,8 +200,8 @@ mo.md(
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>selection_map</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>selection_map</code></summary>
 
 ```python
 selection_map = folium.Map(tiles=None)
@@ -256,8 +256,8 @@ selection_map
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>download_controls</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>download_controls</code></summary>
 
 ```python
 download_selected = mo.ui.run_button(label="Download selected data")
@@ -266,8 +266,8 @@ mo.vstack([download_selected, mo.md("Fetches GeoTOP voxel values and BRO source 
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>download</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>download</code></summary>
 
 ```python
 mo.stop(
@@ -334,8 +334,8 @@ lithology color, the stratigraphic unit as `class`, and the voxel's GeoTOP value
 set `GeoTOP`. It is written to `data/geotop_bimdf.parquet` for the next notebooks, and rebuilt
 whenever a download replaces `data/geotop.nc`.
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>geotop_legends</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>geotop_legends</code></summary>
 
 ```python
 def _with_hex(legend):
@@ -502,8 +502,8 @@ geotop_bimdf
 
 The voxels among the buildings of PDOK's 3D BAG. Click a voxel to see its row below.
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>viewer_color</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>viewer_color</code></summary>
 
 ```python
 color_by = mo.ui.radio(
@@ -517,8 +517,8 @@ color_by
 
 </details>
 
-<details class="notebook-cell">
-<summary>Hidden cell: <code>viewer</code></summary>
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>viewer</code></summary>
 
 ```python
 geotop_viewer = mo.ui.anywidget(

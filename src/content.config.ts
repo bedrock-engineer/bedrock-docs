@@ -3,10 +3,10 @@ import { docsLoader } from "@astrojs/starlight/loaders";
 import { docsSchema } from "@astrojs/starlight/schema";
 
 // The front matter a page can carry beyond Starlight's own keys.
-// See src/content/docs/contributing/index.md.
+// See CONTRIBUTING.md.
 const facets = z.object({
   type: z
-    .enum(["atlas", "hub", "structure", "ground", "fundamental", "how-to", "case-study", "tutorial", "tool", "reference", "contributing"])
+    .enum(["atlas", "hub", "structure", "ground", "fundamental", "how-to", "case-study", "tutorial", "tool", "reference"])
     .optional(),
   // A tutorial page lists its parts, in order, under a `## <tutorial>` heading.
   tutorial: z.string().optional(),

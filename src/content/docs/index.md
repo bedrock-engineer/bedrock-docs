@@ -6,10 +6,10 @@ type: atlas
 
 Every geotechnical job runs along one chain: investigate the ground, model its geology, turn that model into design values, and design the structure. Start from the box closest to your question.
 
-<figure class="atlas">
-<svg viewBox="0 0 760 330" role="img" aria-label="The chain from ground investigation to design per structure">
-  <defs><marker id="atlas-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="atlas-ink"/></marker></defs>
-  <g class="atlas-edges">
+<figure class="my-6">
+<svg class="h-auto w-full" viewBox="0 0 760 330" role="img" aria-label="The chain from ground investigation to design per structure">
+  <defs><marker id="atlas-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fill-doc-line"/></marker></defs>
+  <g class="fill-none stroke-doc-line" stroke-width="1.25">
     <path d="M184 66H208" marker-end="url(#atlas-arrow)"/>
     <path d="M368 66H392" marker-end="url(#atlas-arrow)"/>
     <path d="M552 66H576" marker-end="url(#atlas-arrow)"/>
@@ -18,18 +18,18 @@ Every geotechnical job runs along one chain: investigate the ground, model its g
     <path d="M368 208H392" marker-end="url(#atlas-arrow)"/>
     <path d="M544 208H568" marker-end="url(#atlas-arrow)"/>
   </g>
-  <a href="reference/glossary.md#ground-investigation"><g class="atlas-box"><rect x="24" y="20" width="160" height="92" rx="8"/><text x="104" y="48" class="atlas-name">Ground</text><text x="104" y="66" class="atlas-name">investigation</text><text x="104" y="88" class="atlas-body">CPTs, boreholes, lab</text></g></a>
-  <a href="reference/glossary.md#engineering-geological-model"><g class="atlas-box"><rect x="208" y="20" width="160" height="92" rx="8"/><text x="288" y="48" class="atlas-name">Engineering</text><text x="288" y="66" class="atlas-name">geological model</text><text x="288" y="88" class="atlas-body">Units and geology</text></g></a>
-  <a href="reference/glossary.md#geotechnical-design-model"><g class="atlas-box"><rect x="392" y="20" width="160" height="92" rx="8"/><text x="472" y="48" class="atlas-name">Geotechnical</text><text x="472" y="66" class="atlas-name">design model</text><text x="472" y="88" class="atlas-body">Design values</text></g></a>
-  <a href="#structures"><g class="atlas-box atlas-accent"><rect x="576" y="20" width="160" height="92" rx="8"/><text x="656" y="48" class="atlas-name">Design per</text><text x="656" y="66" class="atlas-name">structure</text><text x="656" y="88" class="atlas-body">14 structure hubs</text></g></a>
-  <rect x="24" y="144" width="712" height="104" rx="8" class="atlas-hub"/>
-  <text x="40" y="166" class="atlas-hub-name">Inside each structure hub</text>
-  <g class="atlas-box"><rect x="40" y="180" width="152" height="56" rx="8"/><text x="116" y="213" class="atlas-name">Checks</text></g>
-  <g class="atlas-box"><rect x="216" y="180" width="152" height="56" rx="8"/><text x="292" y="213" class="atlas-name">Analysis types</text></g>
-  <g class="atlas-box"><rect x="392" y="180" width="152" height="56" rx="8"/><text x="468" y="213" class="atlas-name">Methods</text></g>
-  <g class="atlas-box"><rect x="568" y="180" width="152" height="56" rx="8"/><text x="644" y="213" class="atlas-name">Software</text></g>
-  <rect x="24" y="264" width="712" height="48" rx="8" class="atlas-band"/>
-  <text x="380" y="293" class="atlas-body atlas-band-text">Fundamentals, how-tos, case studies and glossary terms attach to any box above</text>
+  <a class="group no-underline" href="reference/glossary.md#ground-investigation"><g text-anchor="middle"><rect class="fill-doc-surface stroke-doc-line group-hover:stroke-doc-accent group-hover:stroke-2" stroke-width="1.25" x="24" y="20" width="160" height="92" rx="8"/><text x="104" y="48" class="fill-doc-text" font-size="15" font-weight="600">Ground</text><text x="104" y="66" class="fill-doc-text" font-size="15" font-weight="600">investigation</text><text x="104" y="88" class="fill-doc-muted" font-size="12.5">CPTs, boreholes, lab</text></g></a>
+  <a class="group no-underline" href="reference/glossary.md#engineering-geological-model"><g text-anchor="middle"><rect class="fill-doc-surface stroke-doc-line group-hover:stroke-doc-accent group-hover:stroke-2" stroke-width="1.25" x="208" y="20" width="160" height="92" rx="8"/><text x="288" y="48" class="fill-doc-text" font-size="15" font-weight="600">Engineering</text><text x="288" y="66" class="fill-doc-text" font-size="15" font-weight="600">geological model</text><text x="288" y="88" class="fill-doc-muted" font-size="12.5">Units and geology</text></g></a>
+  <a class="group no-underline" href="reference/glossary.md#geotechnical-design-model"><g text-anchor="middle"><rect class="fill-doc-surface stroke-doc-line group-hover:stroke-doc-accent group-hover:stroke-2" stroke-width="1.25" x="392" y="20" width="160" height="92" rx="8"/><text x="472" y="48" class="fill-doc-text" font-size="15" font-weight="600">Geotechnical</text><text x="472" y="66" class="fill-doc-text" font-size="15" font-weight="600">design model</text><text x="472" y="88" class="fill-doc-muted" font-size="12.5">Design values</text></g></a>
+  <a class="group no-underline" href="#structures"><g text-anchor="middle"><rect class="fill-doc-accent-tint stroke-doc-accent" stroke-width="2" x="576" y="20" width="160" height="92" rx="8"/><text x="656" y="48" class="fill-doc-text" font-size="15" font-weight="600">Design per</text><text x="656" y="66" class="fill-doc-text" font-size="15" font-weight="600">structure</text><text x="656" y="88" class="fill-doc-muted" font-size="12.5">14 structure hubs</text></g></a>
+  <rect x="24" y="144" width="712" height="104" rx="8" class="fill-none stroke-doc-line" stroke-dasharray="4 4"/>
+  <text x="40" y="166" class="fill-doc-text" font-size="13" font-weight="600">Inside each structure hub</text>
+  <g text-anchor="middle"><rect class="fill-doc-surface stroke-doc-line" stroke-width="1.25" x="40" y="180" width="152" height="56" rx="8"/><text x="116" y="213" class="fill-doc-text" font-size="15" font-weight="600">Checks</text></g>
+  <g text-anchor="middle"><rect class="fill-doc-surface stroke-doc-line" stroke-width="1.25" x="216" y="180" width="152" height="56" rx="8"/><text x="292" y="213" class="fill-doc-text" font-size="15" font-weight="600">Analysis types</text></g>
+  <g text-anchor="middle"><rect class="fill-doc-surface stroke-doc-line" stroke-width="1.25" x="392" y="180" width="152" height="56" rx="8"/><text x="468" y="213" class="fill-doc-text" font-size="15" font-weight="600">Methods</text></g>
+  <g text-anchor="middle"><rect class="fill-doc-surface stroke-doc-line" stroke-width="1.25" x="568" y="180" width="152" height="56" rx="8"/><text x="644" y="213" class="fill-doc-text" font-size="15" font-weight="600">Software</text></g>
+  <rect x="24" y="264" width="712" height="48" rx="8" class="fill-doc-tint stroke-doc-line"/>
+  <text x="380" y="293" class="fill-doc-muted" font-size="12.5" text-anchor="middle">Fundamentals, how-tos, case studies and glossary terms attach to any box above</text>
 </svg>
 </figure>
 

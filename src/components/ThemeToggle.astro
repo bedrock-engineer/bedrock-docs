@@ -27,7 +27,8 @@ const iconX = length / 2 - iconSize / 2; // 17.5
 const trianglePath = `M${length / 2} 0 L${length} ${altitude} L0 ${altitude} Z`;
 ---
 <svg
-  class:list={["triangle-toggle", className]}
+  data-triangle-toggle
+  class:list={["block cursor-default", className]}
   role="radiogroup"
   aria-label="Color theme"
   width={length * 2}
@@ -37,28 +38,28 @@ const trianglePath = `M${length / 2} 0 L${length} ${altitude} L0 ${altitude} Z`;
   xmlns="http://www.w3.org/2000/svg"
 >
   <g
-    class="tri-btn"
+    class="group cursor-pointer outline-none"
     data-theme="light"
     role="radio"
     tabindex="0"
     aria-label="Light"
     aria-checked="false"
   >
-    <path d={trianglePath}  class="tri-bg"></path>
-    <path d={trianglePath}  class="tri-focus-ring"></path>
+    <path d={trianglePath} class="fill-gray-6 stroke-gray-4 stroke-1 group-hover:fill-gray-7" stroke-linejoin="round"></path>
+    <path d={trianglePath} class="pointer-events-none fill-none stroke-green-9 stroke-2 opacity-0 group-focus-visible:opacity-100" stroke-linejoin="round"></path>
     <svg
       x={iconX}
       y={altitude / 2}
       width={iconSize}
       height={iconSize}
       viewBox={svgViewBox(sunIcon)}
-      class="tri-icon"
+      class="pointer-events-none fill-gray-12 opacity-50 group-aria-checked:opacity-100"
       set:html={svgInner(sunIcon)}
     />
   </g>
 
   <g
-    class="tri-btn"
+    class="group cursor-pointer outline-none"
     role="radio"
     data-theme="auto"
     tabindex="-1"
@@ -66,21 +67,21 @@ const trianglePath = `M${length / 2} 0 L${length} ${altitude} L0 ${altitude} Z`;
     aria-checked="false"
     transform={`translate(${length / 2}, 0)`}
   >
-    <path d={trianglePath} class="tri-bg tri-inverted"></path>
-    <path d={trianglePath} class="tri-focus-ring tri-inverted"></path>
+    <path d={trianglePath} class="origin-center rotate-180 transform-fill fill-gray-6 stroke-gray-4 stroke-1 group-hover:fill-gray-7" stroke-linejoin="round"></path>
+    <path d={trianglePath} class="pointer-events-none origin-center rotate-180 transform-fill fill-none stroke-green-9 stroke-2 opacity-0 group-focus-visible:opacity-100" stroke-linejoin="round"></path>
     <svg
       x={iconX}
       y={iconSize / 2}
       width={iconSize}
       height={iconSize}
       viewBox={svgViewBox(autoIcon)}
-      class="tri-icon"
+      class="pointer-events-none fill-gray-12 opacity-50 group-aria-checked:opacity-100"
       set:html={svgInner(autoIcon)}
     />
   </g>
 
   <g
-    class="tri-btn"
+    class="group cursor-pointer outline-none"
     data-theme="dark"
     role="radio"
     tabindex="-1"
@@ -88,22 +89,22 @@ const trianglePath = `M${length / 2} 0 L${length} ${altitude} L0 ${altitude} Z`;
     aria-checked="false"
     transform={`translate(${length}, 0)`}
   >
-    <path d={trianglePath} class="tri-bg"></path>
-    <path d={trianglePath} class="tri-focus-ring"></path>
+    <path d={trianglePath} class="fill-gray-6 stroke-gray-4 stroke-1 group-hover:fill-gray-7" stroke-linejoin="round"></path>
+    <path d={trianglePath} class="pointer-events-none fill-none stroke-green-9 stroke-2 opacity-0 group-focus-visible:opacity-100" stroke-linejoin="round"></path>
     <svg
       x={iconX}
       y={altitude / 2}
       width={iconSize}
       height={iconSize}
       viewBox={svgViewBox(moonIcon)}
-      class="tri-icon"
+      class="pointer-events-none fill-gray-12 opacity-50 group-aria-checked:opacity-100"
       set:html={svgInner(moonIcon)}
     />
   </g>
 
   <!-- Rotating indicator: same triangle, rotates 0°/60°/120° around its
        bottom-right corner to land on light/auto/dark positions -->
-  <path d={trianglePath} class="tri-indicator" stroke="none"></path>
+  <path d={trianglePath} data-tri-indicator class="pointer-events-none origin-bottom-right transform-fill fill-green-a7 motion-safe:transition-transform motion-safe:duration-450 motion-safe:ease-overshoot" stroke="none"></path>
 </svg>
 
 <!-- is:inline so this runs synchronously during parsing, before first
@@ -140,14 +141,14 @@ const trianglePath = `M${length / 2} 0 L${length} ${altitude} L0 ${altitude} Z`;
       );
       localStorage.setItem("theme", theme);
 
-      document.querySelectorAll(".triangle-toggle").forEach((root) => {
-        const indicator = root.querySelector(".tri-indicator");
+      document.querySelectorAll("[data-triangle-toggle]").forEach((root) => {
+        const indicator = root.querySelector("[data-tri-indicator]");
         if (indicator)
           indicator.style.transform = `rotate(${rotations[theme]}deg)`;
 
-        root.querySelectorAll(".tri-btn").forEach((btn) => {
+        root.querySelectorAll("g[data-theme]").forEach((btn) => {
           const active = btn.dataset.theme === theme;
-          btn.classList.toggle("active", active);
+          // aria-checked also styles the icon (group-aria-checked:).
           btn.setAttribute("aria-checked", String(active));
           // Roving tabindex: only the selected radio is in the tab order
           btn.setAttribute("tabindex", active ? "0" : "-1");
@@ -156,10 +157,10 @@ const trianglePath = `M${length / 2} 0 L${length} ${altitude} L0 ${altitude} Z`;
     }
 
     document
-      .querySelectorAll(".triangle-toggle:not([data-tri-init])")
+      .querySelectorAll("[data-triangle-toggle]:not([data-tri-init])")
       .forEach((root) => {
         root.setAttribute("data-tri-init", "");
-        const btns = Array.from(root.querySelectorAll(".tri-btn"));
+        const btns = Array.from(root.querySelectorAll("g[data-theme]"));
         btns.forEach((btn, idx) => {
           btn.addEventListener("click", () => applyTheme(btn.dataset.theme));
           btn.addEventListener("keydown", (e) => {
@@ -194,67 +195,3 @@ const trianglePath = `M${length / 2} 0 L${length} ${altitude} L0 ${altitude} Z`;
   })();
 </script>
 
-<style>
-  .triangle-toggle {
-    display: block;
-    cursor: default;
-  }
-
-  .tri-bg {
-    fill: var(--gray-6);
-    stroke: var(--gray-4);
-    stroke-width: 1;
-    stroke-linejoin: round;
-  }
-
-  /* Inverts the center triangle to point downward */
-  .tri-inverted {
-    transform-box: fill-box;
-    transform-origin: center;
-    transform: rotate(180deg);
-  }
-
-  .tri-btn {
-    cursor: pointer;
-    outline: none;
-
-    &:hover .tri-bg {
-      fill: var(--gray-7);
-    }
-
-    &:focus-visible .tri-focus-ring {
-      opacity: 1;
-    }
-  }
-
-  .tri-focus-ring {
-    fill: none;
-    stroke: var(--green-9);
-    stroke-width: 2;
-    stroke-linejoin: round;
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .tri-icon {
-    fill: var(--gray-12);
-    opacity: 0.5;
-    pointer-events: none;
-
-    .tri-btn.active & {
-      opacity: 1;
-    }
-  }
-
-  .tri-indicator {
-    fill: var(--green-a7);
-    transform-box: fill-box;
-    transform-origin: 100% 100%; /* bottom-right corner of the triangle */
-    transform: rotate(0deg);
-    pointer-events: none;
-
-    @media (prefers-reduced-motion: no-preference) {
-      transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-    }
-  }
-</style>
