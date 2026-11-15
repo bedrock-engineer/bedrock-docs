@@ -7,7 +7,7 @@ default:
 install:
     pnpm install
 
-# the site at http://localhost:4321, reloading as you edit
+# the site at http://localhost:4321/bedrock-docs/, reloading as you edit
 dev:
     pnpm dev
 

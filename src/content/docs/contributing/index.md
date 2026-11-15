@@ -52,6 +52,7 @@ tutorial: Learn marimo                # a tutorial page: the name of its ## part
 ## Conventions
 
 - **Links are relative links to files**, such as `[Bearing capacity](../fundamentals/bearing-capacity.mdx)` or `[Dataflow](getting-started/dataflow.py)` for a notebook. The build turns them into page links. They also work on GitHub and in Obsidian, and they survive moving the docs to another site.
+- **Links to other pages of the site** that aren't files, such as `/tools/`, are written from the site root without its base path (`/bedrock-docs/`); the build adds it.
 - **A glossary link** is a link to `glossary.md#<term>`. It gets a dotted underline, a hover card with the term's first paragraph, and a line under "Key terms" at the end of the page.
 - **A glossary term** is a `###` heading under one of the glossary's `##` groups. Its first paragraph is the hover text, so make it stand on its own. A term keeps one meaning everywhere.
 - **A Learn more fold** is an Obsidian callout: `> [!note]- Learn more: <title>`. The `-` keeps it closed.
@@ -69,7 +70,7 @@ tutorial: Learn marimo                # a tutorial page: the name of its ## part
 
 ```sh
 just install   # pnpm install
-just dev       # the site at http://localhost:4321, reloading as you edit
+just dev       # the site at http://localhost:4321/bedrock-docs/, reloading as you edit
 just sources   # copy the files sources.yaml lists from other repositories
 just pages     # turn the notebooks into pages
 just build     # build the site, check every link

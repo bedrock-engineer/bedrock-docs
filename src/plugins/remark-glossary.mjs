@@ -5,6 +5,7 @@
 // - Any relative .md or .mdx link, or .py link to a marimo notebook, is rewritten to
 //   its Starlight route, so the source stays a plain link that works on GitHub and in
 //   Obsidian, and that survives moving the whole folder to another site.
+// - A root-relative link (/tools/...) gets the site's base path, so pages never write it.
 // - The glossary terms a page links are listed under "Key terms" at its end.
 import { readFileSync } from "node:fs";
 import path from "node:path";
@@ -29,16 +30,19 @@ function readGlossary(file) {
   return terms;
 }
 
-export function remarkGlossary({ contentDir, glossaryFile }) {
+export function remarkGlossary({ base = "", contentDir, glossaryFile }) {
   const terms = readGlossary(glossaryFile);
+  const prefix = base.replace(/\/$/, "");
   const route = (from, href) => {
     const [target, hash] = href.split("#");
-    if (/^[a-z]+:|^\/\//i.test(target) || !/\.(mdx?|py)$/.test(target)) return undefined;
+    if (/^[a-z]+:|^\/\//i.test(target)) return undefined;
+    if (target.startsWith("/")) return target.startsWith(prefix + "/") ? undefined : prefix + href;
+    if (!/\.(mdx?|py)$/.test(target)) return undefined;
     const absolute = path.resolve(path.dirname(from), target);
     // Astro's content IDs: the path without its extension, each segment slugified.
     const slug = path.relative(contentDir, absolute).replace(/\.(mdx?|py)$/, "").split(path.sep)
       .map((segment) => slugify(segment)).join("/").replace(/(^|\/)index$/, "");
-    return `/${slug ? slug + "/" : ""}${hash ? "#" + hash : ""}`;
+    return `${prefix}/${slug ? slug + "/" : ""}${hash ? "#" + hash : ""}`;
   };
   return (tree, file) => {
     const from = file.path;
@@ -60,7 +64,7 @@ export function remarkGlossary({ contentDir, glossaryFile }) {
       };
     });
     visit(tree, "html", (node) => {
-      node.value = node.value.replace(/href="([^"]+\.mdx?(?:#[^"]*)?)"/g, (all, href) => {
+      node.value = node.value.replace(/href="([^"#][^"]*)"/g, (all, href) => {
         const url = route(from, href);
         return url ? `href="${url}"` : all;
       });

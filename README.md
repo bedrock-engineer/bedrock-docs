@@ -18,6 +18,9 @@ sources.yaml            files copied from other repositories, pinned, and notebo
 scripts/docs/           Python, run with uv: copy sources, turn notebooks into pages
 ```
 
+The site is at https://bedrock-engineer.github.io/bedrock-docs/, deployed from `main`
+by GitHub Actions.
+
 ## Run it
 
 You need [pnpm](https://pnpm.io), [uv](https://docs.astral.sh/uv/) and
@@ -25,7 +28,7 @@ You need [pnpm](https://pnpm.io), [uv](https://docs.astral.sh/uv/) and
 
 ```sh
 just install
-just dev
+just dev      # http://localhost:4321/bedrock-docs/
 ```
 
 Pages with marimo cells compile them with uv on first build, which takes a minute;

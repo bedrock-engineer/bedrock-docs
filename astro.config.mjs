@@ -13,8 +13,11 @@ import starlightLlmsTxt from "starlight-llms-txt";
 import { remarkGlossary } from "./src/plugins/remark-glossary.mjs";
 import { remarkObsidianCallouts } from "./src/plugins/remark-obsidian-callouts.mjs";
 
+// The site lives under /bedrock-docs/ on GitHub Pages; pages never write the base
+// themselves (src/plugins/remark-glossary.mjs adds it to every root-relative link).
+const BASE = "/bedrock-docs";
 const contentDir = fileURLToPath(new URL("./src/content/docs/", import.meta.url));
-const glossary = [remarkGlossary, { contentDir, glossaryFile: contentDir + "reference/glossary.md" }];
+const glossary = [remarkGlossary, { base: BASE, contentDir, glossaryFile: contentDir + "reference/glossary.md" }];
 // marimo cells only in .mdx: marimo turns ```python marimo fences into MDX islands.
 const mdxOnly = (plugin) => (options) => {
   const transform = plugin(options);
@@ -31,8 +34,9 @@ process.env.MDX_MARIMO_UV ??= "uv";
 
 // https://astro.build/config
 export default defineConfig({
-  // Not deployed yet: the address is a placeholder until the deploy target is chosen.
-  site: "https://bedrock-docs.pages.dev",
+  // GitHub Pages, deployed by .github/workflows/check.yml from main.
+  site: "https://bedrock-engineer.github.io",
+  base: BASE,
   integrations: [
     starlight({
       title: "Bedrock.engineer docs",
@@ -66,8 +70,9 @@ export default defineConfig({
       lastUpdated: true,
       editLink: { baseUrl: "https://github.com/bedrock-engineer/bedrock-docs/edit/main/" },
       social: [{ icon: "github", label: "GitHub", href: "https://github.com/bedrock-engineer/bedrock-docs" }],
+      // Internal entries use `slug`, which Starlight resolves with the base path; `link` doesn't.
       sidebar: [
-        { label: "Atlas", link: "/" },
+        { label: "Atlas", slug: "index" },
         { label: "Structures", items: [{ autogenerate: { directory: "structures" } }] },
         { label: "Fundamentals", items: [{ autogenerate: { directory: "fundamentals" } }] },
         {
@@ -77,19 +82,19 @@ export default defineConfig({
         {
           label: "Tutorials",
           items: [
-            { label: "Learn marimo", link: "/tools/marimo/getting-started/" },
-            { label: "Getting started with SymEval", link: "/tools/symeval/getting-started/" },
+            { label: "Learn marimo", slug: "tools/marimo/getting-started" },
+            { label: "Getting started with SymEval", slug: "tools/symeval/getting-started" },
           ],
         },
         {
           label: "Tools",
           items: [
-            { label: "Overview", link: "/tools/" },
+            { label: "Overview", slug: "tools" },
             {
               label: "marimo",
               collapsed: true,
               items: [
-                { label: "About marimo", link: "/tools/marimo/" },
+                { label: "About marimo", slug: "tools/marimo" },
                 { label: "Learn marimo", items: [{ autogenerate: { directory: "tools/marimo/getting-started" } }] },
               ],
             },
@@ -98,9 +103,9 @@ export default defineConfig({
               label: "cpt-anywidget",
               collapsed: true,
               items: [
-                { label: "About cpt-anywidget", link: "/tools/cpt-anywidget/" },
-                { label: "Getting started", link: "/tools/cpt-anywidget/getting-started/" },
-                { label: "Edit layers", link: "/tools/cpt-anywidget/edit-layers/" },
+                { label: "About cpt-anywidget", slug: "tools/cpt-anywidget" },
+                { label: "Getting started", slug: "tools/cpt-anywidget/getting-started" },
+                { label: "Edit layers", slug: "tools/cpt-anywidget/edit-layers" },
                 { label: "Examples", items: [{ autogenerate: { directory: "tools/cpt-anywidget/examples" } }] },
                 { label: "Reference", items: [{ autogenerate: { directory: "tools/cpt-anywidget/reference" } }] },
               ],
