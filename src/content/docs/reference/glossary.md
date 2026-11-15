@@ -38,7 +38,7 @@ Source: [@en-1997-2_ec7-gi-testing_2007, 4.3].
 
 The understanding of what the ground is like under and around a site: which soil and rock units are where, how they formed, how they behave, and where the groundwater is. It is built from ground investigation data, before any design values are chosen.
 
-BS 5930 calls this the ground model.
+The EGM describes the ground only; the structure comes in with the geotechnical design model. A project has one EGM, which ground modeling refines whenever new ground investigation data comes in. BS 5930 calls it the ground model.
 
 Source: [@bs-5930_ground-investigations_2015, 3.7].
 
@@ -48,9 +48,9 @@ TNO's 3D voxel model of the shallow subsurface of the Netherlands. Each 100 m by
 
 ### Geotechnical design model (GDM)
 
-The engineering geological model turned into design values for one structure: units with parameters, groundwater levels and loads, set up for the checks that structure needs.
+The engineering geological model schematized for one structure and one check: the structure's geometry and construction stages, the actions and water levels for the design situation, and design values per layer. A project has one EGM and usually several GDMs.
 
-EN 1997-1:2004 has no name for the model as a whole, but defines what goes into it: characteristic and design values of the geotechnical parameters, and the geometrical data.
+Geotechnical analysis produces the GDM and verifies the check with it. EN 1997-1:2004 has no name for the model as a whole, but defines what goes into it: characteristic and design values of the geotechnical parameters, and the geometrical data.
 
 Source: [@en-1997-1_ec7-general-rules_2004, 2.4.4 to 2.4.6].
 
@@ -102,7 +102,7 @@ Source: [@en-1997-1_ec7-general-rules_2004, 2.4.1].
 
 The pressure under a footing at which the ground fails in shear and the footing punches in. EC7 calls it bearing resistance; textbooks call it bearing capacity.
 
-See [Bearing capacity](../fundamentals/bearing-capacity.mdx) for what controls it.
+See [Bearing capacity](../geotechnical-analyses/bearing-capacity.mdx) for what controls it.
 
 Source: [@en-1997-1_ec7-general-rules_2004, 1.5.2.7 and 6.5.2].
 
@@ -154,7 +154,7 @@ Source: [@en-1997-1_ec7-general-rules_2004, Section 6].
 
 A text in which you change the inputs and see the consequences at once, a term from Bret Victor (2011). On this site they are marimo cells that run in your browser.
 
-See [Bearing capacity](../fundamentals/bearing-capacity.mdx) for one.
+See [Bearing capacity](../geotechnical-analyses/bearing-capacity.mdx) for one.
 
 ### Pyodide
 
@@ -174,25 +174,29 @@ The words these docs use for their own parts.
 
 The home page: one picture of how geotechnical work fits together, as a cycle of planning back from the project and doing forward from the ground investigation, with a way into every section.
 
-### Case study
-
-A page about a real job or project: what was done, what was learned, and its notebooks where they can be shared. Diátaxis would call it a worked example.
-
 ### Fundamental
 
-A page that explains one idea, such as bearing capacity, so you understand why a check works and when it doesn't. Diátaxis calls this explanation.
+A page that explains one concept that recurs across structures, analyses and data, such as effective stress or a coordinate reference system. Diátaxis calls this explanation. Until the geomechanics and geospatial pages are written, these concepts live in this glossary.
+
+### Geotechnical structure page (structure page)
+
+A page that gathers everything about one geotechnical structure: what to check on the structure and around it, which analysis types and software answer each check, and the method pages that go deeper. Checks on the surroundings, such as settlement of nearby buildings, belong here too.
 
 ### How-to
 
 A page that gets one task done, such as downloading the CPTs around a site, for a reader who already knows what they want.
 
-### Hub
-
-A page that gathers everything about one structure or one ground stage: what to check, how, with which software, and the pages that go deeper.
-
 ### Learn more fold
 
 A closed box under a paragraph that holds the next level of detail, for the readers who want it. Pages write it as an Obsidian callout: `> [!note]- Learn more: <title>`.
+
+### Method page
+
+A page that explains one analysis method, such as bearing capacity: the idea, the formulas, and where it holds, often with an explorable explanation. It sits under Geotechnical analyses and links back to the checks it answers.
+
+### Overview page
+
+The first page of a section: what the section covers, where it sits in the cycle on the Docs Atlas, and what is in it so far.
 
 ### Page mode
 
@@ -208,4 +212,8 @@ Files these docs copy from another repository, pinned to a tag or commit, as lis
 
 ### Tutorial
 
-An ordered set of parts that teaches by doing, such as Learn marimo. Each part says "Part n of N" and has its place in the sidebar.
+An ordered set of parts that teaches one tool by doing, such as Learn marimo. Each part says "Part n of N" and has its place in the sidebar. Tutorials live in their tool's folder.
+
+### Worked example
+
+A problem worked through end to end, often from a real job or project: what was done, what was learned, and its notebooks where they can be shared.

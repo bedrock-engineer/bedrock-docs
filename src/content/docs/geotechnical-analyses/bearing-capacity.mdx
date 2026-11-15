@@ -1,7 +1,7 @@
 ---
 title: Bearing capacity
 description: How much pressure the ground under a footing can take before it fails, and why the friction angle matters most.
-type: fundamental
+type: method
 uses: [effective-stress, friction-angle]
 ---
 
@@ -10,7 +10,7 @@ requires-python = ">=3.11"
 dependencies = ["numpy"]
 ```
 
-**Where this fits:** [Docs Atlas](../index.md) › Design per structure › [Spread foundations](../structures/spread-foundations.md) › Bearing resistance
+**Where this fits:** [Docs Atlas](../index.md) › [Geotechnical analyses](index.md) › Stability › Bearing capacity, for the bearing resistance check of [spread foundations](../geotechnical-structures/spread-foundations.md)
 
 [Bearing capacity](../reference/glossary.md#bearing-resistance) is the pressure under a footing at which the ground fails in shear and the footing punches in. It grows fast with the soil's [friction angle](../reference/glossary.md#friction-angle), and more slowly with the footing's width and depth.
 
@@ -65,7 +65,7 @@ mo.md(
 
 ## In design
 
-Eurocode 7 doesn't use q_ult directly. It divides the soil's strength or the resistance by partial factors, and adds factors for the footing's shape, the load's inclination and the base's depth. The [spread foundations](../structures/spread-foundations.md) page lists the other checks a footing needs. To write these steps up in a [calculation report](../reference/glossary.md#calculation-report), [SymEval](../tools/symeval/index.md) prints each formula with the values and units that went in.
+Eurocode 7 doesn't use q_ult directly. It divides the soil's strength or the resistance by partial factors, and adds factors for the footing's shape, the load's inclination and the base's depth. The [spread foundations](../geotechnical-structures/spread-foundations.md) page lists the other checks a footing needs. To write these steps up in a [calculation report](../reference/glossary.md#calculation-report), [SymEval](../tools/symeval/index.md) prints each formula with the values and units that went in.
 
 ---
 

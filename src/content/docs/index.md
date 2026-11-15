@@ -7,7 +7,7 @@ type: atlas
 Geotechnical work runs in a cycle: you plan it backward from the project, do it forward from the ground investigation, and go round again when something changes.
 
 <figure class="my-6">
-<svg class="h-auto w-full" viewBox="0 0 800 360" role="img" aria-label="The geotechnical cycle. Planning runs backward: project, checks, analysis method, geotechnical parameters, ground model, additional ground investigation. Doing runs forward: ground investigation gives GI data, ground modeling gives the engineering geological model, geotechnical design gives the geotechnical design model. The analysis method depends on the project phase and the ground investigation available. The cycle repeats on new GI or monitoring data, design changes or a new project phase.">
+<svg class="h-auto w-full" viewBox="0 0 800 360" role="img" aria-label="The geotechnical cycle. Planning runs backward: project, checks, analysis method, geotechnical parameters, ground model, additional ground investigation. Doing runs forward: ground investigation gives GI data, ground modeling gives the engineering geological model, geotechnical analysis gives the geotechnical design model. The analysis method depends on the project phase and the ground investigation available. The cycle repeats on new GI or monitoring data, design changes or a new project phase.">
   <defs><marker id="atlas-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fill-doc-line"/></marker></defs>
   <text x="24" y="22" class="fill-doc-text" font-size="13" font-weight="600">Planning: reason back from the project to the ground investigation it needs</text>
   <g class="fill-none stroke-doc-line" stroke-width="1.25">
@@ -32,7 +32,7 @@ Geotechnical work runs in a cycle: you plan it backward from the project, do it 
   </g>
   <a class="group no-underline" href="reference/glossary.md#ground-investigation"><g text-anchor="middle"><rect class="fill-doc-surface stroke-doc-line group-hover:stroke-doc-accent group-hover:stroke-2" stroke-width="1.25" x="24" y="240" width="232" height="84" rx="8"/><text x="140" y="266" class="fill-doc-text" font-size="15" font-weight="600">Ground investigation</text><text x="140" y="288" class="fill-doc-text" font-size="13">Output: GI data</text><text x="140" y="306" class="fill-doc-muted" font-size="11.5">boreholes, lab tests, CPTs, geophysics</text></g></a>
   <a class="group no-underline" href="reference/glossary.md#engineering-geological-model"><g text-anchor="middle"><rect class="fill-doc-surface stroke-doc-line group-hover:stroke-doc-accent group-hover:stroke-2" stroke-width="1.25" x="284" y="240" width="232" height="84" rx="8"/><text x="400" y="266" class="fill-doc-text" font-size="15" font-weight="600">Ground modeling</text><text x="400" y="288" class="fill-doc-text" font-size="13">Output: EGM</text><text x="400" y="306" class="fill-doc-muted" font-size="11.5">engineering geological model</text></g></a>
-  <a class="group no-underline" href="reference/glossary.md#geotechnical-design-model"><g text-anchor="middle"><rect class="fill-doc-surface stroke-doc-line group-hover:stroke-doc-accent group-hover:stroke-2" stroke-width="1.25" x="544" y="240" width="232" height="84" rx="8"/><text x="660" y="266" class="fill-doc-text" font-size="15" font-weight="600">Geotechnical design</text><text x="660" y="288" class="fill-doc-text" font-size="13">Output: GDM</text><text x="660" y="306" class="fill-doc-muted" font-size="11.5">geotechnical design model</text></g></a>
+  <a class="group no-underline" href="reference/glossary.md#geotechnical-design-model"><g text-anchor="middle"><rect class="fill-doc-surface stroke-doc-line group-hover:stroke-doc-accent group-hover:stroke-2" stroke-width="1.25" x="544" y="240" width="232" height="84" rx="8"/><text x="660" y="266" class="fill-doc-text" font-size="15" font-weight="600">Geotechnical analysis</text><text x="660" y="288" class="fill-doc-text" font-size="13">Output: GDM</text><text x="660" y="306" class="fill-doc-muted" font-size="11.5">geotechnical design model</text></g></a>
   <text x="24" y="348" class="fill-doc-text" font-size="13" font-weight="600">Doing: work forward from the ground investigation to the design</text>
 </svg>
 </figure>
@@ -50,7 +50,7 @@ Geotechnical work runs in a cycle: you plan it backward from the project, do it 
 
 1. **Ground investigation** gives the GI data.
 2. **Ground modeling** turns the GI data into an [engineering geological model](reference/glossary.md#engineering-geological-model) (EGM).
-3. **Geotechnical design** turns the EGM into a [geotechnical design model](reference/glossary.md#geotechnical-design-model) (GDM), with design values per layer, and uses it to verify each check.
+3. **Geotechnical analysis** turns the EGM into a [geotechnical design model](reference/glossary.md#geotechnical-design-model) (GDM) for each structure and check, adding the structure, the actions and the design values per layer, and uses it to verify the check. The EGM describes the ground only; the GDM includes the structure.
 
 The cycle runs again whenever one of three things happens: new ground investigation or monitoring data comes in, such as settlements measured during construction; the design of the superstructure changes; or a new project phase starts.
 
@@ -65,50 +65,17 @@ The cycle runs again whenever one of three things happens: new ground investigat
 > - *Ground model.* The layers under every footing, down to about twice the footing width.
 > - *Additional ground investigation.* The BRO CPTs are hundreds of meters away and can't show whether there is clay under the site. So: a CPT at every few footings.
 >
-> **Doing.** The new CPTs show sand everywhere, except for a soft clay layer a few meters down under one corner of the site. Ground modeling gives the EGM: sand, with a clay lens under that corner. Geotechnical design turns it into the GDM, with characteristic values for the sand and the clay, and sizes the footings: wider over the clay lens.
+> **Doing.** The new CPTs show sand everywhere, except for a soft clay layer a few meters down under one corner of the site. Ground modeling gives the EGM: sand, with a clay lens under that corner. Geotechnical analysis turns it into a GDM per check, with characteristic values for the sand and the clay, and sizes the footings: wider over the clay lens.
 >
 > **Round two.** The client switches to heavier racking, a design change. The column loads go up, and the footings over the clay lens no longer pass the settlement check. That starts planning again, with two ways forward. Piles in that corner avoid the clay altogether. Or a borehole with samples for oedometer tests gives better compressibility values than the CPT correlations did, which may be enough to keep the footings.
 
-## Structures
+## Where to read on
 
-The structures follow the clauses of EN 1997-3:2025, plus four that other codes cover. The numbers count the checks each structure page lists per analysis type; on the finished site each number would open those checks.
-
-| Structure | Stability | Deformation | Groundwater flow | Dynamics |
-| --- | --- | --- | --- | --- |
-| Slopes, cuttings and embankments | 3 | 2 | 2 | 2 |
-| [Spread foundations](structures/spread-foundations.md) | 4 | 2 | 1 | 1 |
-| Piled foundations | 3 | 4 |  | 2 |
-| Retaining structures | 4 | 2 | 2 |  |
-| Anchors | 3 | 1 |  |  |
-| Reinforced fill structures | 3 | 2 |  |  |
-| Soil nailed structures | 2 | 1 | 1 |  |
-| Rock bolts and rock surface support | 2 | 1 |  | 1 |
-| Ground improvement | 1 | 3 |  | 1 |
-| Groundwater control |  | 1 | 5 |  |
-| Underground structures | 2 | 3 | 1 | 1 |
-| Dams | 2 | 1 | 2 | 1 |
-| Pavements and subgrades | 1 | 3 | 1 | 1 |
-| Pipelines and buried structures | 4 | 2 | 1 | 1 |
-
-## Case studies
-
-- [Probabilistic soft-soil ground model (IAEG 2026)](case-studies/iaeg-2026/index.md): GeoTOP and CPTs to a probabilistic soil model under a building
-
-## Fundamentals
-
-- [Bearing capacity](fundamentals/bearing-capacity.mdx), with an explorable
-
-## Tutorials
-
-- [Learn marimo](tools/marimo/getting-started/index.md): ten parts, from your first cell to SQL and layouts, running in your browser
-- [Getting started with SymEval](tools/symeval/getting-started.py): calculations with units, shown step by step
-
-## Tools
-
-- [marimo](tools/marimo/index.md): the notebooks behind every explorable
-- [SymEval](tools/symeval/index.md): calculations with units for a [calculation report](reference/glossary.md#calculation-report)
-- [cpt-anywidget](tools/cpt-anywidget/index.md): notebook viewers for CPTs and borehole logs
-
-## Reference
-
-- [Glossary](reference/glossary.md): every term these docs use, with one meaning each
+- **[Geotechnical structures](geotechnical-structures/index.md):** one page per structure, with what to check on the structure and around it. So far: [Spread foundations](geotechnical-structures/spread-foundations.md).
+- **[Geotechnical analyses](geotechnical-analyses/index.md):** the analysis methods that turn the EGM into a GDM and verify each check. So far: [Bearing capacity](geotechnical-analyses/bearing-capacity.mdx), with an explorable.
+- **[Ground modeling](ground-modeling/index.md):** from ground investigation data to the engineering geological model.
+- **[Ground investigation](ground-investigation/index.md):** existing data first, then fieldwork and lab tests.
+- **[Fundamentals](fundamentals/index.md):** concepts that recur across the docs, in geomechanics and geospatial data.
+- **[Worked examples](worked-examples/index.md):** problems worked through end to end. So far: [Probabilistic soft-soil ground model (IAEG 2026)](worked-examples/iaeg-2026/index.md).
+- **[Tools](tools/index.md):** marimo, SymEval and cpt-anywidget, each with its own tutorials, guides and reference.
+- **[Reference](reference/index.md):** the [Glossary](reference/glossary.md) and the [Bibliography](reference/bibliography.md).

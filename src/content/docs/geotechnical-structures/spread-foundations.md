@@ -6,17 +6,17 @@ eurocode: EN 1997-3:2025 Clause 5
 analysis_types: [stability, deformation, groundwater-flow, dynamics]
 ---
 
-**Where this fits:** [Docs Atlas](../index.md) › Design per structure › Spread foundations (EN 1997-3 Clause 5)
+**Where this fits:** [Docs Atlas](../index.md) › [Geotechnical structures](index.md) › Spread foundations (EN 1997-3 Clause 5)
 
 A [spread foundation](../reference/glossary.md#spread-foundation) carries a building's load onto the ground close to the surface, through a pad, a strip or a raft. Design checks that the ground can carry that load without failing, the ultimate [limit states](../reference/glossary.md#limit-state), and without the building [settling](../reference/glossary.md#settlement) too much, the serviceability limit states.
 
-**You'll use:** [effective stress](../reference/glossary.md#effective-stress), [friction angle](../reference/glossary.md#friction-angle), [undrained shear strength](../reference/glossary.md#undrained-shear-strength) and [bearing capacity](../fundamentals/bearing-capacity.mdx). Hover a term for its gist; follow a link only if you need more.
+**You'll use:** [effective stress](../reference/glossary.md#effective-stress), [friction angle](../reference/glossary.md#friction-angle), [undrained shear strength](../reference/glossary.md#undrained-shear-strength) and [bearing capacity](../geotechnical-analyses/bearing-capacity.mdx). Hover a term for its gist; follow a link only if you need more.
 
 ## What to verify
 
 | Check | Limit state | Analysis type | Usual methods |
 | --- | --- | --- | --- |
-| [Bearing resistance](../fundamentals/bearing-capacity.mdx) | ULS (GEO) | Stability | formulas, limit analysis, FEM |
+| [Bearing resistance](../geotechnical-analyses/bearing-capacity.mdx) | ULS (GEO) | Stability | formulas, limit analysis, FEM |
 | Sliding | ULS (GEO) | Stability | formulas |
 | Load eccentricity and overturning | ULS (EQU, GEO) | Stability | formulas |
 | Overall stability of a footing near a slope | ULS (GEO) | Stability | limit equilibrium, FEM |
@@ -43,7 +43,7 @@ Gravity-based foundations, mudmats and suction buckets follow ISO 19901-4 and DN
 
 ## Where we did this before
 
-No case study yet. When a job designs a spread foundation, its case study is listed here.
+No [worked example](../worked-examples/index.md) yet. When a job designs a spread foundation, its worked example is listed here.
 
 ---
 

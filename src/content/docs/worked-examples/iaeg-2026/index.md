@@ -1,17 +1,16 @@
 ---
 title: Probabilistic soft-soil ground model (IAEG 2026)
 description: GeoTOP voxels and BRO CPTs turned into a probabilistic soil model under a building, next to its BIM model. Open source, made for the IAEG 2026 conference.
-type: case-study
+type: worked-example
 stage: [ground-investigation, engineering-geological-model]
 methods: [geostatistics]
 date: 2026-10-30
 tutorial: IAEG 2026 notebooks
 sidebar:
-  label: About the case study
   order: 0
 ---
 
-**Where this fits:** [Docs Atlas](../../index.md) › Engineering geological model
+**Where this fits:** [Docs Atlas](../../index.md) › [Worked examples](../index.md) › IAEG 2026, an example of [ground modeling](../../ground-modeling/index.md)
 
 For the IAEG 2026 conference we built an open-source workflow that turns [GeoTOP](../../reference/glossary.md#geotop) voxels and BRO [CPTs](../../reference/glossary.md#cpt) into a probabilistic soil model under a building in soft Dutch ground, and shows it next to the building's BIM model.
 
@@ -43,5 +42,5 @@ The notebooks need the project's data and packages that don't run in a browser, 
 ## Pages this fed
 
 - Glossary: [GeoTOP](../../reference/glossary.md#geotop), [CPT](../../reference/glossary.md#cpt), [variogram](../../reference/glossary.md#variogram), [conditional simulation](../../reference/glossary.md#conditional-simulation), [soil behavior type](../../reference/glossary.md#soil-behavior-type)
-- Planned fundamentals: the variogram, kriging versus conditional simulation, CPT soil behavior type
-- Planned how-to: get BRO CPTs and GeoTOP voxels around a site
+- Planned in [Ground modeling](../../ground-modeling/index.md): the variogram, kriging versus conditional simulation, CPT soil behavior type
+- Planned in [Ground investigation](../../ground-investigation/index.md): get BRO CPTs and GeoTOP voxels around a site

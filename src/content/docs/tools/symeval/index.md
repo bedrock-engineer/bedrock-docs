@@ -3,7 +3,6 @@ title: SymEval
 description: Our open-source package that shows a calculation the way a checker wants to see it, from formula to values with units to result.
 type: tool
 sidebar:
-  label: About SymEval
   order: 0
 ---
 
@@ -36,8 +35,8 @@ The API reference is still in the [SymEval documentation](https://bedrock-engine
 
 ## Where it fits on these pages
 
-- [Bearing capacity](../../fundamentals/bearing-capacity.mdx): writing up N_q and the bearing resistance for a footing.
-- [Spread foundations](../../structures/spread-foundations.md): the bearing and sliding checks in a calculation report.
+- [Bearing capacity](../../geotechnical-analyses/bearing-capacity.mdx): writing up N_q and the bearing resistance for a footing.
+- [Spread foundations](../../geotechnical-structures/spread-foundations.md): the bearing and sliding checks in a calculation report.
 
 ---
 

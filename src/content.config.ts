@@ -6,7 +6,7 @@ import { docsSchema } from "@astrojs/starlight/schema";
 // See CONTRIBUTING.md.
 const facets = z.object({
   type: z
-    .enum(["atlas", "hub", "structure", "ground", "fundamental", "how-to", "case-study", "tutorial", "tool", "reference"])
+    .enum(["atlas", "overview", "structure", "method", "fundamental", "how-to", "worked-example", "tutorial", "tool", "reference"])
     .optional(),
   // A tutorial page lists its parts, in order, under a `## <tutorial>` heading.
   tutorial: z.string().optional(),

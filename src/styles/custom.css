@@ -67,6 +67,19 @@
 
   /* Theme toggle indicator: overshoots a little before it settles. */
   --ease-overshoot: cubic-bezier(0.175, 0.885, 0.32, 1.1);
+
+  /* Starlight's md breakpoint, where the sidebar leaves the mobile menu. */
+  --breakpoint-sidebar: 50rem;
+}
+
+/* The caret in an open sidebar group's heading: summary-open:rotate-90. */
+@custom-variant summary-open (details[open] > summary > &);
+
+/* Safari draws the disclosure triangle even on a flex summary. */
+@utility details-marker-hidden {
+  &::-webkit-details-marker {
+    display: none;
+  }
 }
 
 /* Expose the green/gray scales to Tailwind utilities (bg-gray-3, text-green-11, …).
@@ -111,6 +124,8 @@
   --color-doc-accent: var(--sl-color-accent);
   --color-doc-accent-text: var(--sl-color-text-accent);
   --color-doc-accent-tint: color-mix(in srgb, var(--sl-color-accent) 14%, transparent);
+  --color-doc-invert: var(--sl-color-text-invert);
+  --color-doc-hairline: var(--sl-color-hairline-light);
 }
 
 /* CSS Reset Enhancements */

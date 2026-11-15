@@ -6,24 +6,36 @@ The pages are in `src/content/docs/`. Folders below are relative to it.
 
 ## How the docs fit together
 
-The docs are a graph, not a book. The [Docs Atlas](src/content/docs/reference/glossary.md#docs-atlas) shows how geotechnical work fits together and links to the [hubs](src/content/docs/reference/glossary.md#hub), one per structure or ground stage. A hub links to the [fundamentals](src/content/docs/reference/glossary.md#fundamental), [how-tos](src/content/docs/reference/glossary.md#how-to), [case studies](src/content/docs/reference/glossary.md#case-study) and [tools](src/content/docs/tools/index.md) that go deeper. Every page links its terms to the [glossary](src/content/docs/reference/glossary.md).
+The docs are a graph, not a book. The [Docs Atlas](src/content/docs/reference/glossary.md#docs-atlas) shows geotechnical work as a cycle: planning back from the project to the ground investigation it needs, and doing forward from the ground investigation to the design. The sections follow the planning order:
+
+1. **Geotechnical structures:** one [structure page](src/content/docs/reference/glossary.md#structure-page) per structure, with the checks on the structure and around it.
+2. **Geotechnical analyses:** the [method pages](src/content/docs/reference/glossary.md#method-page) that answer the checks and turn the EGM into a GDM.
+3. **Ground modeling:** from ground investigation data to the EGM.
+4. **Ground investigation:** existing data first, then fieldwork and lab tests.
+5. **Fundamentals:** [concepts](src/content/docs/reference/glossary.md#fundamental) that recur across the other sections.
+6. **Worked examples:** [problems worked through end to end](src/content/docs/reference/glossary.md#worked-example).
+7. **Tools** and **Reference**.
+
+Each section starts with an [overview page](src/content/docs/reference/glossary.md#overview-page). Ground investigation and ground models attach to the analysis, not to the structure: the analysis method decides which parameters you need, and those decide the ground model and the investigation. So a structure page links to method pages, and a method page links to the ground modeling and ground investigation it needs. Every page links its terms to the [glossary](src/content/docs/reference/glossary.md).
 
 A reader goes only as deep as they need:
 
 1. hover a glossary link for the term's gist;
 2. open a [Learn more fold](src/content/docs/reference/glossary.md#learn-more-fold) for the next level of detail;
-3. follow a link to the fundamental;
+3. follow a link to the method page or fundamental;
 4. run the notebook.
 
 ## Which kind of page
 
 | You want the reader to | Write a | Folder | `type` |
 | --- | --- | --- | --- |
-| see what to check for a structure, and where to go next | hub | `structures/`, `ground/` | `structure`, `ground` |
-| understand why something works | fundamental | `fundamentals/` | `fundamental` |
-| get one task done | how-to | `how-to/` | `how-to` |
-| learn from a real job | case study | `case-studies/<name>/` | `case-study` |
-| learn by doing, in order | tutorial | the tool's or case study's folder | `tutorial` |
+| see what a section covers | overview page | the section's `index.md` | `overview` |
+| see what to check for a structure, and where to go next | structure page | `geotechnical-structures/` | `structure` |
+| understand an analysis method and when it holds | method page | `geotechnical-analyses/` | `method` |
+| understand a concept that recurs everywhere | fundamental | `fundamentals/` | `fundamental` |
+| get one task done | how-to | the section it belongs to, such as `ground-investigation/` | `how-to` |
+| see a problem worked through end to end | worked example | `worked-examples/<name>/` | `worked-example` |
+| learn a tool by doing, in order | tutorial | the tool's folder | `tutorial` |
 | look something up | reference page | `reference/` | `reference` |
 | know what a tool is for | tool page | `tools/<tool>/index.md` | `tool` |
 
@@ -36,9 +48,9 @@ Every tool folder has the same shape: `index.md` (the tool page, written here), 
 title: Spread foundations             # required
 description: Pad and strip footings…  # one sentence, shown in search and link previews
 type: structure                       # the kind of page, from the table above
-eurocode: EN 1997-3:2025 Clause 5     # hubs: the clause
+eurocode: EN 1997-3:2025 Clause 5     # structure pages: the clause
 analysis_types: [stability, deformation]
-stage: [ground-investigation]         # case studies: the ground stages they cover
+stage: [ground-investigation]         # worked examples: the doing steps they cover
 tutorial: Learn marimo                # a tutorial page: the name of its ## parts list
 ---
 ```
@@ -47,7 +59,7 @@ tutorial: Learn marimo                # a tutorial page: the name of its ## part
 
 ## Conventions
 
-- **Links are relative links to files**, such as `[Bearing capacity](../fundamentals/bearing-capacity.mdx)` or `[Dataflow](getting-started/dataflow.py)` for a notebook. The build turns them into page links. They also work on GitHub and in Obsidian, and they survive moving the docs to another site.
+- **Links are relative links to files**, such as `[Bearing capacity](../geotechnical-analyses/bearing-capacity.mdx)` or `[Dataflow](getting-started/dataflow.py)` for a notebook. The build turns them into page links. They also work on GitHub and in Obsidian, and they survive moving the docs to another site.
 - **Links to other pages of the site** that aren't files, such as `/tools/`, are written from the site root without its base path (`/bedrock-docs/`); the build adds it.
 - **A glossary link** is a link to `glossary.md#<term>`. It gets a dotted underline, a hover card with the term's first paragraph, and a line under "Key terms" at the end of the page.
 - **A glossary term** is a `###` heading under one of the glossary's `##` groups. Its first paragraph is the hover text, so make it stand on its own. A term keeps one meaning everywhere. Name the term in full and put its abbreviations in parentheses at the end of the heading, as in `### Cone penetration test (CPT)`: a link may then use any of them, `glossary.md#cpt` or `glossary.md#cone-penetration-test`. Separate several with commas. These short links work on the site, not on GitHub or in Obsidian.

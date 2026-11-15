@@ -74,8 +74,10 @@ export default defineConfig({
         starlightLlmsTxt({
           projectName: "Bedrock.engineer docs",
           details: [
-            "The docs are a graph: the Docs Atlas links to one hub per structure or ground stage, hubs link to",
-            "fundamentals, how-tos, case studies and tools, and every term links to the one glossary,",
+            "The docs follow the geotechnical cycle. Planning reasons back from a geotechnical structure to its",
+            "checks, the analysis methods, the parameters, the ground model and the ground investigation they need;",
+            "doing works forward from ground investigation to the engineering geological model and, through",
+            "geotechnical analysis, to the geotechnical design model. Every term links to the one glossary,",
             "where each term keeps one meaning. Start from the set that fits your question.",
           ].join(" "),
           customSets: [
@@ -88,6 +90,8 @@ export default defineConfig({
         MarkdownContent: "./src/components/MarkdownContent.astro",
         // bedrock-web's triangle light/auto/dark toggle.
         ThemeSelect: "./src/components/ThemeToggle.astro",
+        // Group headings link to the group's index page, so no "Overview" entries.
+        Sidebar: "./src/components/Sidebar.astro",
       },
       // bedrock-web's look: custom.css, tokens.css, ThemeToggle.astro and the logo are
       // copied unchanged from bedrock-web (784accf); change them there and copy again.
@@ -104,28 +108,28 @@ export default defineConfig({
       social: [{ icon: "github", label: "GitHub", href: "https://github.com/bedrock-engineer/bedrock-docs" }],
       // Internal entries use `slug`, which Starlight resolves with the base path; `link` doesn't.
       sidebar: collapseEveryGroup([
+        // The sections in planning order: from the structure to the ground investigation it needs.
         { label: "Docs Atlas", slug: "index" },
-        { label: "Structures", items: [{ autogenerate: { directory: "structures" } }] },
+        { label: "Geotechnical structures", items: [{ autogenerate: { directory: "geotechnical-structures" } }] },
+        { label: "Geotechnical analyses", items: [{ autogenerate: { directory: "geotechnical-analyses" } }] },
+        { label: "Ground modeling", items: [{ autogenerate: { directory: "ground-modeling" } }] },
+        { label: "Ground investigation", items: [{ autogenerate: { directory: "ground-investigation" } }] },
         { label: "Fundamentals", items: [{ autogenerate: { directory: "fundamentals" } }] },
         {
-          label: "Case studies",
-          items: [{ label: "IAEG 2026 soft-soil model", items: [{ autogenerate: { directory: "case-studies/iaeg-2026" } }] }],
-        },
-        {
-          label: "Tutorials",
+          label: "Worked examples",
           items: [
-            { label: "Learn marimo", slug: "tools/marimo/getting-started" },
-            { label: "Getting started with SymEval", slug: "tools/symeval/getting-started" },
+            { slug: "worked-examples" },
+            { label: "IAEG 2026 soft-soil model", items: [{ autogenerate: { directory: "worked-examples/iaeg-2026" } }] },
           ],
         },
         {
           label: "Tools",
           items: [
-            { label: "Overview", slug: "tools" },
+            { slug: "tools" },
             {
               label: "marimo",
               items: [
-                { label: "About marimo", slug: "tools/marimo" },
+                { slug: "tools/marimo" },
                 { label: "Learn marimo", items: [{ autogenerate: { directory: "tools/marimo/getting-started" } }] },
               ],
             },
@@ -133,7 +137,7 @@ export default defineConfig({
             {
               label: "cpt-anywidget",
               items: [
-                { label: "About cpt-anywidget", slug: "tools/cpt-anywidget" },
+                { slug: "tools/cpt-anywidget" },
                 { label: "Getting started", slug: "tools/cpt-anywidget/getting-started" },
                 { label: "Edit layers", slug: "tools/cpt-anywidget/edit-layers" },
                 { label: "Examples", items: [{ autogenerate: { directory: "tools/cpt-anywidget/examples" } }] },

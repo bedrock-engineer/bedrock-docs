@@ -47,7 +47,7 @@
 
 # The notebooks need the project's data/ folder (GeoTOP, CPTs, simulation runs) and
 # packages Pyodide lacks, so they can't run at build time or in a browser.
-- to: case-studies/iaeg-2026
+- to: worked-examples/iaeg-2026
   repo: bedrock-engineer/iaeg2026-soft-soil-egm
   rev: 966ef9d03589870da209e3c05a7bec7e3ee1be62 # main, 2026-11-12
   from: notebooks
