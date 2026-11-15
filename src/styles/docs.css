@@ -10,6 +10,12 @@
   --doc-tint: var(--sl-color-gray-6);
 }
 
+/* custom.css makes body a grid for bedrock-web's sticky footer, and its
+   `body:has(.page)` also matches Starlight's .page. A grid item won't shrink
+   below its content, so one wide table stretched every page past a phone's
+   width. Letting .page shrink keeps the overflow inside the table. */
+.page { min-width: 0; }
+
 /* Glossary links look different from other links: dotted underline, help cursor. */
 .glossary-term > a {
   text-decoration-line: underline;
