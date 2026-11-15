@@ -3,6 +3,7 @@
 //   carrying the term's first paragraph, which src/scripts/glossary.js shows on hover.
 //   The span's classes give the link inside a dotted underline and a help cursor.
 //   A term is a ### heading in the glossary; its first paragraph is the hover text.
+//   Aliases in parentheses at the end of the heading are link targets too.
 // - Any relative .md or .mdx link, or .py link to a marimo notebook, is rewritten to
 //   its Starlight route, so the source stays a plain link that works on GitHub and in
 //   Obsidian, and that survives moving the whole folder to another site.
@@ -16,7 +17,8 @@ import remarkParse from "remark-parse";
 import { unified } from "unified";
 import { visit } from "unist-util-visit";
 
-const classNames = [
+// Also used by rehype-citation-cards.mjs, so citations look like glossary links.
+export const classNames = [
   "*:underline",
   "*:decoration-dotted",
   "*:decoration-2",
@@ -29,6 +31,18 @@ const glossaryTerm = ({ title, definition }) => ({
   hProperties: { className: [...classNames], dataTerm: title, dataDefinition: definition },
 });
 
+// A term heading may end in its aliases: "Cone penetration test (CPT)", or
+// "Serviceability limit state (SLS, serviceability)". The term can then be linked
+// as #cpt or #cone-penetration-test as well as by the heading's own slug.
+function aliasSlugs(heading) {
+  const match = heading.match(/^(.*\S)\s*\(([^)]+)\)$/);
+  if (!match) {
+    return [];
+  }
+  const [, name, aliases] = match;
+  return [name, ...aliases.split(",")].map((alias) => slugify(alias.trim()));
+}
+
 function readGlossary(file) {
   const tree = unified().use(remarkParse).parse(readFileSync(file, "utf8"));
   const slugger = new GithubSlugger();
@@ -37,13 +51,40 @@ function readGlossary(file) {
     if (node.type !== "heading") {
       return;
     }
-    const id = slugger.slug(toString(node));
+    const heading = toString(node);
+    const id = slugger.slug(heading);
     const next = tree.children[index + 1];
-    if (node.depth === 3 && next?.type === "paragraph") {
-      terms[id] = { title: toString(node), definition: toString(next) };
+    if (node.depth !== 3 || next?.type !== "paragraph") {
+      return;
+    }
+    const term = { title: heading, definition: toString(next) };
+    for (const slug of [id, ...aliasSlugs(heading)]) {
+      if (terms[slug] && terms[slug] !== term) {
+        throw new Error(`Glossary: "${slug}" names both "${terms[slug].title}" and "${heading}".`);
+      }
+      terms[slug] = term;
     }
   });
   return terms;
+}
+
+// On the glossary page each alias needs an element with its id, so #cpt jumps to
+// "Cone penetration test (CPT)" and the link validator finds the anchor.
+const aliasAnchorClassNames = ["block", "scroll-mt-24"];
+
+function addAliasAnchors(tree) {
+  visit(tree, "heading", (node, index, parent) => {
+    const anchors = aliasSlugs(toString(node)).map((id) => ({
+      type: "glossaryAlias",
+      data: { hName: "span", hProperties: { id, className: aliasAnchorClassNames } },
+      children: [],
+    }));
+    if (node.depth !== 3 || anchors.length === 0) {
+      return;
+    }
+    parent.children.splice(index, 0, ...anchors);
+    return index + anchors.length + 1;
+  });
 }
 
 export function remarkGlossary({ base = "", contentDir, glossaryFile }) {
@@ -94,7 +135,11 @@ export function remarkGlossary({ base = "", contentDir, glossaryFile }) {
         return url ? `href="${url}"` : all;
       });
     });
-    if (isGlossary || used.size === 0) {
+    if (isGlossary) {
+      addAliasAnchors(tree);
+      return;
+    }
+    if (used.size === 0) {
       return;
     }
     tree.children.push(

@@ -7,10 +7,12 @@ import starlight from "@astrojs/starlight";
 import tailwindcss from "@tailwindcss/vite";
 import { remarkMarimo } from "@marimo-team/mdx-marimo/remark";
 import { defineConfig } from "astro/config";
+import rehypeCitation from "rehype-citation";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 import starlightLinksValidator from "starlight-links-validator";
 import starlightLlmsTxt from "starlight-llms-txt";
+import { rehypeCitationCards } from "./src/plugins/rehype-citation-cards.mjs";
 import { remarkGlossary } from "./src/plugins/remark-glossary.mjs";
 import { remarkObsidianCallouts } from "./src/plugins/remark-obsidian-callouts.mjs";
 
@@ -25,7 +27,18 @@ const mdxOnly = (plugin) => (options) => {
   return (tree, file) => (file.path?.endsWith(".mdx") ? transform(tree, file) : undefined);
 };
 const remarkPlugins = [remarkMath, remarkObsidianCallouts, glossary, mdxOnly(remarkMarimo)];
-const rehypePlugins = [rehypeHeadingIds, rehypeKatex];
+// Pandoc citations, [@citekey] or [@citekey, 1.5.2.4], against bibliography.json, the
+// CSL-JSON export of the cited Library items. Before rehypeHeadingIds, so the
+// "References" heading rehypeCitationCards adds gets an id and a place in the TOC.
+const citations = [rehypeCitation, {
+  path: fileURLToPath(new URL("./", import.meta.url)),
+  bibliography: "bibliography.json",
+  csl: "src/plugins/citation-style.csl",
+  linkCitations: true,
+  showTooltips: true,
+  tooltipAttribute: "data-citation",
+}];
+const rehypePlugins = [citations, rehypeCitationCards, rehypeHeadingIds, rehypeKatex];
 const glossaryScript = readFileSync(new URL("./src/scripts/glossary.js", import.meta.url), "utf8");
 
 // mdx-marimo runs uv to compile the marimo cells. Without this it picks the uv of the

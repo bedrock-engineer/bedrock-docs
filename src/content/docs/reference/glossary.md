@@ -18,7 +18,7 @@ The part of the total stress that the soil grains carry: total stress minus pore
 
 The angle φ′ that describes how a soil's shear strength grows with effective stress, like friction on a slope. Sands typically have 28° to 40°.
 
-### Soil behavior type
+### Soil behavior type (SBT)
 
 A soil class read from CPT measurements instead of from samples, such as Robertson's SBTn zones. It says how the soil behaves under the cone, which mostly, but not always, matches its grain size.
 
@@ -28,29 +28,47 @@ The shear strength cu of a saturated clay loaded faster than its pore water can 
 
 ## Investigation and models
 
-### CPT
+### Cone penetration test (CPT)
 
-A cone penetration test: a cone pushed into the ground at a constant rate while it measures cone resistance (qc), sleeve friction (fs) and often pore pressure. It gives a near-continuous profile in minutes.
+A test in which a cone is pushed into the ground at a constant rate while it measures cone resistance (qc), sleeve friction (fs) and often pore pressure. It gives a near-continuous profile in minutes.
 
-### Engineering geological model
+Source: [@en-1997-2_ec7-gi-testing_2007, 4.3].
 
-A model of the ground's geology: which units are where, how they formed, and how they behave. It is built from ground investigation data, before any design values are chosen.
+### Engineering geological model (EGM)
+
+The understanding of what the ground is like under and around a site: which soil and rock units are where, how they formed, how they behave, and where the groundwater is. It is built from ground investigation data, before any design values are chosen.
+
+BS 5930 calls this the ground model.
+
+Source: [@bs-5930_ground-investigations_2015, 3.7].
 
 ### GeoTOP
 
 TNO's 3D voxel model of the shallow subsurface of the Netherlands. Each 100 m by 100 m by 0.5 m cell holds the most likely stratigraphic unit and lithology class.
 
-### Geotechnical design model
+### Geotechnical design model (GDM)
 
 The engineering geological model turned into design values for one structure: units with parameters, groundwater levels and loads, set up for the checks that structure needs.
 
+EN 1997-1:2004 has no name for the model as a whole, but defines what goes into it: characteristic and design values of the geotechnical parameters, and the geometrical data.
+
+Source: [@en-1997-1_ec7-general-rules_2004, 2.4.4 to 2.4.6].
+
 ### Geotechnical parameter
 
-A number that describes how a ground unit behaves, such as unit weight, friction angle, undrained shear strength or stiffness. Each analysis method needs its own set, and the ground investigation has to deliver it.
+A number that quantifies a property of soil or rock for a design calculation, such as unit weight, friction angle, undrained shear strength or stiffness. Each analysis method needs its own set.
 
-### Ground investigation
+A parameter comes from test results, directly or through correlation, theory or experience; EN 1997 calls a value obtained that way a derived value. From the derived values, the designer selects a characteristic value for each parameter.
 
-The fieldwork and lab testing that tell you what the ground is: boreholes, samples and lab tests, CPTs and geophysics. It is the first step of every geotechnical job.
+Sources: [@en-1997-1_ec7-general-rules_2004, 1.5.2.5, 2.4.3 and 2.4.5.2] and [@en-1997-2_ec7-gi-testing_2007, 1.5.3.1 and 1.6].
+
+### Ground investigation (GI)
+
+Everything done to find out what the ground and groundwater are like at and around a site: a desk study of existing data, a site walkover, fieldwork such as boreholes, CPTs and geophysics, and lab tests on samples. It is the first step of every geotechnical job.
+
+The UK used to call it site investigation.
+
+Sources: [@bs-5930_ground-investigations_2015, 3.6] and [@en-1997-2_ec7-gi-testing_2007].
 
 ## Geostatistics
 
@@ -68,17 +86,25 @@ A function that says how different two measurements are, on average, as the dist
 
 The Eurocode word for anything that loads or deforms a structure. Direct actions are forces, such as self-weight, traffic and water pressure; indirect actions are imposed deformations or accelerations, such as settlement, temperature and an earthquake.
 
-EN 1990 sorts actions by how long they last: permanent, variable, accidental and seismic. Actions that the ground, fill or groundwater exert, such as earth pressure and water pressure, are geotechnical actions in EN 1997. NEN-EN 1990 translates action as *belasting*.
+EN 1990 sorts actions by how long they last: permanent, variable, accidental and seismic. Actions that the ground, fill, standing water or groundwater transmit to a structure, such as earth pressure and water pressure, are geotechnical actions in EN 1997. NEN-EN 1990 translates action as *belasting*.
+
+Source: [@en-1997-1_ec7-general-rules_2004, 1.5.2.1, 2.4.1 and 2.4.2]. EN 1997-1 takes the general definition from EN 1990:2002, 1.5.
 
 ### Analysis method
 
-The calculation that answers a check, from a design chart or a hand calculation to a finite element model. The project phase and the ground investigation available decide which method fits, and the method decides which parameters you need.
+The calculation model that answers a check: analytical, such as a bearing capacity formula; semi-empirical, such as a CPT-based pile method; or numerical, such as a finite element model. The project phase and the ground investigation available decide which method fits, and the method decides which parameters you need.
+
+EN 1997-1 calls it a calculation model. It has to describe how the ground behaves for the limit state being checked, and be accurate or err on the safe side.
+
+Source: [@en-1997-1_ec7-general-rules_2004, 2.4.1].
 
 ### Bearing resistance
 
 The pressure under a footing at which the ground fails in shear and the footing punches in. EC7 calls it bearing resistance; textbooks call it bearing capacity.
 
 See [Bearing capacity](../fundamentals/bearing-capacity.mdx) for what controls it.
+
+Source: [@en-1997-1_ec7-general-rules_2004, 1.5.2.7 and 6.5.2].
 
 ### Calculation report
 
@@ -90,13 +116,21 @@ See [SymEval](../tools/symeval/index.md) for writing one in Python.
 
 A verification that the structure, or something around it, stays within one limit state for one way it can fail. The project gives the candidate checks; the ground conditions, actions and project requirements decide which ones apply.
 
+EN 1997-1 calls this verifying a limit state.
+
+Source: [@en-1997-1_ec7-general-rules_2004, 2.4.7 and 2.4.8].
+
 ### Geotechnical structure
 
-A structure whose design depends on the ground it is built in or on, such as a foundation, a slope, a retaining wall, a dike or a tunnel. EN 1997-3 has a clause for most kinds.
+A structure whose design depends on the ground it is built in or on, such as a foundation, a slope, a retaining wall, a dike or a tunnel. Fill placed while it is built counts as part of the structure, not of the ground. EN 1997-3 has a clause for most kinds.
+
+Source: [@en-1997-1_ec7-general-rules_2004, 1.5.2.3 and 1.5.2.4].
 
 ### Limit state
 
 A condition beyond which a structure no longer meets its requirements. Ultimate limit states (ULS) are about failure and safety; serviceability limit states (SLS) are about use, such as settlement.
+
+Source: [@en-1997-1_ec7-general-rules_2004, 2.4.7 and 2.4.8]. EN 1997-1 takes the definition from EN 1990:2002, 1.5.
 
 ### Physical quantity
 
@@ -106,9 +140,13 @@ A number with a unit, such as 18 kN/m³. Unit-aware code, like the Pint package 
 
 The downward movement of a foundation as the ground beneath it compresses, partly at once and partly over months or years as pore water drains away.
 
+Source: [@en-1997-1_ec7-general-rules_2004, 6.6.2].
+
 ### Spread foundation
 
 A foundation that spreads a load onto the ground close to the surface through a pad, strip or raft, without piles.
+
+Source: [@en-1997-1_ec7-general-rules_2004, Section 6].
 
 ## Notebooks and software
 

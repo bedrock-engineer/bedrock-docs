@@ -16,6 +16,9 @@ const facets = z.object({
   methods: z.array(z.string()).optional(),
   uses: z.array(z.string()).optional(),
   date: z.coerce.date().optional(),
+  // Citekeys rehype-citation lists in the page's references without a citation;
+  // ["@*"] lists all of bibliography.json, as reference/bibliography.md does.
+  noCite: z.array(z.string()).optional(),
 });
 
 export const collections = {
