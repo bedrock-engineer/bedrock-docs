@@ -1,0 +1,70 @@
+# Files the docs take from other repositories, each pinned to a revision, and the
+# page mode of every notebook. `just sources` copies the files in; `just pages`
+# turns the notebooks into pages. Both are committed, so a build needs neither.
+# Fix a copied file upstream and bump `rev`: `just sources` overwrites local edits.
+#
+# Each entry:
+#   to:     folder under src/content/docs/ that the files land in
+#   repo:   GitHub repository (owner/name); leave out for notebooks that live here
+#   rev:    tag or commit to copy from
+#   from:   folder in that repository
+#   files:  files from `from` to copy, each a name or `upstream name: name here`;
+#           leave out to copy the whole folder, which the source then owns
+#           (files that disappear upstream are deleted here)
+#   keep:   with a whole folder: files in `to` written here, which stay
+#   links:  root-relative link prefixes of the site the pages were written for,
+#           and this site's prefix for each
+#   branch: branch for "Edit page" links (default: main)
+#   mode:   islands (cells run in the reader's browser) or static (code only,
+#           nothing runs); notebooks in no entry are islands
+#
+# See src/content/docs/contributing/sources.md.
+
+- to: tools/marimo/getting-started
+  repo: marimo-team/marimo
+  rev: 0.25.2
+  from: marimo/_tutorials
+  files:
+    - intro.py
+    - dataflow.py
+    - ui.py
+    - markdown.py
+    - plots.py
+    - sql.py
+    - layout.py
+    - fileformat.py
+    - external_dependencies.py
+    - for_jupyter_users.py
+  mode: islands
+
+- to: tools/symeval
+  repo: bedrock-engineer/symeval
+  rev: 0.5.3
+  from: examples
+  files:
+    - getting_started.py: getting-started.py
+  mode: islands
+
+# The notebooks need the project's data/ folder (GeoTOP, CPTs, simulation runs) and
+# packages Pyodide lacks, so they can't run at build time or in a browser.
+- to: case-studies/iaeg-2026
+  repo: bedrock-engineer/iaeg2026-soft-soil-egm
+  rev: 966ef9d03589870da209e3c05a7bec7e3ee1be62 # main, 2026-11-12
+  from: notebooks
+  files:
+    - 01_get_data.py
+    - 02_simulation_domains.py
+    - 03_variograms.py
+    - 04_simulation.py
+    - 05_cpt_classification.py
+    - 06_bimdataframes.py
+  mode: static
+
+# The package's Starlight pages, written for bedrock-web's /docs/cpt-anywidget/.
+- to: tools/cpt-anywidget
+  repo: bedrock-engineer/cpt-anywidget
+  rev: v0.3.0
+  from: docs/site
+  keep: [index.md]
+  links:
+    /docs/cpt-anywidget/: /tools/cpt-anywidget/

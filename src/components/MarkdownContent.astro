@@ -1,0 +1,15 @@
+---
+// Starlight's MarkdownContent, plus the marimo browser runtime on .mdx pages with
+// marimo cells. MDX imports run only at build time in Astro, so the runtime has to
+// come from a component; adding it here keeps the pages free of imports, so a page
+// works wherever it is copied (see contributing/sources.md).
+import Default from "@astrojs/starlight/components/MarkdownContent.astro";
+import MarimoRuntime from "./MarimoRuntime.astro";
+
+const { entry } = Astro.locals.starlightRoute;
+const hasMarimo =
+  entry.filePath?.endsWith(".mdx") && /^```(python|sql|markdown) marimo\b/m.test(entry.body ?? "");
+---
+
+{hasMarimo && <MarimoRuntime />}
+<Default><slot /></Default>
