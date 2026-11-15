@@ -37,9 +37,37 @@ Geotechnical work runs in a cycle: you plan it backward from the project, do it 
 </svg>
 </figure>
 
-**Planning.** The project gives the candidate checks: the structure's own [limit states](reference/glossary.md#limit-state), plus its effects on its surroundings, during construction and in service. The ground conditions, [actions](reference/glossary.md#action) and project requirements filter them, including the requirements of the owners of nearby assets. The project phase and the ground investigation already available then decide the analysis method for each check. The method sets the parameters it needs, those set how detailed the ground model must be and how far it must reach, and what that model still lacks is the additional ground investigation. Where that investigation would cost more than it saves, use a simpler method with cautious parameters instead.
+**Planning.** Reason back from the project to the ground investigation it needs. Each step decides the next one.
 
-**Doing.** [Ground investigation](reference/glossary.md#ground-investigation) gives GI data, ground modeling turns it into an [engineering geological model](reference/glossary.md#engineering-geological-model) (EGM), and geotechnical design turns that into a [geotechnical design model](reference/glossary.md#geotechnical-design-model) (GDM). The cycle runs again whenever new ground investigation or monitoring data comes in, such as settlements measured during construction, whenever the design of the superstructure changes, and in each new project phase.
+1. **Project.** The [geotechnical structure](reference/glossary.md#geotechnical-structure) to be built, how it will be built, and what is around it.
+2. **Checks.** The project gives the candidate [checks](reference/glossary.md#check): the structure's own [limit states](reference/glossary.md#limit-state), and its effects on its surroundings, both during construction and in service. The ground conditions, [actions](reference/glossary.md#action) and project requirements decide which of them apply. Those requirements include the ones set by the owners of nearby buildings, tunnels and dikes.
+3. **Analysis method.** The project phase and the ground investigation you already have decide which [analysis method](reference/glossary.md#analysis-method) fits each check.
+4. **Geotechnical parameters.** The method decides which [geotechnical parameters](reference/glossary.md#geotechnical-parameter) you need.
+5. **Ground model.** The parameters decide how detailed the ground model must be and how far it must reach.
+6. **Additional ground investigation.** Whatever the ground model still lacks. If that investigation would cost more than it saves, use a simpler method with cautious parameters instead.
+
+**Doing.** Work forward from the ground investigation to the design.
+
+1. **Ground investigation** gives the GI data.
+2. **Ground modeling** turns the GI data into an [engineering geological model](reference/glossary.md#engineering-geological-model) (EGM).
+3. **Geotechnical design** turns the EGM into a [geotechnical design model](reference/glossary.md#geotechnical-design-model) (GDM), with design values per layer, and uses it to verify each check.
+
+The cycle runs again whenever one of three things happens: new ground investigation or monitoring data comes in, such as settlements measured during construction; the design of the superstructure changes; or a new project phase starts.
+
+> [!note]- Learn more: an example, a warehouse on pad footings
+> A distribution warehouse in an empty field, with each steel column on a concrete pad footing. The footings sit less than a meter deep, above the groundwater, and there are no buildings, tunnels or dikes nearby.
+>
+> **Planning, preliminary design.**
+>
+> - *Checks.* Bearing resistance and settlement of each footing. Nothing is nearby and nothing is dewatered, so no checks on the surroundings apply.
+> - *Analysis method.* A hand calculation for bearing resistance and a one-dimensional settlement calculation. That suits a preliminary design, and the only ground investigation so far is a few CPTs from the BRO.
+> - *Geotechnical parameters.* The friction angle and stiffness of each layer, and the groundwater level.
+> - *Ground model.* The layers under every footing, down to about twice the footing width.
+> - *Additional ground investigation.* The BRO CPTs are hundreds of meters away and can't show whether there is clay under the site. So: a CPT at every few footings.
+>
+> **Doing.** The new CPTs show sand everywhere, except for a soft clay layer a few meters down under one corner of the site. Ground modeling gives the EGM: sand, with a clay lens under that corner. Geotechnical design turns it into the GDM, with characteristic values for the sand and the clay, and sizes the footings: wider over the clay lens.
+>
+> **Round two.** The client switches to heavier racking, a design change. The column loads go up, and the footings over the clay lens no longer pass the settlement check. That starts planning again, with two ways forward. Piles in that corner avoid the clay altogether. Or a borehole with samples for oedometer tests gives better compressibility values than the CPT correlations did, which may be enough to keep the footings.
 
 ## Structures
 
