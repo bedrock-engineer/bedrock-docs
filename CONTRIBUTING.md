@@ -128,10 +128,12 @@ just pages
 
 The checkout must be at the entry's `rev`. For each notebook, marimo Studio prepares a view with its Prepared (zero-python) runtime: the outputs, rendered later by marimo's own frontend in the reader's browser, with no Python. Two files come out of it:
 
-- `public/notebook-outputs/`: Studio's runtime and one view per notebook. Not committed yet: about 20 MB of runtime plus each notebook's outputs, rewritten by every run. A build without it shows the static pages without outputs.
+- `public/notebook-outputs/`: Studio's runtime and one view per notebook. Committed, so the deployed site has them: about 19 MB of runtime, which changes only with the Studio version, plus each notebook's view. A view's files are named by their content, so every export adds a full copy to the git history. Export again only when `sources.yaml` pins a new revision of the notebooks.
 - `<folder>/notebook-outputs.json`: per notebook, its view and the host of each cell with an output, by the SHA-256 of the cell's code. Committed; `just pages` puts each host under its cell.
 
 Controls on these pages show their default and do nothing. A cell whose output calls Python, such as an `mo.ui.table`, can't be prepared: the script leaves it out and lists it under `dropped`.
+
+The run uses the exporting machine's accounts, so a cell can show a name, a token or a list of projects, which would then be public. List such cells under the entry's `private` in `sources.yaml`: the script never saves them. The run also stops if an output shows a path under the home folder. Read through a new view before committing it.
 
 ### Tutorials
 

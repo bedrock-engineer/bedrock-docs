@@ -202,10 +202,6 @@
       "speckle_model_choices"
     ],
     "hosts": {
-      "0268c99d91e7352d4d8e61f2cbe2acbd6334b5ca3812f9edde8fe438848f1be9": {
-        "name": "speckle_signed_in_as",
-        "site": "site-f7ed2e1432001fb7e3cd661e5a86fd34b4bc309f7619a633e7727cddef3be829"
-      },
       "20484770314733a88abf4db183f398a552f1c223b6f682293b2a3f32f0792ae9": {
         "name": "cell-1",
         "site": "site-e0f0569bc281ca418755d77d170891188e8933d1ca0333c08d18f48e9ad0beef"
@@ -230,10 +226,6 @@
         "name": "cell-8",
         "site": "site-97f3aa4470764be4bda71f0202ff9dcad8335a0e0976ab5c9566991594de8593"
       },
-      "6c823fa5b8b3473b99ded4decae12da0e2f90aea9851d929bf70afd367517c92": {
-        "name": "speckle_server_input",
-        "site": "site-7bb1f99aee2a14fcda20fd209ace09547531cb7b0c3016063c6811fd6aaac4bc"
-      },
       "7c3ac5c01280d4bcbb4b18203352d1375c407c3110fb794c073f6523acbe1419": {
         "name": "publish_intro",
         "site": "site-ab410e976ef1aa27c75cda5a0d871ddbd6af98b2bf2619d7edf24b8ad63a56ca"
@@ -242,21 +234,19 @@
         "name": "cell-15",
         "site": "site-9c943e18a8ce1820f50d6ed370d24e4b24360edb0c9f705025ea88d67ea08a8c"
       },
-      "9275f9ebb9253c494a20263f94612c4cfa28eb80e72955843ab618b224ed25f5": {
-        "name": "speckle_targets",
-        "site": "site-e4e5cc0aea8153e60cae0c15677bee05cc4ec3ee297129efd1123230809a3f8f"
-      },
       "bf7f7d6a31a3aea31bd066b87ee26562e74ec8117467a00100700ae92f158aef": {
         "name": "viewer_selection",
         "site": "site-f165fe9811149115afb495d5b385180e5c359135e96f0cc35215d5328103d8ee"
-      },
-      "c5452868a523a370c9a3dde898caf6090fabeeb7c0a7a99e627a9892347752be": {
-        "name": "speckle_sign_in",
-        "site": "site-30bcdd922042534c5b790e5852c46893c138abb1d7f3ea86a08e309886a99726"
       }
     },
     "marimo": "0.25.2",
-    "revision": "6be39186b506087244823381a4d72edaecbf9b3f427be75fdfc0c3e9b0ea2d14",
+    "private": [
+      "speckle_server_input",
+      "speckle_sign_in",
+      "speckle_signed_in_as",
+      "speckle_targets"
+    ],
+    "revision": "042a5587baec51b0e3d6feb0c417971c7f3116ae0e86510283de09dece107878",
     "view": "soft-soil-egm-06-bimdataframes"
   }
 }

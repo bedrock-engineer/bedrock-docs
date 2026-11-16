@@ -19,7 +19,8 @@ it is left out and listed under `dropped`.
 Writes:
 
 - public/notebook-outputs/_marimo-studio/: Studio's browser runtime, once, and one
-  view per notebook. Not committed: these are large and change with every run.
+  view per notebook. Committed, so the deployed site has them. Every run adds a
+  full copy of each view to the git history, so run this only for a new `rev`.
 - src/content/docs/<to>/notebook-outputs.json: per notebook its view, the run's
   revision, and the host of each cell with an output, by the SHA-256 of its code.
   Committed: `just pages` reads it to place each host under its cell.
@@ -151,8 +152,12 @@ def drop_host(view_page: Path, name: str) -> None:
     view_page.write_text(text, encoding="utf-8")
 
 
-def prepare(notebook: Path, folder: Path, view: str) -> dict:
-    """Prepare one notebook's view; merge it into OUTPUTS; return its manifest entry."""
+def prepare(notebook: Path, folder: Path, view: str, private: set[str]) -> dict:
+    """Prepare one notebook's view; merge it into OUTPUTS; return its manifest entry.
+
+    Cells named in `private` show the exporting machine's accounts; their hosts go
+    before Studio runs, so nothing of theirs reaches the view.
+    """
     work = folder / f"docs_outputs_{notebook.name}"
     studio_dir = folder / "studio" / work.stem
     if studio_dir.exists():
@@ -171,6 +176,8 @@ def prepare(notebook: Path, folder: Path, view: str) -> dict:
         if created.returncode:
             sys.exit(created.stderr or created.stdout)
         view_page = studio_dir / view / "index.html"
+        for name in private:
+            drop_host(view_page, name)
         dropped: list[str] = []
         with tempfile.TemporaryDirectory() as temp:
             out = Path(temp) / view
@@ -214,6 +221,7 @@ def prepare(notebook: Path, folder: Path, view: str) -> dict:
         "marimo": MARIMO,
         "hosts": dict(sorted(hosts.items())),
         "dropped": sorted(dropped),
+        "private": sorted(private & {cell["name"] for cell in cells}),
     }
 
 
@@ -235,7 +243,7 @@ def main() -> None:
     manifest = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.exists() else {}
     for name in args.notebook or names:
         view = re.sub(r"[^a-z0-9]+", "-", f"{Path(entry['to']).name}-{Path(name).stem}".lower()).strip("-")
-        manifest[name] = prepare(target / name, folder, view)
+        manifest[name] = prepare(target / name, folder, view, set(entry.get("private") or []))
         print(f"{entry['to']}/{name}: {len(manifest[name]['hosts'])} outputs, dropped {manifest[name]['dropped']}")
         # After each notebook, so an interrupted run keeps the ones it finished.
         manifest_path.write_text(

@@ -7,7 +7,7 @@ sidebar:
   order: 6
 notebookOutputs:
   view: soft-soil-egm-06-bimdataframes
-  revision: 6be39186b506087244823381a4d72edaecbf9b3f427be75fdfc0c3e9b0ea2d14
+  revision: 042a5587baec51b0e3d6feb0c417971c7f3116ae0e86510283de09dece107878
   marimo: 0.25.2
 ---
 
@@ -535,8 +535,6 @@ speckle_server
 
 </details>
 
-<marimo-cell class="not-content" name="speckle_server_input" data-marimo-studio-site="site-7bb1f99aee2a14fcda20fd209ace09547531cb7b0c3016063c6811fd6aaac4bc"></marimo-cell>
-
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>speckle_sign_in</code></summary>
 
@@ -558,8 +556,6 @@ None if local_speckle else mo.vstack(
 
 </details>
 
-<marimo-cell class="not-content" name="speckle_sign_in" data-marimo-studio-site="site-30bcdd922042534c5b790e5852c46893c138abb1d7f3ea86a08e309886a99726"></marimo-cell>
-
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>speckle_signed_in_as</code></summary>
 
@@ -573,8 +569,6 @@ mo.md(
 ```
 
 </details>
-
-<marimo-cell class="not-content" name="speckle_signed_in_as" data-marimo-studio-site="site-f7ed2e1432001fb7e3cd661e5a86fd34b4bc309f7619a633e7727cddef3be829"></marimo-cell>
 
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>speckle_targets</code></summary>
@@ -597,8 +591,6 @@ speckle_project
 ```
 
 </details>
-
-<marimo-cell class="not-content" name="speckle_targets" data-marimo-studio-site="site-e4e5cc0aea8153e60cae0c15677bee05cc4ec3ee297129efd1123230809a3f8f"></marimo-cell>
 
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>speckle_model_choices</code></summary>

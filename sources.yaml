@@ -17,6 +17,8 @@
 #   branch: branch for "Edit page" links (default: main)
 #   mode:   islands (cells run in the reader's browser) or static (code only,
 #           nothing runs); notebooks in no entry are islands
+#   private: with static, cells whose output shows the exporting machine's
+#           accounts; `just outputs` never saves them
 #
 # See the Sources section of CONTRIBUTING.md.
 
@@ -59,6 +61,8 @@
     - 05_cpt_classification.py
     - 06_bimdataframes.py
   mode: static
+  # The Speckle account, token and projects of whoever exports the outputs.
+  private: [speckle_server_input, speckle_sign_in, speckle_signed_in_as, speckle_targets]
 
 # The package's Starlight pages, written for bedrock-web's /docs/cpt-anywidget/.
 - to: tools/cpt-anywidget
