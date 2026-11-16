@@ -8,7 +8,6 @@
 #     "h5netcdf==1.8.2",
 #     "h5py==3.16.0",
 #     "marimo>=0.25.2",
-#     "marimo-lens==0.2.4",
 #     "numpy",
 #     "polars==2.1.0",
 #     "pyarrow",
@@ -43,7 +42,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import hashlib
     import json
@@ -60,14 +59,12 @@ def _():
     import polars as pl
     import traitlets
     import xarray as xr
-    from marimo_lens import Lens
     from scipy.linalg import pinvh
     from scipy.spatial.distance import cdist
 
     # The charts take tens of thousands of simulated cells
     alt.data_transformers.disable_max_rows()
     return (
-        Lens,
         NormalDist,
         Path,
         alt,
@@ -88,14 +85,6 @@ def _():
 
 
 @app.cell(hide_code=True)
-def _(Lens):
-    # marimo-lens: select a region of any output and add a note for the notebook agent
-    lens = Lens()
-    lens
-    return
-
-
-@app.cell
 def inputs(Path, mo):
     DATA_DIR = Path(mo.notebook_dir()).parent / "data"
     # What 02_simulation_domains.py and 03_variograms.py save; the cells that read them run again when they
@@ -1029,7 +1018,7 @@ def simulation_intro(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def grid(
     COSIMULATED_WITH,
     DEFAULT_SETTINGS,
@@ -1087,7 +1076,7 @@ def grid(
     return cells, grid_coords, grid_index, height_variograms, settings
 
 
-@app.cell
+@app.cell(hide_code=True)
 def conditioning(
     COSIMULATED_WITH,
     DOMAIN_COLORS,
@@ -1148,7 +1137,7 @@ def conditioning(
     return conditioning, correlations
 
 
-@app.cell
+@app.cell(hide_code=True)
 def simulation_runs(
     COSIMULATED_WITH,
     PARAMETERS,

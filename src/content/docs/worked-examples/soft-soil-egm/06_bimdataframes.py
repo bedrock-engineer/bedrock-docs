@@ -5,7 +5,6 @@
 #     "h5netcdf==1.8.2",
 #     "h5py==3.16.0",
 #     "marimo>=0.25.2",
-#     "marimo-lens==0.2.4",
 #     "numpy",
 #     "polars==2.1.0",
 #     "pyarrow",
@@ -46,7 +45,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import json
     from pathlib import Path
@@ -58,7 +57,6 @@ def _():
     import pyproj
     import pyvista as pv
     import xarray as xr
-    from marimo_lens import Lens
     from specklewidgets import GeoSpeckleViewer, models_gz
     from specklewidgets.bim import bim_objects
     from specklewidgets.geo import pdok_3d_buildings
@@ -73,7 +71,6 @@ def _():
         DEFAULT_SERVER,
         EnvConfig,
         GeoSpeckleViewer,
-        Lens,
         Path,
         SOIL_BEHAVIOR_COLORS,
         SOIL_BEHAVIOR_TYPES,
@@ -95,14 +92,6 @@ def _():
 
 
 @app.cell(hide_code=True)
-def _(Lens):
-    # marimo-lens: select a region of any output and add a note for the notebook agent
-    lens = Lens()
-    lens
-    return
-
-
-@app.cell
 def inputs(Path, mo):
     DATA_DIR = Path(mo.notebook_dir()).parent / "data"
     BIMDATAFRAMES_DIR = DATA_DIR / "bimdataframes"

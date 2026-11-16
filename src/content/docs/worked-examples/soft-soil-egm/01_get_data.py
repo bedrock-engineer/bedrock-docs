@@ -6,7 +6,6 @@
 #     "folium==0.20.0",
 #     "geopandas==1.2.0",
 #     "marimo",
-#     "marimo-lens==0.2.4",
 #     "netcdf4",
 #     "numpy>=2",
 #     "polars",
@@ -56,7 +55,6 @@ def _():
     import pyproj
     import shapely
     import xarray as xr
-    from marimo_lens import Lens
     from specklewidgets import GeoSpeckleViewer
     from specklewidgets.geo import osm_ground_map, pdok_3d_buildings
 
@@ -65,7 +63,6 @@ def _():
     return (
         ET,
         GeoSpeckleViewer,
-        Lens,
         Path,
         Request,
         bpl,
@@ -83,14 +80,6 @@ def _():
         urlopen,
         xr,
     )
-
-
-@app.cell(hide_code=True)
-def lens(Lens):
-    # marimo-lens: select a region of any output and add a note for the notebook agent
-    lens = Lens()
-    lens
-    return
 
 
 @app.cell(hide_code=True)
@@ -438,14 +427,14 @@ def geotop_legends(bromodels, mo, pl):
     return lithok_map, strat_map
 
 
-@app.cell
+@app.cell(hide_code=True)
 def geotop_file(DATA_DIR, mo):
     # The voxels' file: the cells that read it run again when a download replaces it
     geotop_nc = mo.watch.file(DATA_DIR / "geotop.nc")
     return (geotop_nc,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def geotop_read(Path, geotop_nc, mo, xr):
     mo.stop(not Path(geotop_nc).exists(), mo.md("Download the selected data first."))
     # Closing the file lets a download, or another notebook, replace it
@@ -455,7 +444,7 @@ def geotop_read(Path, geotop_nc, mo, xr):
     return (geotop_xr,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def geotop_voxels(geotop_xr, lithok_map, mo, pl, strat_map):
     # One row per voxel with a value. x, y and z are the xarray indices, which polars needs as columns.
     geotop_df = (
@@ -493,7 +482,7 @@ def geotop_voxels(geotop_xr, lithok_map, mo, pl, strat_map):
     return (geotop_df,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def geotop_units(geotop_df, mo, pl):
     # One row per geological unit, from the top down: its topmost voxel, with the number of voxels in the unit.
     # The unit and soil type come first, in their GeoTOP colors.
@@ -520,7 +509,7 @@ def geotop_units(geotop_df, mo, pl):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def voxel_size():
     # GeoTOP's x and y are the south-west corners of its 100 m columns (see geotop_cells); z is the
     # center of each 0.5 m voxel
@@ -528,7 +517,7 @@ def voxel_size():
     return (VOXEL_SIZE,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def geotop_boxes(VOXEL_SIZE, bpl, geotop_df, pl):
     # The 12 triangles of a box whose corners 0-3 are at the bottom and 4-7 at the top, each
     # counterclockwise from the south-west, wound outwards
@@ -567,7 +556,7 @@ def geotop_boxes(VOXEL_SIZE, bpl, geotop_df, pl):
     return (geotop_rd,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def geotop_bimdf(DATA_DIR, bpl, geotop_rd):
     # The site origin: the plan center of the GeoTOP columns at NAP 0 m, with the axes along RD's.
     # GeoSpeckleViewer draws a model near its CRS's origin.
@@ -621,7 +610,7 @@ def viewer(GeoSpeckleViewer, color_by, geotop_bimdf, mo, pdok_3d_buildings):
     return (geotop_viewer,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def viewer_selection(geotop_bimdf, geotop_viewer, pl):
     # The voxels selected in the GeoSpeckleViewer
     selected_voxels = geotop_bimdf.filter(

@@ -4,7 +4,6 @@
 #     "altair",
 #     "gstools==1.7.0",
 #     "marimo>=0.25.2",
-#     "marimo-lens==0.2.4",
 #     "numpy",
 #     "polars==2.1.0",
 #     "pyarrow",
@@ -37,7 +36,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import json
     from datetime import datetime
@@ -49,22 +48,13 @@ def _():
     import marimo as mo
     import numpy as np
     import polars as pl
-    from marimo_lens import Lens
 
     # The charts take thousands of CPT sample pairs
     alt.data_transformers.disable_max_rows()
-    return Lens, NormalDist, Path, alt, datetime, gs, json, mo, np, pl
+    return NormalDist, Path, alt, datetime, gs, json, mo, np, pl
 
 
 @app.cell(hide_code=True)
-def _(Lens):
-    # marimo-lens: select a region of any output and add a note for the notebook agent
-    lens = Lens()
-    lens
-    return
-
-
-@app.cell
 def inputs(Path, mo):
     DATA_DIR = Path(mo.notebook_dir()).parent / "data"
     # The simulation domains 02_simulation_domains.py saves, and the variograms this notebook saves for 04.
@@ -90,7 +80,7 @@ def inputs(Path, mo):
     )
 
 
-@app.cell
+@app.cell(hide_code=True)
 def read_inputs(
     Path,
     cpts_parquet,
@@ -214,7 +204,7 @@ def samples(
     return (samples,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def scores(LOG_PARAMETERS, NormalDist, detrend, mo, parameters, pl, samples):
     mo.stop(not parameters.value, mo.md("Choose at least one parameter."))
 
@@ -283,7 +273,7 @@ def data_table(DOMAIN_COLORS, UNITS, mo, parameters, pl, trends):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def lags():
     # The experimental variograms: vertically up to MAX_LAG["vertical"] along each CPT, in steps of the
     # samples' height; horizontally up to MAX_LAG["horizontal"] between CPTs at one level, in bins of
@@ -296,7 +286,7 @@ def lags():
     return HORIZONTAL_BIN, LEN_SCALE_BOUNDS, MAX_LAG, MIN_PAIRS
 
 
-@app.cell
+@app.cell(hide_code=True)
 def experimental(HORIZONTAL_BIN, MAX_LAG, pl, scores):
     # Half the mean squared difference between the normal scores of pairs of samples of one parameter in one
     # domain, per lag
@@ -326,7 +316,7 @@ def experimental(HORIZONTAL_BIN, MAX_LAG, pl, scores):
     return (experimental,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def fit(
     DOMAIN_COLORS,
     LEN_SCALE_BOUNDS,
@@ -407,7 +397,7 @@ def fit(
     return best_models, fitted
 
 
-@app.cell
+@app.cell(hide_code=True)
 def saved_variograms(Path, json, sample_height, variograms_json):
     # The variograms saved before, per sample height and parameter; empty until they are saved. Each parameter's
     # carry when they were saved and the date of the simulation domains they were fitted on: SAVE_DATES.
@@ -807,7 +797,7 @@ def save(
     return
 
 
-@app.cell(hide_code=True, expand_output=True)
+@app.cell(hide_code=True)
 def saved_table(DOMAIN_COLORS, mo, pl, saved_variograms):
     # The variograms in variograms.json, per sample height, parameter and domain
     _saved = pl.DataFrame(

@@ -6,7 +6,6 @@
 #     "bimpolars",
 #     "bromodels==0.0.1",
 #     "marimo>=0.25.2",
-#     "marimo-lens==0.2.4",
 #     "numpy",
 #     "polars==2.1.0",
 #     "pyarrow",
@@ -41,7 +40,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import json
     from datetime import datetime
@@ -56,7 +55,6 @@ def _():
     import polars as pl
     import pyproj
     import traitlets
-    from marimo_lens import Lens
     from specklewidgets import GeoSpeckleViewer
     from specklewidgets.bim import bim_objects
     from specklewidgets.geo import pdok_3d_buildings
@@ -68,7 +66,6 @@ def _():
     alt.data_transformers.disable_max_rows()
     return (
         GeoSpeckleViewer,
-        Lens,
         Path,
         alt,
         anywidget,
@@ -87,14 +84,6 @@ def _():
 
 
 @app.cell(hide_code=True)
-def _(Lens):
-    # marimo-lens: select a region of any output and add a note for the notebook agent
-    lens = Lens()
-    lens
-    return
-
-
-@app.cell
 def inputs(Path, mo):
     DATA_DIR = Path(mo.notebook_dir()).parent / "data"
     # The inputs 01_get_data.py writes: the cells that read them run again when it replaces them
@@ -117,7 +106,7 @@ def inputs(Path, mo):
     )
 
 
-@app.cell
+@app.cell(hide_code=True)
 def read_inputs(Path, bpl, cpts_parquet, geotop_parquet, mo, pl):
     mo.stop(
         not (Path(geotop_parquet).exists() and Path(cpts_parquet).exists()),
@@ -356,7 +345,7 @@ def controls(
     return base_cut, min_meters, split_by_lithology, unit_domains
 
 
-@app.cell
+@app.cell(hide_code=True)
 def samples(cpts, pl, voxels):
     # CPT readings averaged per voxel they pass through: the column from x and y (its south-west corner),
     # the 0.5 m level from the nearest voxel center
@@ -380,7 +369,7 @@ def samples(cpts, pl, voxels):
     return (samples,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def domains(
     LITH_GROUPS,
     LITH_GROUP_COLORS,
@@ -423,7 +412,7 @@ def domains(
     return DOMAIN_COLORS, domain_scale, sample_domains, voxel_domains
 
 
-@app.cell
+@app.cell(hide_code=True)
 def domain_summary(
     DOMAIN_COLORS,
     min_meters,
@@ -566,7 +555,7 @@ def cross_sections_widget(Path, anywidget, mo, traitlets):
     return (CrossSections,)
 
 
-@app.cell(hide_code=True, expand_output=True)
+@app.cell(hide_code=True)
 def cross_sections(
     CrossSections,
     LITH_COLORS,
@@ -617,7 +606,7 @@ def cross_sections(
     return cross_sections, section_view
 
 
-@app.cell(hide_code=True, expand_output=True)
+@app.cell(hide_code=True)
 def domain_viewer(GeoSpeckleViewer, geotop_bimdf, mo, pdok_3d_buildings):
     # Made once, so it keeps its camera and its WebGL context; domain_viewer_objects fills it
     speckle_view = GeoSpeckleViewer(tilesets=[pdok_3d_buildings(geotop_bimdf)], height=525)
@@ -684,7 +673,7 @@ def cross_sections_domains(DOMAIN_COLORS, section_view, voxel_domains):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def voxel_bimdf(bpl, cpts, geotop_bimdf, pl, voxel_domains):
     def styled_bimdf(bimdf, name, color):
         """The elements with the column name as their class, each mesh in one color: color, an

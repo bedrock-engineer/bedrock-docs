@@ -6,7 +6,6 @@
 #     "h5netcdf==1.8.2",
 #     "h5py==3.16.0",
 #     "marimo>=0.25.2",
-#     "marimo-lens==0.2.4",
 #     "numpy",
 #     "polars==2.1.0",
 #     "pyarrow",
@@ -39,7 +38,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import hashlib
     import json
@@ -53,7 +52,6 @@ def _():
     import polars as pl
     import traitlets
     import xarray as xr
-    from marimo_lens import Lens
 
     from cpt_robertson_classification import GROUNDWATER_DEPTH, SOIL_BEHAVIOR_COLORS, SOIL_BEHAVIOR_TYPES, robertson
 
@@ -61,7 +59,6 @@ def _():
     alt.data_transformers.disable_max_rows()
     return (
         GROUNDWATER_DEPTH,
-        Lens,
         Path,
         SOIL_BEHAVIOR_COLORS,
         SOIL_BEHAVIOR_TYPES,
@@ -80,14 +77,6 @@ def _():
 
 
 @app.cell(hide_code=True)
-def _(Lens):
-    # marimo-lens: select a region of any output and add a note for the notebook agent
-    lens = Lens()
-    lens
-    return
-
-
-@app.cell
 def inputs(Path, mo):
     DATA_DIR = Path(mo.notebook_dir()).parent / "data"
     # What 02, 03 and 04 save, and where the classifications are saved
