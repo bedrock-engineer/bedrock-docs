@@ -12,6 +12,8 @@ sidebar:
 
 Natural slopes and landslides, rock slopes, cuttings, embankments, dikes and levees, engineered fills and land reclamation, stockpiles and landfills, and the revetments and scour protection on them. Mining subtypes are under [Mining](#mining). EC7 lists slopes separately from cuttings, so a slope nobody built still counts. The first generation of EC7 split this over Section 11 (overall stability) and Section 12 (embankments).
 
+![Five slopes in one ground cross-section, with what to check on each](../../../assets/structures/slopes-cuttings-and-embankments.svg)
+
 ## What to verify
 
 | Check | Limit state | Analysis type | Usual methods |

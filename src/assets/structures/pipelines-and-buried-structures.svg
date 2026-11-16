@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="h-auto w-full" viewBox="0 0 800 340" role="img" aria-label="Five buried structures in one ground cross-section, with what to check on each. Buried pipe in a trench: pipe stresses from the soil load. Culvert under an embankment: settlement. HDD crossing under a dike and a river: blowout of drilling fluid. Microtunnel jacked from a shaft: jacking force and face stability. Subsea pipe offshore: upheaval.">
+  <defs>
+    <pattern id="pl-sand" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="0.9" class="fill-gray-8"/><circle cx="9" cy="9" r="0.9" class="fill-gray-8"/></pattern>
+    <pattern id="pl-clay" width="20" height="8" patternUnits="userSpaceOnUse"><path d="M0 2H8M10 6H18" class="stroke-gray-8" stroke-width="0.75"/></pattern>
+    <pattern id="pl-fill" width="14" height="14" patternUnits="userSpaceOnUse"><g class="fill-none stroke-gray-8" stroke-width="0.75"><circle cx="4" cy="4" r="1.6"/><circle cx="11" cy="11" r="1.6"/></g></pattern>
+    <marker id="pl-check" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fill-doc-accent"/></marker>
+  </defs>
+
+  <!-- Ground and water -->
+  <path d="M466.5 160L472 172H508L513.5 160z" class="fill-gray-3"/>
+  <path d="M692.9 154L715 185H800V154z" class="fill-gray-3"/>
+  <path d="M0 150H462L472 172H508L518 150H690L715 185H800V238H0z" fill="url(#pl-sand)"/>
+  <rect x="0" y="238" width="800" height="50" fill="url(#pl-clay)"/>
+  <path d="M125 150L160 118H230L265 150z" fill="url(#pl-fill)"/>
+  <path d="M330 150L370 100H410L450 150z" fill="url(#pl-fill)"/>
+  <g class="fill-none stroke-doc-line">
+    <path d="M0 238H800" class="stroke-gray-7" stroke-width="0.75"/>
+    <path d="M30 150L40 205H80L90 150" stroke-width="1" stroke-dasharray="4 3"/>
+    <path d="M466.5 160H513.5M692.9 154H800M714 147H726L720 154zM716 158H724M718 161H722" stroke-width="1.25"/>
+    <path d="M0 150H125L160 118H230L265 150H330L370 100H410L450 150H462L472 172H508L518 150H556M596 150H690L715 185H800" stroke-width="1.5"/>
+  </g>
+
+  <!-- Structures -->
+  <g class="stroke-doc-text" stroke-width="1.25">
+    <circle cx="60" cy="192" r="10" class="fill-doc-surface" stroke-width="1.5"/>
+    <rect x="176" y="126" width="38" height="30" class="fill-gray-5"/>
+    <rect x="181" y="131" width="28" height="20" class="fill-doc-surface" stroke-width="0.75"/>
+    <path d="M300 150C330 235 510 235 545 150" class="fill-none" stroke-width="2.5"/>
+    <rect x="562" y="146" width="28" height="70" class="fill-doc-surface" stroke-width="0"/>
+    <g class="fill-gray-5"><rect x="556" y="146" width="6" height="74"/><rect x="590" y="146" width="6" height="74"/><rect x="556" y="214" width="40" height="6"/><rect x="576" y="198" width="14" height="12"/></g>
+    <rect x="596" y="196" width="64" height="16" class="fill-doc-surface"/>
+    <path d="M612 196V212M628 196V212M644 196V212" class="fill-none" stroke-width="0.75"/>
+    <rect x="660" y="195" width="16" height="18" class="fill-gray-5"/>
+    <circle cx="757" cy="192" r="6" class="fill-doc-surface" stroke-width="1.5"/>
+  </g>
+
+  <!-- Checks -->
+  <g class="fill-none stroke-doc-accent" stroke-width="1.5">
+    <ellipse cx="60" cy="192" rx="15" ry="9" stroke-dasharray="4 2"/>
+    <path d="M125 158Q195 176 265 158" stroke-dasharray="5 3"/>
+    <path d="M359 198L341 150M359 198L363 150" stroke-dasharray="4 2"/>
+    <g marker-end="url(#pl-check)"><path d="M600 189H646"/><path d="M678 199H690"/><path d="M678 209H690"/><path d="M757 184V172"/></g>
+  </g>
+  <g class="fill-doc-accent-text" font-size="11.5" text-anchor="middle">
+    <text x="60" y="228">pipe stresses</text>
+    <text x="195" y="192">settlement</text>
+    <text x="330" y="224">blowout</text>
+    <text x="630" y="182">jacking force</text>
+    <text x="650" y="232">face stability</text>
+    <text x="764" y="166">upheaval</text>
+  </g>
+
+  <!-- Typologies -->
+  <g text-anchor="middle">
+    <g class="fill-doc-text" font-size="13" font-weight="600">
+      <text x="60" y="312">Buried pipe</text>
+      <text x="195" y="312">Culvert</text>
+      <text x="420" y="312">HDD crossing</text>
+      <text x="620" y="312">Microtunnel</text>
+      <text x="752" y="312">Subsea pipe</text>
+    </g>
+    <g class="fill-doc-muted" font-size="11.5">
+      <text x="60" y="328">in a trench</text>
+      <text x="195" y="328">under an embankment</text>
+      <text x="420" y="328">under a dike and river</text>
+      <text x="620" y="328">jacked from a shaft</text>
+      <text x="752" y="328">offshore</text>
+    </g>
+  </g>
+</svg>

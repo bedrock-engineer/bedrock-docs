@@ -11,6 +11,8 @@ sidebar:
 
 Buried pipes, culverts and cables, and trenchless crossings by HDD, microtunneling and pipe jacking. In the Netherlands, NEN 3650 sets the requirements for pipelines and NEN 3651 adds those for crossings with dikes and major waterways. Offshore subtypes are under [Offshore](#offshore).
 
+![Five buried structures in one ground cross-section, with what to check on each](../../../assets/structures/pipelines-and-buried-structures.svg)
+
 ## What to verify
 
 | Check | Limit state | Analysis type | Usual methods |

@@ -12,6 +12,8 @@ sidebar:
 
 Grouted ground anchors (temporary and permanent), rock anchors with a free length, screw anchors and deadman anchors. They tie back [retaining structures](retaining-structures.md) and slopes, and hold structures down against uplift. Tension piles are [piled foundations](piled-foundations.md); soil nails are [soil nailed structures](soil-nailed-structures.md).
 
+![Four anchors in one ground cross-section, with what to check on each](../../../assets/structures/anchors.svg)
+
 EC7 leans on testing for anchors more than for any other structure: investigation, suitability and acceptance tests to EN ISO 22477-5.
 
 ## What to verify

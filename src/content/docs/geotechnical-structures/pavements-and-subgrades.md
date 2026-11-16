@@ -11,6 +11,8 @@ sidebar:
 
 Road and railway subgrades, pavement structures, and working platforms and crane pads. National pavement design guides govern pavements; in the UK, BRE BR 470 covers working platforms for tracked plant.
 
+![Four pavements and platforms on one subgrade, with what to check on each](../../../assets/structures/pavements-and-subgrades.svg)
+
 ## What to verify
 
 | Check | Limit state | Analysis type | Usual methods |

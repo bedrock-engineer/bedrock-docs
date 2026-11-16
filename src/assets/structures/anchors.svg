@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="h-auto w-full" viewBox="0 0 800 340" role="img" aria-label="Four anchors in one ground cross-section of sand over clay and rock, with what to check on each. Grouted anchor tying back a wall: pull-out at the grout and a deep slip of the anchored block. Rock anchors holding down a tower: interaction within the group. Screw anchor for a guyed mast: creep. Deadman anchor behind a sheet pile wall: its passive wedge must stay clear of the wall's active wedge.">
+  <defs>
+    <pattern id="an-sand" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="0.9" class="fill-gray-8"/><circle cx="9" cy="9" r="0.9" class="fill-gray-8"/></pattern>
+    <pattern id="an-clay" width="20" height="8" patternUnits="userSpaceOnUse"><path d="M0 2H8M10 6H18" class="stroke-gray-8" stroke-width="0.75"/></pattern>
+    <pattern id="an-rock" width="24" height="16" patternUnits="userSpaceOnUse"><path d="M0 0.5H24M0 8.5H24M6 0.5V8.5M18 8.5V16" class="fill-none stroke-gray-8" stroke-width="0.75"/></pattern>
+    <marker id="an-load" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fill-doc-text"/></marker>
+    <marker id="an-check" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fill-doc-accent"/></marker>
+  </defs>
+
+  <!-- Ground -->
+  <path d="M0 200H63V110H763V170H800V200H330L317 238H0z" fill="url(#an-sand)"/>
+  <path d="M0 238H317L300 288H0z" fill="url(#an-clay)"/>
+  <path d="M330 200H800V288H300z" fill="url(#an-rock)"/>
+  <g class="fill-none stroke-doc-line">
+    <path d="M0 238H317M330 200H800M330 200L300 288" class="stroke-gray-7" stroke-width="0.75"/>
+    <path d="M0 200H57M63 110H757M763 170H800" stroke-width="1.5"/>
+    <path d="M760 200L728 110" stroke-width="1" stroke-dasharray="4 3"/>
+  </g>
+
+  <!-- Structures -->
+  <g class="stroke-doc-text" stroke-width="1.25">
+    <path d="M63 128L170 171.6" class="fill-none"/>
+    <rect x="0" y="-4" width="64" height="8" transform="translate(170 172) rotate(22.2)" class="fill-gray-5"/>
+    <rect x="57" y="104" width="6" height="158" class="fill-gray-5"/>
+    <rect x="63" y="121" width="5" height="14" class="fill-gray-5"/>
+    <path d="M380 118V226M420 118V226" class="fill-none"/>
+    <rect x="377" y="226" width="6" height="44" class="fill-gray-5"/>
+    <rect x="417" y="226" width="6" height="44" class="fill-gray-5"/>
+    <rect x="393" y="40" width="14" height="56" class="fill-gray-5"/>
+    <rect x="365" y="96" width="70" height="22" class="fill-gray-5"/>
+    <path d="M608 40L560 110" class="fill-none" stroke-width="1"/>
+    <path d="M560 110L520 168.3M531.8 133.6L548.3 144.9M519.8 151.1L536.3 162.4" class="fill-none" stroke-width="1.75"/>
+    <rect x="605" y="36" width="6" height="74" class="fill-gray-5"/>
+    <path d="M680 130H757" class="fill-none" stroke-width="1.5"/>
+    <rect x="664" y="114" width="16" height="36" class="fill-gray-5"/>
+    <rect x="757" y="104" width="6" height="126" class="fill-gray-5"/>
+  </g>
+
+  <!-- Loads -->
+  <path d="M366 50H390" class="fill-none stroke-doc-text" stroke-width="1.25" marker-end="url(#an-load)"/>
+
+  <!-- Checks -->
+  <g class="fill-none stroke-doc-accent" stroke-width="1.5">
+    <rect x="-4" y="-8" width="72" height="16" rx="4" transform="translate(170 172) rotate(22.2)" stroke-dasharray="5 3"/>
+    <path d="M60 262L200 184V110" stroke-dasharray="5 3"/>
+    <path d="M352 222L380 270L408 222M392 222L420 270L448 222" stroke-dasharray="5 3"/>
+    <path d="M546 178L557 161.5" marker-end="url(#an-check)"/>
+    <path d="M680 150L706 110" stroke-dasharray="5 3"/>
+  </g>
+  <g class="fill-doc-accent-text" font-size="11.5" text-anchor="middle">
+    <text x="240" y="226">pull-out</text>
+    <text x="128" y="212">deep slip</text>
+    <text x="470" y="250" text-anchor="start">group interaction</text>
+    <text x="550" y="194">creep</text>
+    <text x="700" y="182">passive wedge</text>
+  </g>
+
+  <!-- Typologies -->
+  <g text-anchor="middle">
+    <g class="fill-doc-text" font-size="13" font-weight="600">
+      <text x="130" y="312">Grouted anchor</text>
+      <text x="400" y="312">Rock anchors</text>
+      <text x="560" y="312">Screw anchor</text>
+      <text x="715" y="312">Deadman anchor</text>
+    </g>
+    <g class="fill-doc-muted" font-size="11.5">
+      <text x="130" y="328">tying back a wall</text>
+      <text x="400" y="328">holding down a tower</text>
+      <text x="560" y="328">for a guyed mast</text>
+      <text x="715" y="328">behind a sheet pile wall</text>
+    </g>
+  </g>
+</svg>

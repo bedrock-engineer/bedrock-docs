@@ -14,6 +14,7 @@ import starlightLinksValidator from "starlight-links-validator";
 import starlightLlmsTxt from "starlight-llms-txt";
 import { rehypeCitationCards } from "./src/plugins/rehype-citation-cards.mjs";
 import { remarkGlossary } from "./src/plugins/remark-glossary.mjs";
+import { remarkInlineSvg } from "./src/plugins/remark-inline-svg.mjs";
 import { remarkObsidianCallouts } from "./src/plugins/remark-obsidian-callouts.mjs";
 
 // The site lives under /bedrock-docs/ on GitHub Pages; pages never write the base
@@ -26,7 +27,8 @@ const mdxOnly = (plugin) => (options) => {
   const transform = plugin(options);
   return (tree, file) => (file.path?.endsWith(".mdx") ? transform(tree, file) : undefined);
 };
-const remarkPlugins = [remarkMath, remarkObsidianCallouts, glossary, mdxOnly(remarkMarimo)];
+// The structure schematics in src/assets/structures/ go inline, so they follow the theme.
+const remarkPlugins = [remarkMath, remarkObsidianCallouts, remarkInlineSvg, glossary, mdxOnly(remarkMarimo)];
 // Pandoc citations, [@citekey] or [@citekey, 1.5.2.4], against bibliography.json, the
 // CSL-JSON export of the cited Library items. Before rehypeHeadingIds, so the
 // "References" heading rehypeCitationCards adds gets an id and a place in the TOC.

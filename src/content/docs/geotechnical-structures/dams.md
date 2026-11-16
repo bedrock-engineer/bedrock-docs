@@ -11,6 +11,8 @@ sidebar:
 
 Embankment dams (earthfill and rockfill) and the foundations and seepage of concrete gravity and arch dams. EC7 Part 3 has no dam clause; large dams follow ICOLD bulletins and national dam safety rules. Tailings dams are under [Mining](#mining). Dikes and levees are under [slopes, cuttings and embankments](slopes-cuttings-and-embankments.md).
 
+![Three dams in one cross-section, with what to check on each](../../../assets/structures/dams.svg)
+
 ## What to verify
 
 | Check | Limit state | Analysis type | Usual methods |

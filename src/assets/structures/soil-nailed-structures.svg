@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="h-auto w-full" viewBox="0 0 800 340" role="img" aria-label="Three soil nailed structures in one ground cross-section, with what to check on each. Nailed wall with a shotcrete facing: nail pull-out across the failure surface, and water pressure behind the facing. Nailed slope with mesh and plates: punching of the facing and face deformation. Excavation in lifts, where the nailed block acts as a gravity wall: sliding.">
+  <defs>
+    <pattern id="sn-sand" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="0.9" class="fill-gray-8"/><circle cx="9" cy="9" r="0.9" class="fill-gray-8"/></pattern>
+    <pattern id="sn-clay" width="20" height="8" patternUnits="userSpaceOnUse"><path d="M0 2H8M10 6H18" class="stroke-gray-8" stroke-width="0.75"/></pattern>
+    <marker id="sn-check" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fill-doc-accent"/></marker>
+  </defs>
+
+  <!-- Ground -->
+  <path d="M0 60H166L176 180H320L375 70H646V150H800V238H0z" fill="url(#sn-sand)"/>
+  <rect x="0" y="238" width="800" height="50" fill="url(#sn-clay)"/>
+  <g class="fill-none stroke-doc-line">
+    <path d="M0 238H800" class="stroke-gray-7" stroke-width="0.75"/>
+    <path d="M0 130H168" stroke-width="1" stroke-dasharray="6 4"/>
+    <path d="M543 72V166H640M643 152V182H800" stroke-width="1" stroke-dasharray="4 3"/>
+    <path d="M0 60H162M178 180H320L375 70H640M646 150H800" stroke-width="1.5"/>
+  </g>
+
+  <!-- Nails and facings -->
+  <g class="fill-none stroke-doc-text" stroke-width="1.25">
+    <path d="M167.7 80L61.7 108.4M169.7 104L63.7 132.4M171.7 128L65.7 156.4M173.7 152L67.7 180.4M175.3 172L69.3 200.4"/>
+    <path d="M365 90L461.6 115.9M352.5 115L449.1 140.9M340 140L436.6 165.9M327.5 165L424.1 190.9"/>
+    <path d="M640 88L543.4 113.9M640 112L543.4 137.9M640 136L543.4 161.9"/>
+    <path d="M320 180L375 70" stroke-width="2"/>
+  </g>
+  <g class="fill-doc-text"><circle cx="365" cy="90" r="2.5"/><circle cx="352.5" cy="115" r="2.5"/><circle cx="340" cy="140" r="2.5"/><circle cx="327.5" cy="165" r="2.5"/></g>
+  <g class="fill-gray-5 stroke-doc-text" stroke-width="1.25">
+    <path d="M162 58H168L178 182H172z"/>
+    <rect x="640" y="68" width="6" height="84"/>
+  </g>
+  <text x="700" y="174" class="fill-doc-muted" font-size="11.5">next lift</text>
+
+  <!-- Checks -->
+  <g class="fill-none stroke-doc-accent" stroke-width="1.5">
+    <path d="M176 180Q160 96 104 60" stroke-dasharray="5 3"/>
+    <g marker-end="url(#sn-check)"><path d="M146 140H166"/><path d="M146 166H168"/></g>
+    <circle cx="352.5" cy="115" r="9" stroke-dasharray="4 2"/>
+    <path d="M320 180Q326 128 375 70" stroke-dasharray="5 3"/>
+    <path d="M552 174H632" marker-end="url(#sn-check)"/>
+  </g>
+  <g class="fill-doc-accent-text" font-size="11.5">
+    <text x="10" y="152">pull-out</text>
+    <text x="186" y="142">water pressure</text>
+    <text x="338" y="112" text-anchor="end">punching</text>
+    <text x="318" y="170" text-anchor="end">face deformation</text>
+    <text x="592" y="190" text-anchor="middle">sliding</text>
+  </g>
+
+  <!-- Typologies -->
+  <g text-anchor="middle">
+    <g class="fill-doc-text" font-size="13" font-weight="600">
+      <text x="110" y="312">Nailed wall</text>
+      <text x="360" y="312">Nailed slope</text>
+      <text x="650" y="312">Excavation in lifts</text>
+    </g>
+    <g class="fill-doc-muted" font-size="11.5">
+      <text x="110" y="328">shotcrete facing</text>
+      <text x="360" y="328">mesh and plates</text>
+      <text x="650" y="328">the nailed block as a gravity wall</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="h-auto w-full" viewBox="0 0 800 340" role="img" aria-label="Four pavements and platforms on one clay subgrade, with what to check on each. Road pavement under a wheel load: rutting, and frost heave above the frost depth. Railway track with ballast and sleepers: cyclic loading spreading into the subgrade, and drainage. Working platform under a piling rig: punching of the tracks through the platform. Crane pad under a tower crane: bearing, with a mechanism that can form on either side, because the crane slews and its moment reverses between in service and out of service.">
+  <defs>
+    <pattern id="pv-sand" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="0.9" class="fill-gray-8"/><circle cx="9" cy="9" r="0.9" class="fill-gray-8"/></pattern>
+    <pattern id="pv-clay" width="20" height="8" patternUnits="userSpaceOnUse"><path d="M0 2H8M10 6H18" class="stroke-gray-8" stroke-width="0.75"/></pattern>
+    <pattern id="pv-fill" width="14" height="14" patternUnits="userSpaceOnUse"><g class="fill-none stroke-gray-8" stroke-width="0.75"><circle cx="4" cy="4" r="1.6"/><circle cx="11" cy="11" r="1.6"/></g></pattern>
+    <marker id="pv-load" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fill-doc-text"/></marker>
+    <marker id="pv-check" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fill-doc-accent"/></marker>
+  </defs>
+
+  <!-- Ground and granular layers -->
+  <rect x="0" y="150" width="800" height="88" fill="url(#pv-clay)"/>
+  <rect x="0" y="238" width="800" height="50" fill="url(#pv-sand)"/>
+  <rect x="20" y="138" width="160" height="12" fill="url(#pv-fill)"/>
+  <path d="M230 150L245 132H355L370 150z" fill="url(#pv-fill)"/>
+  <rect x="420" y="134" width="160" height="16" fill="url(#pv-fill)"/>
+  <g class="fill-none stroke-doc-line">
+    <path d="M0 238H800" class="stroke-gray-7" stroke-width="0.75"/>
+    <path d="M0 176H200" stroke-width="1" stroke-dasharray="2 3"/>
+    <path d="M0 150H800" stroke-width="1.5"/>
+  </g>
+  <text x="196" y="172" class="fill-doc-muted" font-size="11.5" text-anchor="end">frost depth</text>
+
+  <!-- Structures -->
+  <g class="stroke-doc-text" stroke-width="1.25">
+    <rect x="20" y="132" width="160" height="6" class="fill-gray-5"/>
+    <circle cx="90" cy="124" r="8" class="fill-doc-surface"/>
+    <rect x="255" y="126" width="90" height="6" class="fill-gray-5"/>
+    <rect x="268" y="118" width="6" height="8" class="fill-gray-5"/>
+    <rect x="326" y="118" width="6" height="8" class="fill-gray-5"/>
+    <g class="fill-doc-surface"><circle cx="226" cy="162" r="4"/><circle cx="374" cy="162" r="4"/></g>
+    <rect x="466" y="30" width="6" height="94" class="fill-gray-5"/>
+    <rect x="474" y="96" width="30" height="28" class="fill-doc-surface"/>
+    <rect x="452" y="124" width="56" height="10" class="fill-gray-5"/>
+    <path d="M690 40V140M702 40V140M690 50L702 60L690 70L702 80L690 90L702 100L690 110L702 120L690 130L702 140" class="fill-none" stroke-width="1"/>
+    <path d="M640 34H795M640 40H795M702 40L708 34L714 40L720 34L726 40L732 34L738 40L744 34L750 40L756 34L762 40L768 34L774 40L780 34L786 40L792 34M640 40L646 34L652 40L658 34L664 40L670 34L676 40L682 34L688 40" class="fill-none" stroke-width="1"/>
+    <path d="M690 34L696 14L702 34M696 14L795 34M696 14L640 34" class="fill-none" stroke-width="1"/>
+    <path d="M770 40V78" class="fill-none" stroke-width="1"/>
+    <rect x="766" y="40" width="8" height="4" class="fill-gray-5" stroke-width="1"/>
+    <rect x="762" y="78" width="16" height="12" class="fill-gray-5"/>
+    <rect x="644" y="40" width="16" height="14" class="fill-gray-5"/>
+    <rect x="703" y="42" width="10" height="9" class="fill-doc-surface" stroke-width="1"/>
+    <rect x="664" y="140" width="64" height="10" class="fill-gray-5"/>
+  </g>
+
+  <!-- Loads -->
+  <g class="fill-none stroke-doc-text" stroke-width="1.25" marker-end="url(#pv-load)">
+    <path d="M90 90V114"/>
+    <path d="M271 92V116"/>
+    <path d="M329 92V116"/>
+  </g>
+
+  <!-- Checks -->
+  <g class="fill-none stroke-doc-accent" stroke-width="1.5">
+    <path d="M68 132Q90 141 112 132" stroke-dasharray="4 2"/>
+    <g marker-end="url(#pv-check)"><path d="M40 176V158"/><path d="M120 176V158"/><path d="M244 152L232 158"/><path d="M356 152L368 158"/></g>
+    <path d="M255 132L230 182M345 132L370 182" stroke-dasharray="5 3"/>
+    <path d="M452 134L444 150M508 134L516 150" stroke-dasharray="4 2"/>
+    <path d="M664 150L696 200L728 150M696 200Q769 217 790 150M696 200Q623 217 602 150" stroke-dasharray="5 3"/>
+  </g>
+  <g class="fill-doc-accent-text" font-size="11.5" text-anchor="middle">
+    <text x="130" y="122" text-anchor="start">rutting</text>
+    <text x="80" y="196">frost heave</text>
+    <text x="300" y="172">drainage</text>
+    <text x="300" y="204">cyclic loading</text>
+    <text x="480" y="168">punching</text>
+    <text x="696" y="232">bearing</text>
+  </g>
+
+  <!-- Typologies -->
+  <g text-anchor="middle">
+    <g class="fill-doc-text" font-size="13" font-weight="600">
+      <text x="100" y="312">Road pavement</text>
+      <text x="300" y="312">Railway track</text>
+      <text x="500" y="312">Working platform</text>
+      <text x="700" y="312">Crane pad</text>
+    </g>
+    <g class="fill-doc-muted" font-size="11.5">
+      <text x="100" y="328">under a wheel load</text>
+      <text x="300" y="328">ballast and sleepers</text>
+      <text x="500" y="328">under a piling rig</text>
+      <text x="700" y="328">under a tower crane</text>
+    </g>
+  </g>
+</svg>

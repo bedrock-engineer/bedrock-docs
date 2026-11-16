@@ -12,6 +12,8 @@ sidebar:
 
 Rock bolts, mesh and shotcrete on rock slopes and in underground openings, and rockfall drapes and nets. Rock anchors with a free length are [anchors](anchors.md). Empirical support design from RMR or the Q-system often comes first, followed by block and continuum checks.
 
+![Four kinds of rock support in one cross-section, with what to check on each](../../../assets/structures/rock-bolts-and-rock-surface-support.svg)
+
 ## What to verify
 
 | Check | Limit state | Analysis type | Usual methods |

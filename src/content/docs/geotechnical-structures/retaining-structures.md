@@ -12,6 +12,8 @@ sidebar:
 
 Embedded walls (sheet pile, combi, diaphragm, secant and contiguous pile, soldier pile), gravity walls (mass concrete, gabion, crib), cantilever walls, abutments, quay walls, cofferdams, and braced or anchored excavations. In the Netherlands, CUR 166 sets the design steps for sheet pile walls. [Anchors](anchors.md) and [groundwater control](groundwater-control.md) have their own pages.
 
+![Four retaining structures in one ground cross-section, with what to check on each](../../../assets/structures/retaining-structures.svg)
+
 ## What to verify
 
 | Check | Limit state | Analysis type | Usual methods |

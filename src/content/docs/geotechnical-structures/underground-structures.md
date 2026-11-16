@@ -11,6 +11,8 @@ sidebar:
 
 Tunnels (cut-and-cover; mined by drill-and-blast or the sequential excavation method; bored with TBMs in rock and soft ground; jacked box; immersed), shafts, caverns, and underground storage and repositories. EC7 Part 3 has no clause for them. Designers apply EN 1997-1 for the general rules and follow ITA-AITES and national guidelines such as ÖGG and DAUB for the rest.
 
+![Four underground structures in one ground cross-section, with what to check on each](../../../assets/structures/underground-structures.svg)
+
 ## What to verify
 
 | Check | Limit state | Analysis type | Usual methods |

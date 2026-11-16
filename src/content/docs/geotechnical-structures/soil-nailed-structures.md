@@ -12,6 +12,8 @@ sidebar:
 
 Nailed walls and slopes, including temporary nailed excavation faces, with a shotcrete or mesh facing. FHWA GEC 7 was the usual design reference before the second generation of EC7. Anchors with a free length are [anchors](anchors.md).
 
+![Three soil nailed structures in one ground cross-section, with what to check on each](../../../assets/structures/soil-nailed-structures.svg)
+
 ## What to verify
 
 | Check | Limit state | Analysis type | Usual methods |

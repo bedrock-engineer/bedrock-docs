@@ -12,6 +12,8 @@ sidebar:
 
 Driven, bored, CFA, screw and micropiles, pile groups and piled rafts, barrettes and caissons, tension piles and energy piles, and existing (wooden) pile foundations with their underpinning. Offshore subtypes are under [Offshore](#offshore).
 
+![Five piled foundations in one ground cross-section, with what to check on each](../../../assets/structures/piled-foundations.svg)
+
 ## What to verify
 
 | Check | Limit state | Analysis type | Usual methods |

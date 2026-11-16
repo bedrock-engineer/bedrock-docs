@@ -12,6 +12,8 @@ sidebar:
 
 A [spread foundation](../reference/glossary.md#spread-foundation) carries a building's load onto the ground close to the surface, through a pad, a strip or a raft. Design checks that the ground can carry that load without failing, the ultimate [limit states](../reference/glossary.md#limit-state), and without the building [settling](../reference/glossary.md#settlement) too much, the serviceability limit states.
 
+![Five spread foundations in one ground cross-section, with what to check on each](../../../assets/structures/spread-foundations.svg)
+
 **You'll use:** [effective stress](../reference/glossary.md#effective-stress), [friction angle](../reference/glossary.md#friction-angle), [undrained shear strength](../reference/glossary.md#undrained-shear-strength) and [bearing capacity](../geotechnical-analyses/bearing-capacity.mdx). Hover a term for its gist; follow a link only if you need more.
 
 ## What to verify

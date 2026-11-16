@@ -12,6 +12,8 @@ sidebar:
 
 Compaction (surface, dynamic, rapid impact, vibrocompaction), preloading with vertical drains and vacuum consolidation, grouting (permeation, compaction, jet grouting), deep soil mixing, stone columns, rigid inclusions, lightweight fill (EPS, foam concrete), soil replacement, lime or cement stabilization, and ground freezing. The improved ground is verified as part of the structure it carries; this page covers the improvement itself.
 
+![Six ground improvement methods in one ground cross-section, with what to check on each](../../../assets/structures/ground-improvement.svg)
+
 ## What to verify
 
 | Check | Limit state | Analysis type | Usual methods |

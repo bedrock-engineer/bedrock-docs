@@ -12,6 +12,8 @@ sidebar:
 
 Reinforced soil walls and abutments (MSE), steep reinforced slopes, basal reinforcement of embankments on soft soil, and geosynthetic-reinforced piled embankments. Before the second generation of EC7, designers used BS 8006-1 and EBGEO; in the Netherlands, CUR 226 covers piled embankments.
 
+![Four reinforced fill structures in one ground cross-section, with what to check on each](../../../assets/structures/reinforced-fill-structures.svg)
+
 ## What to verify
 
 | Check | Limit state | Analysis type | Usual methods |

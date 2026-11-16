@@ -12,6 +12,8 @@ sidebar:
 
 Dewatering with wellpoints and deep wells, cutoff walls (slurry walls, sheet piles, grout curtains), infiltration and recharge, relief wells and drainage, and impermeable barriers such as underwater concrete floors with tension piles. In Dutch cities, lowering the groundwater can rot the heads of wooden pile foundations, so the effect on the surroundings is often the governing check.
 
+![Five ways to control groundwater in one ground cross-section, with what to check on each](../../../assets/structures/groundwater-control.svg)
+
 ## What to verify
 
 | Check | Limit state | Analysis type | Usual methods |

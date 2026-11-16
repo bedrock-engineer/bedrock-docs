@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="h-auto w-full" viewBox="0 0 800 340" role="img" aria-label="Five piled foundations in one ground cross-section of soft clay over sand, with what to check on each. Single pile: axial resistance from shaft friction and the base. Pile under new fill: downdrag from the settling clay. Pile group under a cap: group settlement. Tension piles under a basement below the groundwater: tension resistance. Offshore monopile: cyclic load and lateral resistance.">
+  <defs>
+    <pattern id="pf-sand" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="0.9" class="fill-gray-8"/><circle cx="9" cy="9" r="0.9" class="fill-gray-8"/></pattern>
+    <pattern id="pf-clay" width="20" height="8" patternUnits="userSpaceOnUse"><path d="M0 2H8M10 6H18" class="stroke-gray-8" stroke-width="0.75"/></pattern>
+    <pattern id="pf-fill" width="14" height="14" patternUnits="userSpaceOnUse"><g class="fill-none stroke-gray-8" stroke-width="0.75"><circle cx="4" cy="4" r="1.6"/><circle cx="11" cy="11" r="1.6"/></g></pattern>
+    <marker id="pf-load" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fill-doc-text"/></marker>
+    <marker id="pf-check" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fill-doc-accent"/></marker>
+  </defs>
+
+  <!-- Ground and water -->
+  <path d="M630 160L650 180H800V160z" class="fill-gray-3"/>
+  <path d="M0 150H620L650 180H800V220H0z" fill="url(#pf-clay)"/>
+  <rect x="0" y="220" width="800" height="68" fill="url(#pf-sand)"/>
+  <path d="M190 150L200 136H290L300 150z" fill="url(#pf-fill)"/>
+  <g class="fill-none stroke-doc-line">
+    <path d="M0 220H800" class="stroke-gray-7" stroke-width="0.75"/>
+    <path d="M0 165H635" stroke-width="1" stroke-dasharray="6 4"/>
+    <path d="M630 160H800M8 158H20L14 165zM10 169H18M12 172H16" stroke-width="1.25"/>
+    <path d="M0 150H190L200 136H290L300 150H620L650 180H800" stroke-width="1.5"/>
+  </g>
+
+  <!-- Structures -->
+  <g class="stroke-doc-text" stroke-width="1.25">
+    <rect x="85" y="148" width="10" height="102" class="fill-gray-5"/>
+    <rect x="76" y="138" width="28" height="10" class="fill-gray-5"/>
+    <rect x="240" y="138" width="10" height="112" class="fill-gray-5"/>
+    <rect x="231" y="128" width="28" height="10" class="fill-gray-5"/>
+    <rect x="355" y="96" width="90" height="42" class="fill-doc-surface"/>
+    <g class="fill-gray-5"><rect x="352" y="150" width="8" height="100"/><rect x="382" y="150" width="8" height="100"/><rect x="410" y="150" width="8" height="100"/><rect x="440" y="150" width="8" height="100"/></g>
+    <rect x="345" y="138" width="110" height="12" class="fill-gray-5"/>
+    <rect x="512" y="112" width="106" height="78" class="fill-doc-surface"/>
+    <path d="M512 150H618" class="fill-none"/>
+    <g class="fill-gray-5"><rect x="523" y="192" width="8" height="70"/><rect x="557" y="192" width="8" height="70"/><rect x="591" y="192" width="8" height="70"/></g>
+    <rect x="512" y="184" width="106" height="8" class="fill-gray-5"/>
+    <rect x="714" y="20" width="12" height="40" class="fill-gray-5"/>
+    <rect x="709" y="60" width="22" height="200" class="fill-gray-5"/>
+    <path d="M698 90H742" class="fill-none"/>
+  </g>
+
+  <!-- Loads -->
+  <g class="fill-none stroke-doc-text" stroke-width="1.25" marker-end="url(#pf-load)">
+    <path d="M90 110V134"/>
+    <path d="M245 100V124"/>
+    <path d="M544 214V198"/>
+    <path d="M578 214V198"/>
+  </g>
+
+  <!-- Checks -->
+  <g class="fill-none stroke-doc-accent" stroke-width="1.5">
+    <g marker-end="url(#pf-check)">
+      <path d="M79 244V228"/><path d="M101 244V228"/><path d="M86 268V256"/><path d="M94 268V256"/>
+      <path d="M233 162V178"/><path d="M233 190V206"/><path d="M257 162V178"/><path d="M257 190V206"/>
+      <path d="M535 254V236"/><path d="M569 254V236"/><path d="M603 254V236"/>
+    </g>
+    <path d="M345 254Q400 282 455 254" stroke-dasharray="5 3"/>
+    <path d="M738 108H782" marker-start="url(#pf-check)" marker-end="url(#pf-check)"/>
+    <path d="M720 180Q742 210 721 248" stroke-dasharray="5 3"/>
+  </g>
+  <g class="fill-doc-accent-text" font-size="11.5" text-anchor="middle">
+    <text x="90" y="284">axial resistance</text>
+    <text x="268" y="190" text-anchor="start">downdrag</text>
+    <text x="400" y="284">group settlement</text>
+    <text x="565" y="282">tension resistance</text>
+    <text x="760" y="100">cyclic load</text>
+    <text x="720" y="282">lateral resistance</text>
+  </g>
+
+  <!-- Typologies -->
+  <g text-anchor="middle">
+    <g class="fill-doc-text" font-size="13" font-weight="600">
+      <text x="90" y="312">Single pile</text>
+      <text x="245" y="312">Pile in settling ground</text>
+      <text x="400" y="312">Pile group</text>
+      <text x="565" y="312">Tension piles</text>
+      <text x="720" y="312">Monopile</text>
+    </g>
+    <g class="fill-doc-muted" font-size="11.5">
+      <text x="90" y="328">driven, bored or screw</text>
+      <text x="245" y="328">under new fill</text>
+      <text x="400" y="328">under a pile cap</text>
+      <text x="565" y="328">under a basement</text>
+      <text x="720" y="328">offshore</text>
+    </g>
+  </g>
+</svg>
