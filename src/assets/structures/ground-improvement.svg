@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="h-auto w-full" viewBox="0 0 800 340" role="img" aria-label="Six ground improvement methods in one ground cross-section of a loose or soft top layer over sand, with what to check on each. Compaction, vibro or dynamic: the improvement reached. Preloading with vertical drains: consolidation. Grouting under a building: heave. Deep mixing columns: their structural capacity. Stone columns under a tank: bearing. Rigid inclusions under a platform: load transfer.">
+  <defs>
+    <pattern id="gi-sand" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="0.9" class="fill-gray-8"/><circle cx="9" cy="9" r="0.9" class="fill-gray-8"/></pattern>
+    <pattern id="gi-clay" width="20" height="8" patternUnits="userSpaceOnUse"><path d="M0 2H8M10 6H18" class="stroke-gray-8" stroke-width="0.75"/></pattern>
+    <pattern id="gi-fill" width="14" height="14" patternUnits="userSpaceOnUse"><g class="fill-none stroke-gray-8" stroke-width="0.75"><circle cx="4" cy="4" r="1.6"/><circle cx="11" cy="11" r="1.6"/></g></pattern>
+    <marker id="gi-load" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fill-doc-text"/></marker>
+  </defs>
+
+  <!-- Ground -->
+  <rect x="0" y="150" width="134" height="80" fill="url(#gi-sand)"/>
+  <rect x="134" y="150" width="666" height="80" fill="url(#gi-clay)"/>
+  <rect x="0" y="230" width="800" height="58" fill="url(#gi-sand)"/>
+  <path d="M150 150L165 120H235L250 150z" fill="url(#gi-fill)"/>
+  <path d="M420 150L432 132H502L514 150z" fill="url(#gi-fill)"/>
+  <rect x="690" y="138" width="86" height="12" fill="url(#gi-fill)"/>
+  <g class="fill-none stroke-doc-line">
+    <path d="M0 230H800M134 150V230" class="stroke-gray-7" stroke-width="0.75"/>
+    <path d="M0 150H52Q67 158 82 150H150L165 120H235L250 150H420L432 132H502L514 150H800" stroke-width="1.5"/>
+  </g>
+
+  <!-- Structures -->
+  <path d="M158 150V230M172 150V230M186 150V230M200 150V230M214 150V230M228 150V230M242 150V230" class="fill-none stroke-doc-text" stroke-width="1" stroke-dasharray="3 2"/>
+  <g class="stroke-doc-text" stroke-width="1.25">
+    <path d="M67 70V100" class="fill-none" stroke-width="1"/>
+    <rect x="57" y="100" width="20" height="16" class="fill-gray-5"/>
+    <g class="fill-gray-4" stroke-width="1"><circle cx="309" cy="174" r="11"/><circle cx="357" cy="174" r="11"/><circle cx="333" cy="186" r="11"/></g>
+    <rect x="300" y="96" width="66" height="54" class="fill-doc-surface"/>
+    <rect x="302" y="150" width="14" height="8" class="fill-gray-5"/>
+    <rect x="350" y="150" width="14" height="8" class="fill-gray-5"/>
+    <g class="fill-gray-4" stroke-width="1"><rect x="426" y="150" width="14" height="90"/><rect x="450" y="150" width="14" height="90"/><rect x="474" y="150" width="14" height="90"/><rect x="498" y="150" width="14" height="90"/></g>
+    <rect x="552" y="122" width="96" height="28" class="fill-doc-surface"/>
+    <g fill="url(#gi-fill)" stroke-width="1"><rect x="556" y="150" width="14" height="80"/><rect x="582" y="150" width="14" height="80"/><rect x="608" y="150" width="14" height="80"/><rect x="634" y="150" width="14" height="80"/></g>
+    <g class="fill-gray-5" stroke-width="1"><rect x="700" y="150" width="5" height="100"/><rect x="722" y="150" width="5" height="100"/><rect x="744" y="150" width="5" height="100"/><rect x="766" y="150" width="5" height="100"/></g>
+    <rect x="690" y="130" width="86" height="8" class="fill-gray-5"/>
+  </g>
+
+  <!-- Loads -->
+  <path d="M67 120V144" class="fill-none stroke-doc-text" stroke-width="1.25" marker-end="url(#gi-load)"/>
+
+  <!-- Checks -->
+  <g class="fill-none stroke-doc-accent" stroke-width="1.5" stroke-dasharray="5 3">
+    <rect x="20" y="156" width="94" height="66" rx="6"/>
+    <path d="M150 156Q200 172 250 156"/>
+    <rect x="300" y="88" width="66" height="54"/>
+    <rect x="471" y="146" width="20" height="98" rx="3"/>
+    <path d="M552 150L600 190L648 150M600 190Q640 206 664 150"/>
+    <path d="M702.5 150Q713.5 136 724.5 150M724.5 150Q735.5 136 746.5 150M746.5 150Q757.5 136 768.5 150"/>
+  </g>
+  <g class="fill-doc-accent-text" font-size="11.5" text-anchor="middle">
+    <text x="67" y="246">improvement reached</text>
+    <text x="200" y="246">consolidation</text>
+    <text x="372" y="100" text-anchor="start">heave</text>
+    <text x="481" y="262">column capacity</text>
+    <text x="602" y="246">bearing</text>
+    <text x="733" y="120">load transfer</text>
+  </g>
+
+  <!-- Typologies -->
+  <g text-anchor="middle">
+    <g class="fill-doc-text" font-size="13" font-weight="600">
+      <text x="67" y="312">Compaction</text>
+      <text x="200" y="312">Preloading</text>
+      <text x="333" y="312">Grouting</text>
+      <text x="467" y="312">Deep mixing</text>
+      <text x="600" y="312">Stone columns</text>
+      <text x="733" y="312">Rigid inclusions</text>
+    </g>
+    <g class="fill-doc-muted" font-size="11.5">
+      <text x="67" y="328">vibro or dynamic</text>
+      <text x="200" y="328">with vertical drains</text>
+      <text x="333" y="328">under a building</text>
+      <text x="467" y="328">soil-cement columns</text>
+      <text x="600" y="328">under a tank</text>
+      <text x="733" y="328">under a platform</text>
+    </g>
+  </g>
+</svg>

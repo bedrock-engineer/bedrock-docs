@@ -13,7 +13,10 @@
   Pyodide. Every cell that shows its code in marimo gets an editable code cell.
 - static: `x.md` with the notebook's text and code. Nothing runs, at build time or
   in the browser, so it suits notebooks that need data or packages a reader lacks.
-  Cells that hide their code in marimo become closed folds.
+  Cells that hide their code in marimo become closed folds. Where the folder's
+  notebook-outputs.json has the notebook's saved outputs (see notebook_outputs.py),
+  each cell with an output gets its host under its code, and the page's front
+  matter names the view, so MarkdownContent.astro can load the outputs.
 
 Every page also gets:
 
@@ -30,6 +33,8 @@ is gone is deleted. Never edit a generated page: edit the notebook and rerun.
 
 from __future__ import annotations
 
+import hashlib
+import json
 import os
 import re
 import subprocess
@@ -134,22 +139,50 @@ def editable(body: str) -> str:
     return MARIMO_FENCE.sub(fence, body)
 
 
-def as_code(body: str) -> str:
-    """Static: plain code blocks; a cell that hides its code becomes a closed fold."""
+def saved_outputs(notebook: Path) -> dict | None:
+    """The notebook's entry in its folder's notebook-outputs.json, if it has one."""
+    manifest = notebook.parent / "notebook-outputs.json"
+    if not manifest.exists():
+        return None
+    return json.loads(manifest.read_text(encoding="utf-8")).get(notebook.name)
+
+
+def output_host(code: str, outputs: dict | None) -> str:
+    """The host that shows a cell's saved output, found by the SHA-256 of its code.
+
+    `not-content` keeps Starlight's prose styles out of the output; one of them sets
+    `height: auto` on every iframe, which shrinks a folium map to 150 px.
+    """
+    if not outputs:
+        return ""
+    for variant in (code, code.rstrip("\n")):
+        host = outputs["hosts"].get(hashlib.sha256(variant.encode()).hexdigest())
+        if host:
+            return (
+                f'\n\n<marimo-cell class="not-content" name="{host["name"]}" '
+                f'data-marimo-studio-site="{host["site"]}"></marimo-cell>'
+            )
+    return ""
+
+
+def as_code(body: str, outputs: dict | None) -> str:
+    """Static: plain code blocks, each followed by its saved output if there is one;
+    a cell that hides its code becomes a closed fold, with its output outside it."""
 
     def cell(match: re.Match) -> str:
         language, options, code = match.groups()
         if "include=false" in options:
             return ""
         block = f"```{language}\n{code}```"
+        host = output_host(code, outputs)
         if "hide-code=true" not in options:
-            return block
+            return block + host
         name = re.search(r"name=(\S+)", options)
         label = f"Hidden cell: <code>{name.group(1)}</code>" if name else "Hidden cell"
         return (
             '<details class="group">\n'
             f'<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">{label}</summary>\n\n'
-            f"{block}\n\n</details>"
+            f"{block}\n\n</details>{host}"
         )
 
     return CELL.sub(cell, body)
@@ -197,14 +230,24 @@ def page(notebook: Path, source: dict | None, tutorial: dict | None) -> tuple[st
             f"*Part {tutorial['position']} of {tutorial['total']} in "
             f"[{tutorial['name']}]({relative(tutorial['page'], notebook)}).*"
         )
-    if mode == "static":
+    outputs = saved_outputs(notebook) if mode == "static" else None
+    if mode == "static" and outputs:
+        intro.append(
+            ":::note[Static notebook page]\n"
+            f"This page is [static]({glossary}#page-mode): nothing runs. Under each cell is "
+            "the output it gave in one run with every control at its default value; moving a "
+            "control doesn't run the notebook again. "
+            f"[See the notebook on GitHub]({view_url(notebook, source)}).\n:::"
+        )
+        body, config, extension = as_code(body, outputs), "", ".md"
+    elif mode == "static":
         intro.append(
             ":::note[Static notebook page]\n"
             f"This page shows the notebook's text and code. It is [static]({glossary}#page-mode): "
             "nothing runs, so its outputs, sliders and buttons aren't here. "
             f"[See the notebook on GitHub]({view_url(notebook, source)}).\n:::"
         )
-        body, config, extension = as_code(body), "", ".md"
+        body, config, extension = as_code(body, None), "", ".md"
     else:
         # marimo's mdx export leaves HTML comments in prose, which MDX rejects.
         body, extension = in_prose(editable(body), r"<!--(.*?)-->", r"{/*\1*/}"), ".mdx"
@@ -212,6 +255,8 @@ def page(notebook: Path, source: dict | None, tutorial: dict | None) -> tuple[st
     front: dict = {"title": title, "editUrl": edit_url(notebook, source)}
     if tutorial:
         front["sidebar"] = {"order": tutorial["position"]}
+    if outputs:
+        front["notebookOutputs"] = {key: outputs[key] for key in ("view", "revision", "marimo")}
     head = (
         f"---\n{MARKER} from {notebook.name}.\n# Edit the notebook, then run `just pages`.\n"
         + yaml.safe_dump(front, allow_unicode=True, sort_keys=False)

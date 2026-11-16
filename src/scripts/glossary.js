@@ -41,7 +41,9 @@
       return;
     }
     current = term;
-    title.textContent = term.dataset.term;
+    // Citations (src/plugins/rehype-citation-cards.mjs) have no term, only the reference.
+    title.textContent = term.dataset.term ?? "";
+    title.hidden = !term.dataset.term;
     body.textContent = term.dataset.definition;
     card.hidden = false;
     place();

@@ -67,6 +67,19 @@
 
   /* Theme toggle indicator: overshoots a little before it settles. */
   --ease-overshoot: cubic-bezier(0.175, 0.885, 0.32, 1.1);
+
+  /* Starlight's md breakpoint, where the sidebar leaves the mobile menu. */
+  --breakpoint-sidebar: 50rem;
+}
+
+/* The caret in an open sidebar group's heading: summary-open:rotate-90. */
+@custom-variant summary-open (details[open] > summary > &);
+
+/* Safari draws the disclosure triangle even on a flex summary. */
+@utility details-marker-hidden {
+  &::-webkit-details-marker {
+    display: none;
+  }
 }
 
 /* Expose the green/gray scales to Tailwind utilities (bg-gray-3, text-green-11, …).
@@ -111,6 +124,8 @@
   --color-doc-accent: var(--sl-color-accent);
   --color-doc-accent-text: var(--sl-color-text-accent);
   --color-doc-accent-tint: color-mix(in srgb, var(--sl-color-accent) 14%, transparent);
+  --color-doc-invert: var(--sl-color-text-invert);
+  --color-doc-hairline: var(--sl-color-hairline-light);
 }
 
 /* CSS Reset Enhancements */
@@ -262,6 +277,44 @@ a {
    edge. Restore the default unlayered; on sidebar pages this is a no-op. */
 main .sl-container {
   margin-inline: auto;
+}
+
+/* A saved notebook output wider than the content column, such as a wide
+   table, scrolls sideways within the column instead of running under the
+   "On this page" sidebar. */
+marimo-cell {
+  display: block;
+  overflow-x: auto;
+
+  /* marimo Studio themes every output control from a few base colors, and
+     derives the rest (muted text, surfaces, focus rings) from the inherited
+     text color. Unset, a switch's knob is transparent and its track black or
+     white. Starlight's variables follow the light and dark theme. */
+  --marimo-cell-background: var(--sl-color-bg);
+  --marimo-cell-accent: var(--sl-color-accent);
+  --marimo-cell-border-color: var(--sl-color-gray-4);
+  --marimo-cell-monospace-font: var(--font-mono);
+}
+
+/* marimo keeps a Markdown table in an island light, with white and pale lime
+   rows, also when the island is dark, so the whole table keeps its light-mode
+   look. @marimo-team/mdx-marimo themes the shadow roots of math and controls
+   from its public variables; the text outside them takes the private
+   foreground, which it resolves once on the island host. In dark mode
+   Starlight's white and gray-2 are the light shades. */
+[data-marimo-theme="dark"] marimo-island table {
+  --marimo-island-foreground: var(--sl-color-black);
+  --marimo-island-background: var(--sl-color-white);
+  --marimo-island-surface: var(--sl-color-white);
+  --marimo-island-border: var(--sl-color-gray-2);
+  --_marimo-island-foreground: var(--sl-color-black);
+}
+
+/* marimo prints a cell's console output unwrapped, so one long line widens
+   the whole page. Wrap it in the saved outputs of static notebook pages. */
+marimo-cell .console-output-area * {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 /* stylelint-enable selector-max-class */
 

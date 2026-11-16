@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="h-auto w-full" viewBox="0 0 800 340" role="img" aria-label="Four reinforced fill structures on soft clay over sand, with what to check on each. Reinforced soil wall with facing panels: internal stability and sliding. Steep reinforced slope with geogrid layers: compound stability. Basal reinforcement under an embankment on soft soil: overall stability. Piled embankment with geogrid over the pile caps: arching.">
+  <defs>
+    <pattern id="rf-sand" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="0.9" class="fill-gray-8"/><circle cx="9" cy="9" r="0.9" class="fill-gray-8"/></pattern>
+    <pattern id="rf-clay" width="20" height="8" patternUnits="userSpaceOnUse"><path d="M0 2H8M10 6H18" class="stroke-gray-8" stroke-width="0.75"/></pattern>
+    <pattern id="rf-fill" width="14" height="14" patternUnits="userSpaceOnUse"><g class="fill-none stroke-gray-8" stroke-width="0.75"><circle cx="4" cy="4" r="1.6"/><circle cx="11" cy="11" r="1.6"/></g></pattern>
+    <marker id="rf-check" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fill-doc-accent"/></marker>
+  </defs>
+
+  <!-- Ground and fill -->
+  <rect x="0" y="150" width="800" height="80" fill="url(#rf-clay)"/>
+  <rect x="0" y="230" width="800" height="58" fill="url(#rf-sand)"/>
+  <rect x="0" y="60" width="148" height="90" fill="url(#rf-fill)"/>
+  <path d="M200 150L240 60H320L360 150z" fill="url(#rf-fill)"/>
+  <path d="M395 150L435 110H505L545 150z" fill="url(#rf-fill)"/>
+  <path d="M610 150L650 105H730L770 150z" fill="url(#rf-fill)"/>
+  <g class="fill-none stroke-doc-line">
+    <path d="M0 230H800" class="stroke-gray-7" stroke-width="0.75"/>
+    <path d="M0 60H148M154 150H200L240 60H320L360 150H395L435 110H505L545 150H610L650 105H730L770 150H800" stroke-width="1.5"/>
+  </g>
+
+  <!-- Reinforcement -->
+  <g class="fill-none stroke-doc-text" stroke-width="1" stroke-dasharray="4 2">
+    <path d="M60 72H148M60 86H148M60 100H148M60 114H148M60 128H148M60 142H148"/>
+    <path d="M233.8 74H326.2M227.6 88H332.4M221.3 102H338.7M215.1 116H344.9M208.9 130H351.1M202.7 144H357.3"/>
+    <path d="M397 146H543"/>
+    <path d="M613 142H767"/>
+  </g>
+
+  <!-- Structures -->
+  <g class="stroke-doc-text" stroke-width="1.25">
+    <rect x="148" y="58" width="6" height="94" class="fill-gray-5"/>
+    <path d="M148 82H154M148 106H154M148 130H154" class="fill-none" stroke-width="0.75"/>
+    <g class="fill-gray-5">
+      <rect x="622" y="150" width="6" height="100"/><rect x="652" y="150" width="6" height="100"/><rect x="682" y="150" width="6" height="100"/><rect x="712" y="150" width="6" height="100"/><rect x="742" y="150" width="6" height="100"/>
+      <rect x="617" y="146" width="16" height="6"/><rect x="647" y="146" width="16" height="6"/><rect x="677" y="146" width="16" height="6"/><rect x="707" y="146" width="16" height="6"/><rect x="737" y="146" width="16" height="6"/>
+    </g>
+  </g>
+
+  <!-- Checks -->
+  <g class="fill-none stroke-doc-accent" stroke-width="1.5">
+    <path d="M148 150L96 60" stroke-dasharray="5 3"/>
+    <path d="M64 158H140" marker-end="url(#rf-check)"/>
+    <path d="M290 60A112.5 112.5 0 0 1 196 152" stroke-dasharray="5 3"/>
+    <path d="M480 110A51.2 51.2 0 1 0 565 150" stroke-dasharray="5 3"/>
+    <path d="M625 144Q640 120 655 144M655 144Q670 120 685 144M685 144Q700 120 715 144M715 144Q730 120 745 144" stroke-dasharray="5 3"/>
+  </g>
+  <g class="fill-doc-accent-text" font-size="11.5" text-anchor="middle">
+    <text x="48" y="52">internal stability</text>
+    <text x="102" y="174">sliding</text>
+    <text x="285" y="172">compound stability</text>
+    <text x="520" y="216">overall stability</text>
+    <text x="690" y="124">arching</text>
+  </g>
+
+  <!-- Typologies -->
+  <g text-anchor="middle">
+    <g class="fill-doc-text" font-size="13" font-weight="600">
+      <text x="85" y="312">Reinforced soil wall</text>
+      <text x="280" y="312">Steep reinforced slope</text>
+      <text x="470" y="312">Basal reinforcement</text>
+      <text x="690" y="312">Piled embankment</text>
+    </g>
+    <g class="fill-doc-muted" font-size="11.5">
+      <text x="85" y="328">with facing panels</text>
+      <text x="280" y="328">with geogrid layers</text>
+      <text x="470" y="328">embankment on soft soil</text>
+      <text x="690" y="328">geogrid over pile caps</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "bs-5930_ground-investigations_2015",
+    "type": "standard",
+    "title": "Code of practice for ground investigations",
+    "title-short": "Ground investigations",
+    "issued": {
+      "date-parts": [
+        [
+          2015
+        ]
+      ]
+    },
+    "publisher": "BSI",
+    "number": "BS 5930",
+    "language": "en-GB"
+  },
+  {
+    "id": "en-1997-1_ec7-general-rules_2004",
+    "type": "standard",
+    "title": "Eurocode 7: Geotechnical design - Part 1: General rules",
+    "title-short": "EC7 General rules",
+    "issued": {
+      "date-parts": [
+        [
+          2004
+        ]
+      ]
+    },
+    "publisher": "CEN",
+    "number": "EN 1997-1",
+    "language": "en"
+  },
+  {
+    "id": "en-1997-2_ec7-gi-testing_2007",
+    "type": "standard",
+    "title": "Eurocode 7: Geotechnical design - Part 2: Ground investigation and testing",
+    "title-short": "EC7 GI testing",
+    "issued": {
+      "date-parts": [
+        [
+          2007
+        ]
+      ]
+    },
+    "publisher": "CEN",
+    "number": "EN 1997-2",
+    "language": "en"
+  }
+]

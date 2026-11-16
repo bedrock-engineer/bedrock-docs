@@ -6,24 +6,36 @@ The pages are in `src/content/docs/`. Folders below are relative to it.
 
 ## How the docs fit together
 
-The docs are a graph, not a book. The [Docs Atlas](src/content/docs/reference/glossary.md#docs-atlas) shows how geotechnical work fits together and links to the [hubs](src/content/docs/reference/glossary.md#hub), one per structure or ground stage. A hub links to the [fundamentals](src/content/docs/reference/glossary.md#fundamental), [how-tos](src/content/docs/reference/glossary.md#how-to), [case studies](src/content/docs/reference/glossary.md#case-study) and [tools](src/content/docs/tools/index.md) that go deeper. Every page links its terms to the [glossary](src/content/docs/reference/glossary.md).
+The docs are a graph, not a book. The [Docs Atlas](src/content/docs/reference/glossary.md#docs-atlas) shows geotechnical work as a cycle: planning back from the project to the ground investigation it needs, and doing forward from the ground investigation to the design. The sections follow the planning order:
+
+1. **Geotechnical structures:** one [structure page](src/content/docs/reference/glossary.md#structure-page) per structure, with the checks on the structure and around it.
+2. **Geotechnical analyses:** the [method pages](src/content/docs/reference/glossary.md#method-page) that answer the checks and turn the EGM into a GDM.
+3. **Ground modeling:** from ground investigation data to the EGM.
+4. **Ground investigation:** existing data first, then fieldwork and lab tests.
+5. **Fundamentals:** [concepts](src/content/docs/reference/glossary.md#fundamental) that recur across the other sections.
+6. **Worked examples:** [problems worked through end to end](src/content/docs/reference/glossary.md#worked-example).
+7. **Tools** and **Reference**.
+
+Each section starts with an [overview page](src/content/docs/reference/glossary.md#overview-page). Ground investigation and ground models attach to the analysis, not to the structure: the analysis method decides which parameters you need, and those decide the ground model and the investigation. So a structure page links to method pages, and a method page links to the ground modeling and ground investigation it needs. Every page links its terms to the [glossary](src/content/docs/reference/glossary.md).
 
 A reader goes only as deep as they need:
 
 1. hover a glossary link for the term's gist;
 2. open a [Learn more fold](src/content/docs/reference/glossary.md#learn-more-fold) for the next level of detail;
-3. follow a link to the fundamental;
+3. follow a link to the method page or fundamental;
 4. run the notebook.
 
 ## Which kind of page
 
 | You want the reader to | Write a | Folder | `type` |
 | --- | --- | --- | --- |
-| see what to check for a structure, and where to go next | hub | `structures/`, `ground/` | `structure`, `ground` |
-| understand why something works | fundamental | `fundamentals/` | `fundamental` |
-| get one task done | how-to | `how-to/` | `how-to` |
-| learn from a real job | case study | `case-studies/<name>/` | `case-study` |
-| learn by doing, in order | tutorial | the tool's or case study's folder | `tutorial` |
+| see what a section covers | overview page | the section's `index.md` | `overview` |
+| see what to check for a structure, and where to go next | structure page | `geotechnical-structures/` | `structure` |
+| understand an analysis method and when it holds | method page | `geotechnical-analyses/` | `method` |
+| understand a concept that recurs everywhere | fundamental | `fundamentals/` | `fundamental` |
+| get one task done | how-to | the section it belongs to, such as `ground-investigation/` | `how-to` |
+| see a problem worked through end to end | worked example | `worked-examples/<name>/` | `worked-example` |
+| learn a tool by doing, in order | tutorial | the tool's folder | `tutorial` |
 | look something up | reference page | `reference/` | `reference` |
 | know what a tool is for | tool page | `tools/<tool>/index.md` | `tool` |
 
@@ -36,9 +48,9 @@ Every tool folder has the same shape: `index.md` (the tool page, written here), 
 title: Spread foundations             # required
 description: Pad and strip footings…  # one sentence, shown in search and link previews
 type: structure                       # the kind of page, from the table above
-eurocode: EN 1997-3:2025 Clause 5     # hubs: the clause
+eurocode: EN 1997-3:2025 Clause 5     # structure pages: the clause
 analysis_types: [stability, deformation]
-stage: [ground-investigation]         # case studies: the ground stages they cover
+stage: [ground-investigation]         # worked examples: the doing steps they cover
 tutorial: Learn marimo                # a tutorial page: the name of its ## parts list
 ---
 ```
@@ -47,10 +59,11 @@ tutorial: Learn marimo                # a tutorial page: the name of its ## part
 
 ## Conventions
 
-- **Links are relative links to files**, such as `[Bearing capacity](../fundamentals/bearing-capacity.mdx)` or `[Dataflow](getting-started/dataflow.py)` for a notebook. The build turns them into page links. They also work on GitHub and in Obsidian, and they survive moving the docs to another site.
+- **Links are relative links to files**, such as `[Bearing capacity](../geotechnical-analyses/bearing-capacity.mdx)` or `[Dataflow](getting-started/dataflow.py)` for a notebook. The build turns them into page links. They also work on GitHub and in Obsidian, and they survive moving the docs to another site.
 - **Links to other pages of the site** that aren't files, such as `/tools/`, are written from the site root without its base path (`/bedrock-docs/`); the build adds it.
 - **A glossary link** is a link to `glossary.md#<term>`. It gets a dotted underline, a hover card with the term's first paragraph, and a line under "Key terms" at the end of the page.
-- **A glossary term** is a `###` heading under one of the glossary's `##` groups. Its first paragraph is the hover text, so make it stand on its own. A term keeps one meaning everywhere.
+- **A glossary term** is a `###` heading under one of the glossary's `##` groups. Its first paragraph is the hover text, so make it stand on its own. A term keeps one meaning everywhere. Name the term in full and put its abbreviations in parentheses at the end of the heading, as in `### Cone penetration test (CPT)`: a link may then use any of them, `glossary.md#cpt` or `glossary.md#cone-penetration-test`. Separate several with commas. These short links work on the site, not on GitHub or in Obsidian.
+- **A citation** is pandoc syntax: `[@citekey]`, or `[@citekey, 2.4.1]` with a clause or page. A standard shows as (EN 1997-1:2004, 2.4.1), anything else as (Author 2016); hovering shows the full reference, and the page ends with the References it cites. The citekeys are those of the Bedrock.engineer Library, and [`bibliography.json`](bibliography.json) holds the cited entries as CSL-JSON, exported from that Library. Add an entry there, never invent a key. In a glossary entry, put citations in a paragraph after the first, so they stay out of the hover text. The format is set in [`src/plugins/citation-style.csl`](src/plugins/citation-style.csl).
 - **A Learn more fold** is an Obsidian callout: `> [!note]- Learn more: <title>`. The `-` keeps it closed.
 - **Math** is LaTeX between `$…$` or `$$…$$`.
 - **Marimo cells** go in an `.mdx` page as ```` ```python marimo ```` fences, with the page's packages in a ```` ```marimo-config ```` fence. They run at build time and in the reader's browser. Use them only where moving a value teaches something. See [Notebook pages](#notebook-pages).
@@ -61,6 +74,33 @@ tutorial: Learn marimo                # a tutorial page: the name of its ## part
 
 - Client data, or anything from a job, unless the client agreed to publish it.
 - Large files. Notebook exports, data and images over a few hundred kB go to object storage and are linked.
+
+## Figures
+
+A figure is an SVG file in `src/assets/`, put on a page with an image line of its own:
+
+```md
+![Five spread foundations in one ground cross-section, with what to check on each](../../../assets/structures/spread-foundations.svg)
+```
+
+The build puts the SVG itself into the page ([`src/plugins/remark-inline-svg.mjs`](src/plugins/remark-inline-svg.mjs)), so its classes follow the light and dark theme, which an `<img>` can't. The page still imports nothing, and the image shows on GitHub and in Obsidian, without the theme colors.
+
+- **Colors are token classes**, never color values: `fill-doc-surface`, `stroke-doc-text`, `fill-gray-5` and the rest of `src/styles/custom.css`. If a color is missing, add a token there.
+- **Tailwind utilities only, no arbitrary values.** ESLint doesn't read `.svg` files, so check the classes yourself.
+- **Prefix every `id`** of a pattern or marker with a short code for the file, such as `sf-` for spread foundations. A page can hold more than one SVG, and an id must be unique on the page.
+- **Describe the figure** in `role="img"` and `aria-label`: what it shows and what to take from it. The alt text of the image line is the short version.
+- **The dev server misses edits to an SVG**, because it caches each page by the page's own text. Edit the page, or stop the server, delete `.astro/data-store.json` and `node_modules/.astro/data-store.json`, and start it again. A new SVG file also needs a restart before Tailwind generates its classes. `just build` always sees everything.
+
+### Structure schematics
+
+Each structure page opens with a schematic in `src/assets/structures/<page>.svg`: the structure's typologies side by side in one ground cross-section, each with the checks that matter most for it. All fourteen share one visual language, so a reader learns it once.
+
+- **Canvas:** `viewBox="0 0 800 340"` and `class="h-auto w-full"`. The ground surface is around y 150 and the ground ends at y 288. Each typology gets a label at y 312 (size 13, weight 600, `fill-doc-text`) and a short muted line under it at y 328 (size 11.5, `fill-doc-muted`).
+- **Ground:** textures are `<pattern>` fills in `gray-8`, after bedrock-web's lithology textures: dots for sand, short dashes for clay, open circles for fill, bricks for rock. Layer boundaries are `stroke-gray-7` at 0.75. Open water is a `fill-gray-3` area under a 1.25 line marked with ▽. Groundwater is a dashed `stroke-doc-line` line.
+- **Structures:** concrete and steel in `fill-gray-5`, buildings and voids in `fill-doc-surface`, both outlined in `stroke-doc-text` at 1.25. Loads are `stroke-doc-text` arrows.
+- **Checks are the only color:** `stroke-doc-accent` at 1.5, dashed `5 3` for a failure surface or a deformed shape, solid with an arrowhead for a movement or a pressure. Each has a label of a word or two at size 11.5 in `fill-doc-accent-text`, taken from the page's "What to verify" table.
+- **Keep it quiet:** one or two checks per typology, not the whole table.
+- **Draw mechanisms as the reader knows them.** A bearing failure is a wedge across the full width of the footing with a slip surface coming up beside it, even where the calculation uses an effective width.
 
 ## Notebook pages
 
@@ -77,7 +117,23 @@ Each notebook's [page mode](src/content/docs/reference/glossary.md#page-mode) is
 | `islands` | `x.mdx`, with a marimo island per cell; cells that show their code in marimo get an editable code cell | at build time, then in the reader's browser through [Pyodide](src/content/docs/reference/glossary.md#pyodide) | notebooks whose packages Pyodide has, and that need no private data |
 | `static` | `x.md`, with the notebook's text and its code as code blocks; cells that hide their code in marimo become closed folds | nothing | notebooks that need data or packages a reader doesn't have |
 
-A static page has no outputs yet. The next step is to save each run with `marimo export session` where the data is, and show those saved outputs on the page.
+### Saved outputs on static pages
+
+A static page can show what each cell output in one run, with every control at its default value. [`scripts/docs/notebook_outputs.py`](scripts/docs/notebook_outputs.py) makes that run, where the data is:
+
+```sh
+just outputs worked-examples/soft-soil-egm ../../Repos/iaeg2026-soft-soil-egm.worktrees/<checkout>
+just pages
+```
+
+The checkout must be at the entry's `rev`. For each notebook, marimo Studio prepares a view with its Prepared (zero-python) runtime: the outputs, rendered later by marimo's own frontend in the reader's browser, with no Python. Two files come out of it:
+
+- `public/notebook-outputs/`: Studio's runtime and one view per notebook. Committed, so the deployed site has them: about 19 MB of runtime, which changes only with the Studio version, plus each notebook's view. A view's files are named by their content, so every export adds a full copy to the git history. Export again only when `sources.yaml` pins a new revision of the notebooks.
+- `<folder>/notebook-outputs.json`: per notebook, its view and the host of each cell with an output, by the SHA-256 of the cell's code. Committed; `just pages` puts each host under its cell.
+
+Controls on these pages show their default and do nothing. A cell whose output calls Python, such as an `mo.ui.table`, can't be prepared: the script leaves it out and lists it under `dropped`.
+
+The run uses the exporting machine's accounts, so a cell can show a name, a token or a list of projects, which would then be public. List such cells under the entry's `private` in `sources.yaml`: the script never saves them. The run also stops if an output shows a path under the home folder. Read through a new view before committing it.
 
 ### Tutorials
 

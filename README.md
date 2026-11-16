@@ -9,7 +9,8 @@ your browser. Built with [Astro Starlight](https://starlight.astro.build) and
 ```
 src/content/docs/       the pages (Starlight reads only this folder)
 ├── index.md            the Docs Atlas
-├── structures/  fundamentals/  case-studies/
+├── geotechnical-structures/  geotechnical-analyses/  ground-modeling/
+├── ground-investigation/  fundamentals/  worked-examples/
 ├── tools/<tool>/       tool page, getting started, guides, examples, reference
 └── reference/          glossary and other look-up pages
 src/components/ plugins/ scripts/ styles/   glossary hovers, Learn more folds, marimo runtime

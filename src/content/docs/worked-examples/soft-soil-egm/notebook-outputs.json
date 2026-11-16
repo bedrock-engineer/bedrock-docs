@@ -1,0 +1,252 @@
+{
+  "01_get_data.py": {
+    "dropped": [
+      "download",
+      "geotop_bimdf",
+      "geotop_boxes",
+      "geotop_legends",
+      "geotop_units",
+      "geotop_voxels",
+      "viewer_selection"
+    ],
+    "hosts": {
+      "23799a3b3b3c42a3552cb4dbea8df05c6acdacc445afd3bb8acf78a3b0a2a449": {
+        "name": "cell-1",
+        "site": "site-e0f0569bc281ca418755d77d170891188e8933d1ca0333c08d18f48e9ad0beef"
+      },
+      "49e97a137af19a17368534d3243160206f1468d33742666838f3d8ea1d05288b": {
+        "name": "download_controls",
+        "site": "site-16934363fb0361e47afee2ed6a2e37a44b68f4d9b573e517936fb250b859a9b3"
+      },
+      "5529e113b7561bf6741320626c09314749c91f132d25210deaefb6ff741f5ee2": {
+        "name": "cell-10",
+        "site": "site-6d5f7d56e7157eb99da07532ca06977564b3eb85b57a358dc8d6e896eff265f1"
+      },
+      "87792d98024e8e9b89e6634b303b42f82a0a7b6384b8b2b937c5a0a2faffd7b9": {
+        "name": "selection_map",
+        "site": "site-3b8bd807fb99742d5a863180e287f1a36d4008de7cc364a379002b13df8bacc5"
+      },
+      "9392d8874cfc095cc58aa23a6aeb897e43076fd72e7f9e871199373fac4d7c16": {
+        "name": "viewer",
+        "site": "site-a633c9f9b548b8bbe078b1ae3f12099e93a5b3c37b5e6e09c4ac6de821f9f6bc"
+      },
+      "abbfac7a6996e06e96cb08bdf0f5db66ee7acf4370604a0686bfe4001dfb58f1": {
+        "name": "settings",
+        "site": "site-aa68bd699ee8597c34d66ce496c7ebd099bc2882c62d5b0b58b5799364f59c32"
+      },
+      "abe8412834488d9360eae80469abc14d0cfef568addc203dfa65d8fc6286f207": {
+        "name": "cell-2",
+        "site": "site-ab3b73b7aa9042f75a1e46601b778fae1f25214a42ef6f04d3e8e276378cbf8e"
+      },
+      "b7aecc3b95f7e72214ecf7a078911ae050769470734481b0f390b4b5a48cf402": {
+        "name": "viewer_color",
+        "site": "site-8e8e15d2268b02e36889a2c97de718dcc403df7b9bc564e30ed589854abb5b60"
+      },
+      "b7c852d3651b2abdfe814247641fa706f4c2f2d544c5887c13a127cfd396df83": {
+        "name": "geotop_read",
+        "site": "site-714efe9e730255f611d9774b78ae6822dcce764d62f9924d3354d2f33016f899"
+      },
+      "bdae6c82e9c398639aef9f4e4cca484f75a3a11522564ec0c92083b91dea8123": {
+        "name": "viewer_intro",
+        "site": "site-7c2a22ba640e801b602b745b9a6bd03cae88c7af12332f62f3fd29968c18c415"
+      },
+      "c240993e1086df2ed401489c904b019fe4c7aa4502aae75cf5cdb7aa1480c4e5": {
+        "name": "selection",
+        "site": "site-211b87cd0581494f7b18981e25824f9bcfc3c43969a7aee43dfaa59cf046d373"
+      }
+    },
+    "marimo": "0.25.2",
+    "revision": "4d7965df340f91611b5f8976018ef3cef4b933fb21fdf650c5c72b22f8a0e191",
+    "view": "soft-soil-egm-01-get-data"
+  },
+  "02_simulation_domains.py": {
+    "dropped": [
+      "domain_table",
+      "save",
+      "viewer_selection"
+    ],
+    "hosts": {
+      "105649f4b743d5c27106916615812002816f13531b56f0c39c9c7bd9be562d89": {
+        "name": "read_inputs",
+        "site": "site-cce322e1ef774a8877bd1af82ff0dd4a0b96cc1668d089d9a18f1642e35ff642"
+      },
+      "12722e9c4678112fdca811055b30541cfcd47a756048e688f519834ac6e78a69": {
+        "name": "section_intro",
+        "site": "site-d0665be2ef6d3d0aa00ac5a1cb15c8df82c7f84704e87ec179fb47dd52d1d293"
+      },
+      "2888e9df3ed6231c8ad9bbbb8db9dfd8048c0ba3cc43277a5fd60bf5cf374ed1": {
+        "name": "save_intro",
+        "site": "site-fe27e80a690b7e2475eae13e43f5049786cc9c949d512e47ad6b53dfba299b6f"
+      },
+      "7a513a3a2062a7ebb3fad1aa2d3a1e218a3753915a9e83310c3ae826c14c1e52": {
+        "name": "qc_rf",
+        "site": "site-985f18ef29b7a87235015a1f6a59642698c13f4448cf103c19de0a24eab70bce"
+      },
+      "7b3d79dfe7cf0e460be48a879e9684dd0b3b38d9de779f6720a7c61f54ca6e9a": {
+        "name": "domain_viewer",
+        "site": "site-42caee51ae58f986ca35ba7cb9d671763b554e38284bae00bee51533812b62b5"
+      },
+      "8974e18f5fe3f9f9ca222cfbb8c3f6a2d723fb81db87016959ad2497fc3f595e": {
+        "name": "domain_definition",
+        "site": "site-9350b5a51d10ba6f746d2040f08b4595e3700ebfd0bf578f0ddc142232fac748"
+      },
+      "a272d19daef28f10ffa5573bd75b6361b2fdbb1ed2ba3b7bd30f2d620ddbafc3": {
+        "name": "cross_sections",
+        "site": "site-bca0da0479a5997278fcc34251123fd7746b34ff7b0642db6482602ca20aba3b"
+      },
+      "a4e51fa102a2295af7d52493b72cf106e81ddf9062f8d8eb5de47290e88183e2": {
+        "name": "saved_status",
+        "site": "site-1ac1f1638c77bf1b3fab374599157bcf250d2c6198048773b6027e79d42c25c4"
+      },
+      "acd37e8311aaaa44c065270faadaefdc1420e61b3f0f8528032b4b1c92bfb1da": {
+        "name": "separation_intro",
+        "site": "site-8c8bbcba1f4ad2d6de8387619ddc3f13db7865bd1dd0fc546ec7df1cb39d5b81"
+      },
+      "b74108c04bbf41b49de51c80506bc67c137d3a977be64843f013041492df4166": {
+        "name": "controls",
+        "site": "site-b7ca2c237741ea47f49092c0d3547f870358d605f3ea838b9868b252f6282385"
+      },
+      "bbd0212b884b38bf45f4d668c82119affbcb30a15952bfae3aa41805be7c28af": {
+        "name": "separation",
+        "site": "site-4795a3986080229d5a6b4af7e1ddf5860277adcc830e17afb7a5222a681786ed"
+      },
+      "d4d2468805c5ed7843dcea04b160e52e2af8ea9273fb0c925332b494d76605bf": {
+        "name": "cell-1",
+        "site": "site-e0f0569bc281ca418755d77d170891188e8933d1ca0333c08d18f48e9ad0beef"
+      },
+      "d793aa1ad1d6254c051135d644ac4598f1c20ac3d9ac1640f173dc1ce4cbd208": {
+        "name": "coverage",
+        "site": "site-387880daad2ce68d24618a4f93c99ef31923fa9ffe3b33088293d6b426bf4c19"
+      },
+      "db92180baa3a2d9d2f72812118e12b677f9c885253ca92034b7d4e0fa648a956": {
+        "name": "presets",
+        "site": "site-b659d56c31b66555a51f3fcd075f517dbefce13a32351fc9945f43aa92f65904"
+      },
+      "f8f37d7ac52566436ad482bec23ad9c6040b6d29904bd8ad3ce30a4705fa3891": {
+        "name": "cell-2",
+        "site": "site-ab3b73b7aa9042f75a1e46601b778fae1f25214a42ef6f04d3e8e276378cbf8e"
+      },
+      "fe426d27a679b8cca1697c45804271227e0ca361cf52a987c58abaf29b86d213": {
+        "name": "choose_intro",
+        "site": "site-5ccc208fd4de0d0981abd04bcbe1a97a860bd949f1114bcfcf9f5b6322c67f2a"
+      }
+    },
+    "marimo": "0.25.2",
+    "revision": "f0a8524613d0c73672b66003ce8385fd504c95a627dc91b5b3fd82938d92e0e6",
+    "view": "soft-soil-egm-02-simulation-domains"
+  },
+  "03_variograms.py": {
+    "dropped": [
+      "data_table",
+      "save",
+      "saved_table",
+      "variograms"
+    ],
+    "hosts": {
+      "0576e0cc001cba9399fcc3301649fdeb6831ad7e6dd9f66cf9bfa04ccdb3a09a": {
+        "name": "variogram_rows",
+        "site": "site-e899e83bfe960c9d58c13b9a42822d3ff3e253a1fb9ba34123dbba941a0f23b3"
+      },
+      "13b95e1619448568c6e0018e8ea521cf91097414eeba6cf01cb288dbb5699c8e": {
+        "name": "parameter",
+        "site": "site-d1c34004fd38ba4ba0acbc6f83f65fda74f588d6981faa9352f3a6d456078612"
+      },
+      "1507885149d68cd6dfb49c8b222bc3a38dcd5a94ed4bdfc662c473c8a7f02c06": {
+        "name": "cell-2",
+        "site": "site-ab3b73b7aa9042f75a1e46601b778fae1f25214a42ef6f04d3e8e276378cbf8e"
+      },
+      "5e2294aa2e7ec0c322eaabc8c0f1b6be4a28da0881e9a62312e89bae07496717": {
+        "name": "samples",
+        "site": "site-319b74247d6d6dcdb92b242603245dd0755c8c441f75c90ad28ab85cf2c97bff"
+      },
+      "a04c0cf99cf54cc421c27f0abda93742add6d87a567e6efc570e5ad8f3a957a3": {
+        "name": "variograms_intro",
+        "site": "site-63938e9bf0e504caf3194bf38bc8d487b1a6ea9b595d1ea6342d6482c8f84c1e"
+      },
+      "b3b3c9d652ca8c25ae80a5ce545b864c810baf66689c5b0b004977e28550c152": {
+        "name": "fit",
+        "site": "site-6fbb4e46bc5fb2eda857352c18f18c00cc9148caf72fd158223476605b549421"
+      },
+      "bfff92c81307feaded1a02a1932947b1634b9eaf95781aa7b9110e7240c903ab": {
+        "name": "save_intro",
+        "site": "site-fe27e80a690b7e2475eae13e43f5049786cc9c949d512e47ad6b53dfba299b6f"
+      },
+      "c3bfc73ff49ef4bdfe2c52f10b99931447c9b708ef30031c1e2ffa4af754936b": {
+        "name": "variogram_definition",
+        "site": "site-866eee65289c3ccfc528aa784245f1a28c91d4e34042aa83b54ab30cad9cbcad"
+      },
+      "c63947064748304da7926a7afbcebd02005a6634f538f80e859e82fe1f0daa86": {
+        "name": "cell-1",
+        "site": "site-e0f0569bc281ca418755d77d170891188e8933d1ca0333c08d18f48e9ad0beef"
+      },
+      "d0e7256773dfcaf6f317a7fa448fd69af52761e480e7dbd744b9f096e4df53d0": {
+        "name": "saved_status",
+        "site": "site-1ac1f1638c77bf1b3fab374599157bcf250d2c6198048773b6027e79d42c25c4"
+      },
+      "d236c4666cf599724f20991f231d4a26953371753ae01caf7491a5fe12c4c93b": {
+        "name": "data_intro",
+        "site": "site-7895f772c8b93aa185314ac03790a5cbce1b752104bafc1f17f5cf9b366d8209"
+      }
+    },
+    "marimo": "0.25.2",
+    "revision": "03d728469ad6573d1109a7023e5c4ec74378eac9707fb22bd951c19146050fcd",
+    "view": "soft-soil-egm-03-variograms"
+  },
+  "06_bimdataframes.py": {
+    "dropped": [
+      "cpt_cylinders",
+      "cpt_layers",
+      "publish",
+      "saved_runs",
+      "sbtn_volumes",
+      "speckle_model_choices"
+    ],
+    "hosts": {
+      "20484770314733a88abf4db183f398a552f1c223b6f682293b2a3f32f0792ae9": {
+        "name": "cell-1",
+        "site": "site-e0f0569bc281ca418755d77d170891188e8933d1ca0333c08d18f48e9ad0beef"
+      },
+      "20cca091e36f1a65f2096aeb9d44ee9ca08f2d0948a6dfbce9216be47fe5a2f7": {
+        "name": "revit_model",
+        "site": "site-472addccf2e4beacc26454174a0475e2ff17efc49f325b8197f25c61dc89ba71"
+      },
+      "2443952785c5518bbe9dcaec1756ed8953919898e330ef502118b8816aa4f435": {
+        "name": "cell-2",
+        "site": "site-ab3b73b7aa9042f75a1e46601b778fae1f25214a42ef6f04d3e8e276378cbf8e"
+      },
+      "27c4f750cefc039b703ae289b6b64123ccf0b3815a78a1efc75a00f660159736": {
+        "name": "cell-12",
+        "site": "site-402df49fc0661e9537057eea09b91f02bdb2f519b73d266a4be57c22d9193786"
+      },
+      "408ac55bd4d5368fb08031dab5426172128f6ea01893866f70efc8a68b92de57": {
+        "name": "viewer",
+        "site": "site-a633c9f9b548b8bbe078b1ae3f12099e93a5b3c37b5e6e09c4ac6de821f9f6bc"
+      },
+      "5fa23654e626f677a55272a14ffb181326211d187c76fdd3143246a0609d2955": {
+        "name": "cell-8",
+        "site": "site-97f3aa4470764be4bda71f0202ff9dcad8335a0e0976ab5c9566991594de8593"
+      },
+      "7c3ac5c01280d4bcbb4b18203352d1375c407c3110fb794c073f6523acbe1419": {
+        "name": "publish_intro",
+        "site": "site-ab410e976ef1aa27c75cda5a0d871ddbd6af98b2bf2619d7edf24b8ad63a56ca"
+      },
+      "8e59e60d55718b9cb2772b55f8d048aa38225810bf7117bfe95fb469c3770f5d": {
+        "name": "cell-15",
+        "site": "site-9c943e18a8ce1820f50d6ed370d24e4b24360edb0c9f705025ea88d67ea08a8c"
+      },
+      "bf7f7d6a31a3aea31bd066b87ee26562e74ec8117467a00100700ae92f158aef": {
+        "name": "viewer_selection",
+        "site": "site-f165fe9811149115afb495d5b385180e5c359135e96f0cc35215d5328103d8ee"
+      }
+    },
+    "marimo": "0.25.2",
+    "private": [
+      "speckle_server_input",
+      "speckle_sign_in",
+      "speckle_signed_in_as",
+      "speckle_targets"
+    ],
+    "revision": "042a5587baec51b0e3d6feb0c417971c7f3116ae0e86510283de09dece107878",
+    "view": "soft-soil-egm-06-bimdataframes"
+  }
+}

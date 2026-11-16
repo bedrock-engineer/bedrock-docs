@@ -1,0 +1,31 @@
+---
+// Starlight's Sidebar with our SidebarSublist, whose group headings link to the
+// group's index page. Starlight restores which groups were open on the previous
+// page, so the script below opens the groups that hold the current page after that.
+import MobileMenuFooter from "@astrojs/starlight/components/MobileMenuFooter.astro";
+import SidebarPersister from "@astrojs/starlight/components/SidebarPersister.astro";
+import SidebarSublist from "./SidebarSublist.astro";
+
+const { sidebar } = Astro.locals.starlightRoute;
+---
+
+<SidebarPersister><SidebarSublist sublist={sidebar} /></SidebarPersister>
+
+<script is:inline aria-hidden="true">
+  (() => {
+    const sidebar = document.getElementById("starlight__sidebar");
+    if (!sidebar) return;
+    sidebar.querySelectorAll("details[data-holds-current-page]").forEach((details) => {
+      details.open = true;
+    });
+    // Starlight records a click in a summary as a toggle. A heading link doesn't
+    // toggle, so on an open group it would be remembered as closed.
+    sidebar.querySelectorAll("summary > a").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        if (link.closest("details")?.open) event.stopPropagation();
+      });
+    });
+  })();
+</script>
+
+<div class="sidebar:hidden"><MobileMenuFooter /></div>

@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="h-auto w-full" viewBox="0 0 800 340" role="img" aria-label="Five spread foundations in one ground cross-section, with what to check on each. Pad footing under a column: bearing failure. Raft under a whole building: settlement. Compensated raft, a basement below the groundwater: uplift. Strip footing near a slope: overall stability. Offshore gravity base on the seabed: cyclic load and sliding.">
+  <defs>
+    <pattern id="sf-sand" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="0.9" class="fill-gray-8"/><circle cx="9" cy="9" r="0.9" class="fill-gray-8"/></pattern>
+    <pattern id="sf-clay" width="20" height="8" patternUnits="userSpaceOnUse"><path d="M0 2H8M10 6H18" class="stroke-gray-8" stroke-width="0.75"/></pattern>
+    <marker id="sf-load" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fill-doc-text"/></marker>
+    <marker id="sf-check" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fill-doc-accent"/></marker>
+  </defs>
+
+  <!-- Ground and water -->
+  <path d="M615.5 172L662 212H800V172z" class="fill-gray-3"/>
+  <path d="M0 150H590L662 212H800V238H0z" fill="url(#sf-sand)"/>
+  <rect x="0" y="238" width="800" height="50" fill="url(#sf-clay)"/>
+  <g class="fill-none stroke-doc-line">
+    <path d="M0 238H800" class="stroke-gray-7" stroke-width="0.75"/>
+    <path d="M0 172H615" stroke-width="1" stroke-dasharray="6 4"/>
+    <path d="M615.5 172H800M8 165H20L14 172zM10 176H18M12 179H16M634 165H646L640 172zM636 176H644M638 179H642" stroke-width="1.25"/>
+    <path d="M0 150H590L662 212H800" stroke-width="1.5"/>
+  </g>
+  <text x="6" y="192" class="fill-doc-muted" font-size="11.5">groundwater</text>
+
+  <!-- Structures -->
+  <g class="stroke-doc-text" stroke-width="1.25">
+    <rect x="90" y="90" width="10" height="68" class="fill-gray-5"/>
+    <rect x="73" y="158" width="44" height="12" class="fill-gray-5"/>
+    <rect x="176" y="98" width="108" height="52" class="fill-doc-surface"/>
+    <rect x="168" y="150" width="124" height="10" class="fill-gray-5"/>
+    <rect x="340" y="96" width="90" height="54" class="fill-doc-surface"/>
+    <rect x="334" y="150" width="102" height="54" class="fill-doc-surface"/>
+    <path d="M334 196H436" class="fill-none"/>
+    <rect x="536" y="100" width="8" height="52" class="fill-gray-5"/>
+    <rect x="520" y="152" width="40" height="10" class="fill-gray-5"/>
+    <rect x="725" y="56" width="10" height="94" class="fill-gray-5"/>
+    <path d="M723 150H737L748 194H712z" class="fill-gray-5"/>
+    <rect x="690" y="194" width="80" height="18" class="fill-gray-5"/>
+    <path d="M716 120H744" class="fill-none"/>
+  </g>
+
+  <!-- Loads -->
+  <g class="fill-none stroke-doc-text" stroke-width="1.25" marker-end="url(#sf-load)">
+    <path d="M95 64V88"/>
+    <path d="M540 74V98"/>
+  </g>
+
+  <!-- Checks -->
+  <g class="fill-none stroke-doc-accent" stroke-width="1.5">
+    <path d="M73 170L95 204L117 170M95 204Q145 216 160 150" stroke-dasharray="5 3"/>
+    <path d="M168 168Q230 188 292 168" stroke-dasharray="5 3"/>
+    <g marker-end="url(#sf-check)"><path d="M360 230V210"/><path d="M385 230V210"/><path d="M410 230V210"/></g>
+    <path d="M500 150A139 139 0 0 0 662 212" stroke-dasharray="5 3"/>
+    <path d="M748 160H786" marker-start="url(#sf-check)" marker-end="url(#sf-check)"/>
+    <path d="M698 222H762" marker-end="url(#sf-check)"/>
+  </g>
+  <g class="fill-doc-accent-text" font-size="11.5" text-anchor="middle">
+    <text x="138" y="228">bearing</text>
+    <text x="230" y="204">settlement</text>
+    <text x="446" y="224" text-anchor="start">uplift</text>
+    <text x="583" y="232">overall stability</text>
+    <text x="767" y="152">cyclic load</text>
+    <text x="730" y="234">sliding</text>
+  </g>
+
+  <!-- Typologies -->
+  <g text-anchor="middle">
+    <g class="fill-doc-text" font-size="13" font-weight="600">
+      <text x="95" y="312">Pad footing</text>
+      <text x="230" y="312">Raft</text>
+      <text x="385" y="312">Compensated raft</text>
+      <text x="540" y="312">Strip footing</text>
+      <text x="730" y="312">Gravity base</text>
+    </g>
+    <g class="fill-doc-muted" font-size="11.5">
+      <text x="95" y="328">under a column</text>
+      <text x="230" y="328">under the whole building</text>
+      <text x="385" y="328">basement below groundwater</text>
+      <text x="540" y="328">near a slope</text>
+      <text x="730" y="328">offshore</text>
+    </g>
+  </g>
+</svg>

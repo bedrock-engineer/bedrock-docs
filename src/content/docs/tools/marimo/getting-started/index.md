@@ -4,7 +4,6 @@ description: marimo's own ten tutorials, running in your browser, from your firs
 type: tutorial
 tutorial: Learn marimo
 sidebar:
-  label: About this tutorial
   order: 0
 ---
 

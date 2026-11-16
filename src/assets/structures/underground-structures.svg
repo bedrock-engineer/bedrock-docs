@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="h-auto w-full" viewBox="0 0 800 340" role="img" aria-label="Four underground structures in one cross-section of sand over rock, with what to check on each. TBM tunnel in soft ground, drawn along its length: face stability, and surface settlement next to a building. Shaft through soil into rock: uplift of its base. Rock cavern with a bolted roof: a block falling from the roof. Repository deep in rock: heat and pressure around the canisters.">
+  <defs>
+    <pattern id="us-sand" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="0.9" class="fill-gray-8"/><circle cx="9" cy="9" r="0.9" class="fill-gray-8"/></pattern>
+    <pattern id="us-rock" width="24" height="16" patternUnits="userSpaceOnUse"><path d="M0 0.5H24M0 8.5H24M6 0.5V8.5M18 8.5V16" class="fill-none stroke-gray-8" stroke-width="0.75"/></pattern>
+    <marker id="us-check" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fill-doc-accent"/></marker>
+  </defs>
+
+  <!-- Ground -->
+  <path d="M0 150H800V190H300L260 238H0z" fill="url(#us-sand)"/>
+  <path d="M300 190H800V288H0V238H260z" fill="url(#us-rock)"/>
+  <g class="fill-none stroke-doc-line">
+    <path d="M0 238H260L300 190H800" class="stroke-gray-7" stroke-width="0.75"/>
+    <path d="M0 170H800" stroke-width="1" stroke-dasharray="6 4"/>
+    <path d="M264 163H276L270 170zM266 174H274M268 177H272" stroke-width="1.25"/>
+    <path d="M0 150H305M355 150H800" stroke-width="1.5"/>
+  </g>
+
+  <!-- Structures -->
+  <g class="stroke-doc-text" stroke-width="1.25">
+    <rect x="0" y="190" width="130" height="32" class="fill-doc-surface"/>
+    <path d="M16 190V222M32 190V222M48 190V222M64 190V222M80 190V222M96 190V222M112 190V222" class="fill-none stroke-doc-line" stroke-width="0.75"/>
+    <rect x="130" y="188" width="40" height="36" class="fill-gray-5"/>
+    <path d="M170 186V226" class="fill-none" stroke-width="2.5"/>
+    <rect x="196" y="104" width="40" height="46" class="fill-doc-surface"/>
+    <rect x="311" y="146" width="38" height="100" class="fill-doc-surface" stroke-width="0"/>
+    <g class="fill-gray-5"><rect x="305" y="146" width="6" height="106"/><rect x="349" y="146" width="6" height="106"/><rect x="305" y="246" width="50" height="6"/></g>
+    <path d="M460 275V238Q460 215 500 213Q540 215 540 238V275z" class="fill-doc-surface"/>
+    <path d="M480 218L470 198M500 213V192M520 218L530 198" class="fill-none"/>
+    <circle cx="690" cy="250" r="16" class="fill-doc-surface"/>
+    <rect x="684" y="244" width="12" height="12" class="fill-gray-5" stroke-width="1"/>
+    <rect x="756" y="150" width="8" height="110" class="fill-doc-surface" stroke-width="1"/>
+  </g>
+
+  <!-- Checks -->
+  <g class="fill-none stroke-doc-accent" stroke-width="1.5">
+    <g marker-end="url(#us-check)"><path d="M174 196H188"/><path d="M174 206H188"/><path d="M174 216H188"/><path d="M318 274V258"/><path d="M342 274V258"/></g>
+    <path d="M100 150Q150 168 200 150" stroke-dasharray="5 3"/>
+    <path d="M486 215L500 199L514 215" stroke-dasharray="4 2"/>
+    <circle cx="690" cy="250" r="26" stroke-dasharray="5 3"/>
+    <circle cx="690" cy="250" r="36" stroke-dasharray="5 3"/>
+  </g>
+  <g class="fill-doc-accent-text" font-size="11.5" text-anchor="middle">
+    <text x="194" y="210" text-anchor="start">face stability</text>
+    <text x="140" y="140">settlement</text>
+    <text x="380" y="268" text-anchor="start">uplift</text>
+    <text x="556" y="212" text-anchor="start">block fall</text>
+    <text x="690" y="206">heat and pressure</text>
+  </g>
+
+  <!-- Typologies -->
+  <g text-anchor="middle">
+    <g class="fill-doc-text" font-size="13" font-weight="600">
+      <text x="110" y="312">TBM tunnel</text>
+      <text x="330" y="312">Shaft</text>
+      <text x="500" y="312">Rock cavern</text>
+      <text x="700" y="312">Repository</text>
+    </g>
+    <g class="fill-doc-muted" font-size="11.5">
+      <text x="110" y="328">in soft ground, lengthwise</text>
+      <text x="330" y="328">through soil into rock</text>
+      <text x="500" y="328">with a bolted roof</text>
+      <text x="700" y="328">deep in rock</text>
+    </g>
+  </g>
+</svg>

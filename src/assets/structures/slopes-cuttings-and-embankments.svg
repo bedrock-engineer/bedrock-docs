@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="h-auto w-full" viewBox="0 0 800 340" role="img" aria-label="Five slopes in one ground cross-section, with what to check on each. Dike on a river: piping under the dike. Embankment on soft ground: settlement and overall stability. Cutting below the groundwater: uplift of its base. Natural slope in soil: runout after failure. Rock slope: planar sliding along a joint and rockfall.">
+  <defs>
+    <pattern id="sl-sand" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="0.9" class="fill-gray-8"/><circle cx="9" cy="9" r="0.9" class="fill-gray-8"/></pattern>
+    <pattern id="sl-clay" width="20" height="8" patternUnits="userSpaceOnUse"><path d="M0 2H8M10 6H18" class="stroke-gray-8" stroke-width="0.75"/></pattern>
+    <pattern id="sl-fill" width="14" height="14" patternUnits="userSpaceOnUse"><g class="fill-none stroke-gray-8" stroke-width="0.75"><circle cx="4" cy="4" r="1.6"/><circle cx="11" cy="11" r="1.6"/></g></pattern>
+    <pattern id="sl-rock" width="24" height="16" patternUnits="userSpaceOnUse"><path d="M0 0.5H24M0 8.5H24M6 0.5V8.5M18 8.5V16" class="fill-none stroke-gray-8" stroke-width="0.75"/></pattern>
+    <marker id="sl-check" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fill-doc-accent"/></marker>
+  </defs>
+
+  <!-- Ground and water -->
+  <path d="M0 118H88.8L60 150L40 180H0z" class="fill-gray-3"/>
+  <path d="M0 180H40L60 150H410L445 190H515L550 150H600L680 100H690L660 238H0z" fill="url(#sl-sand)"/>
+  <path d="M0 238H660L650 288H0z" fill="url(#sl-clay)"/>
+  <path d="M690 100H700L725 40H800V288H650L660 238z" fill="url(#sl-rock)"/>
+  <path d="M60 150L105 100H130L185 150z" fill="url(#sl-fill)"/>
+  <path d="M225 150L260 112H310L345 150z" fill="url(#sl-fill)"/>
+  <g class="fill-none stroke-doc-line">
+    <path d="M0 238H660M690 100L660 238L650 288" class="stroke-gray-7" stroke-width="0.75"/>
+    <path d="M89 118Q140 128 185 150M185 172H429M531 172H674" stroke-width="1" stroke-dasharray="6 4"/>
+    <path d="M0 118H88.8M14 111H26L20 118zM16 122H24M18 125H22" stroke-width="1.25"/>
+    <path d="M0 180H40L60 150L105 100H130L185 150H225L260 112H310L345 150H410L445 190H515L550 150H600L680 100H700L725 40H800" stroke-width="1.5"/>
+  </g>
+  <rect x="683" y="94" width="6" height="6" class="fill-gray-5 stroke-doc-text" stroke-width="1"/>
+
+  <!-- Checks -->
+  <g class="fill-none stroke-doc-accent" stroke-width="1.5">
+    <path d="M30 192Q110 222 194 158" stroke-dasharray="5 3" marker-end="url(#sl-check)"/>
+    <path d="M225 156Q285 172 345 156" stroke-dasharray="5 3"/>
+    <path d="M270 112A58.3 58.3 0 0 0 380 150" stroke-dasharray="5 3"/>
+    <g marker-end="url(#sl-check)"><path d="M465 222V198"/><path d="M495 222V198"/></g>
+    <path d="M606 146Q650 150 678 102" stroke-dasharray="5 3"/>
+    <path d="M600 143H568" marker-end="url(#sl-check)"/>
+    <path d="M760 40L706 86" stroke-dasharray="5 3"/>
+    <path d="M712 70Q688 66 686 90" stroke-dasharray="1 3" stroke-linecap="round" marker-end="url(#sl-check)"/>
+  </g>
+  <g class="fill-doc-accent-text" font-size="11.5" text-anchor="middle">
+    <text x="110" y="226">piping</text>
+    <text x="240" y="184">settlement</text>
+    <text x="350" y="204">overall stability</text>
+    <text x="480" y="234">uplift</text>
+    <text x="583" y="137">runout</text>
+    <text x="760" y="76">planar sliding</text>
+    <text x="664" y="62">rockfall</text>
+  </g>
+
+  <!-- Typologies -->
+  <g text-anchor="middle">
+    <g class="fill-doc-text" font-size="13" font-weight="600">
+      <text x="110" y="312">Dike</text>
+      <text x="285" y="312">Embankment</text>
+      <text x="480" y="312">Cutting</text>
+      <text x="640" y="312">Natural slope</text>
+      <text x="755" y="312">Rock slope</text>
+    </g>
+    <g class="fill-doc-muted" font-size="11.5">
+      <text x="110" y="328">on a river</text>
+      <text x="285" y="328">on soft ground</text>
+      <text x="480" y="328">below groundwater</text>
+      <text x="640" y="328">in soil</text>
+      <text x="755" y="328">along joints</text>
+    </g>
+  </g>
+</svg>

@@ -17,6 +17,8 @@
 #   branch: branch for "Edit page" links (default: main)
 #   mode:   islands (cells run in the reader's browser) or static (code only,
 #           nothing runs); notebooks in no entry are islands
+#   private: with static, cells whose output shows the exporting machine's
+#           accounts; `just outputs` never saves them
 #
 # See the Sources section of CONTRIBUTING.md.
 
@@ -47,9 +49,9 @@
 
 # The notebooks need the project's data/ folder (GeoTOP, CPTs, simulation runs) and
 # packages Pyodide lacks, so they can't run at build time or in a browser.
-- to: case-studies/iaeg-2026
+- to: worked-examples/soft-soil-egm
   repo: bedrock-engineer/iaeg2026-soft-soil-egm
-  rev: 966ef9d03589870da209e3c05a7bec7e3ee1be62 # main, 2026-11-12
+  rev: a5952a6e68e0682d4ea0c2f4b3eab41628edec76 # main, 2026-11-16
   from: notebooks
   files:
     - 01_get_data.py
@@ -59,6 +61,8 @@
     - 05_cpt_classification.py
     - 06_bimdataframes.py
   mode: static
+  # The Speckle account, token and projects of whoever exports the outputs.
+  private: [speckle_server_input, speckle_sign_in, speckle_signed_in_as, speckle_targets]
 
 # The package's Starlight pages, written for bedrock-web's /docs/cpt-anywidget/.
 - to: tools/cpt-anywidget

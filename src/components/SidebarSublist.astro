@@ -1,0 +1,129 @@
+---
+// Starlight's SidebarSublist, restyled with Tailwind, with one change: a group whose
+// first entry is the index page of the folder holding the rest links its heading to
+// that page, and the entry leaves the list. A group with nothing but its index page
+// becomes a plain link, like Docs Atlas.
+import { Icon } from "@astrojs/starlight/components";
+import SidebarRestorePoint from "@astrojs/starlight/components/SidebarRestorePoint.astro";
+
+type SidebarEntry = App.Locals["starlightRoute"]["sidebar"][number];
+type SidebarLink = Extract<SidebarEntry, { type: "link" }>;
+type SidebarGroup = Extract<SidebarEntry, { type: "group" }>;
+
+interface Props {
+  sublist: SidebarEntry[];
+  nested?: boolean;
+}
+
+const { sublist, nested = false } = Astro.props;
+
+// A top-level link or group heading is large; a nested link is small and muted.
+const classNames = {
+  firstItem: "wrap-anywhere",
+  nextItem: "mt-3 wrap-anywhere sidebar:mt-2",
+  nestedItem: "ms-2 border-s border-doc-hairline ps-2 wrap-anywhere",
+  link: "block rounded-sm px-2 py-1 leading-snug no-underline",
+  large: "text-lg font-semibold sidebar:text-base",
+  small: "sidebar:text-sm",
+  current: "bg-doc-accent-text text-doc-invert",
+  currentSmall: "font-semibold",
+  largeColor: "text-doc-text hover:underline hover:underline-offset-4",
+  smallColor: "text-doc-muted hover:text-doc-text focus:text-doc-text",
+  summary:
+    "flex cursor-pointer list-none items-center justify-between pe-2 leading-snug select-none details-marker-hidden",
+  headingLink: "grow",
+  heading: "px-2 py-1 text-lg font-semibold text-doc-text sidebar:text-base",
+  caret: "shrink-0 transition-transform duration-200 ease-in-out summary-open:rotate-90",
+};
+
+function linksIn(entries: SidebarEntry[]): SidebarLink[] {
+  return entries.flatMap((entry) => (entry.type === "link" ? [entry] : linksIn(entry.entries)));
+}
+
+function splitOffIndexPage(group: SidebarGroup): { indexPage?: SidebarLink; rest: SidebarEntry[] } {
+  const [first, ...rest] = group.entries;
+  if (first?.type !== "link") {
+    return { rest: group.entries };
+  }
+  const folder = first.href.endsWith("/") ? first.href : `${first.href}/`;
+  const holdsTheRest = linksIn(rest).every((link) => link.href.startsWith(folder));
+  return holdsTheRest ? { indexPage: first, rest } : { rest: group.entries };
+}
+
+function holdsCurrentPage(group: SidebarGroup): boolean {
+  return linksIn(group.entries).some((link) => link.isCurrent);
+}
+
+function itemClass(index: number): string {
+  if (nested) {
+    return classNames.nestedItem;
+  }
+  return index > 0 ? classNames.nextItem : classNames.firstItem;
+}
+
+function linkClass(isCurrent: boolean, large: boolean): string[] {
+  const size = large ? classNames.large : classNames.small;
+  if (isCurrent) {
+    return [classNames.link, size, classNames.current, large ? "" : classNames.currentSmall];
+  }
+  return [classNames.link, size, large ? classNames.largeColor : classNames.smallColor];
+}
+---
+
+<ul class="list-none p-0">
+  {
+    sublist.map((entry, index) => {
+      if (entry.type === "link") {
+        return (
+          <li class={itemClass(index)}>
+            <a
+              href={entry.href}
+              aria-current={entry.isCurrent ? "page" : undefined}
+              class:list={linkClass(entry.isCurrent, !nested)}
+              {...entry.attrs}
+            >
+              {entry.label}
+            </a>
+          </li>
+        );
+      }
+      const { indexPage, rest } = splitOffIndexPage(entry);
+      if (indexPage && rest.length === 0) {
+        return (
+          <li class={itemClass(index)}>
+            <a
+              href={indexPage.href}
+              aria-current={indexPage.isCurrent ? "page" : undefined}
+              class:list={linkClass(indexPage.isCurrent, !nested)}
+            >
+              {entry.label}
+            </a>
+          </li>
+        );
+      }
+      const current = holdsCurrentPage(entry);
+      return (
+        <li class={itemClass(index)}>
+          <details open={current || !entry.collapsed} data-holds-current-page={current ? "" : undefined}>
+            <summary class={classNames.summary}>
+              {indexPage ? (
+                <a
+                  href={indexPage.href}
+                  aria-current={indexPage.isCurrent ? "page" : undefined}
+                  class:list={[classNames.headingLink, ...linkClass(indexPage.isCurrent, true)]}
+                >
+                  {entry.label}
+                </a>
+              ) : (
+                <span class={classNames.heading}>{entry.label}</span>
+              )}
+              <Icon name="right-caret" size="1.25rem" class={classNames.caret} />
+            </summary>
+            <SidebarRestorePoint />
+            <Astro.self sublist={rest} nested />
+          </details>
+        </li>
+      );
+    })
+  }
+</ul>

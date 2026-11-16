@@ -3,7 +3,6 @@ title: cpt-anywidget
 description: Our notebook widgets for CPTs and borehole logs, and where they show up in these docs.
 type: tool
 sidebar:
-  label: About cpt-anywidget
   order: 0
 ---
 
@@ -29,4 +28,4 @@ All pages but this one come from the package's repository, at its release v0.3.0
 
 ## Where it fits on these pages
 
-- [IAEG 2026](../../case-studies/iaeg-2026/index.md): the CPT classification notebook classifies the CPTs that cpt-anywidget can show.
+- [Soft soil EGM](../../worked-examples/soft-soil-egm/index.md): the CPT classification notebook classifies the CPTs that cpt-anywidget can show.

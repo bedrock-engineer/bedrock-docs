@@ -1,15 +1,25 @@
 ---
 // Starlight's MarkdownContent, plus the marimo browser runtime on .mdx pages with
-// marimo cells. MDX imports run only at build time in Astro, so the runtime has to
-// come from a component; adding it here keeps the pages free of imports, so a page
-// works wherever it is copied (see CONTRIBUTING.md, Sources).
+// marimo cells, and the saved outputs of static notebook pages. MDX imports run only
+// at build time in Astro, so runtimes have to come from a component; adding them here
+// keeps the pages free of imports, so a page works wherever it is copied (see
+// CONTRIBUTING.md, Sources).
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import Default from "@astrojs/starlight/components/MarkdownContent.astro";
 import MarimoRuntime from "./MarimoRuntime.astro";
+import NotebookOutputs from "./NotebookOutputs.astro";
 
 const { entry } = Astro.locals.starlightRoute;
 const hasMarimo =
   entry.filePath?.endsWith(".mdx") && /^```(python|sql|markdown) marimo\b/m.test(entry.body ?? "");
+// The outputs aren't committed: a build without them shows the page as before.
+const outputs = entry.data.notebookOutputs;
+const hasOutputs =
+  outputs !== undefined &&
+  existsSync(join(process.cwd(), "public", "notebook-outputs", "_marimo-studio", "views", outputs.view));
 ---
 
 {hasMarimo && <MarimoRuntime />}
 <Default><slot /></Default>
+{hasOutputs && <NotebookOutputs {...outputs} />}
