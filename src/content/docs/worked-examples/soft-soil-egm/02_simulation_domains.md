@@ -5,12 +5,16 @@ title: Simulation domains
 editUrl: https://github.com/bedrock-engineer/iaeg2026-soft-soil-egm/edit/main/notebooks/02_simulation_domains.py
 sidebar:
   order: 2
+notebookOutputs:
+  view: soft-soil-egm-02-simulation-domains
+  revision: f0a8524613d0c73672b66003ce8385fd504c95a627dc91b5b3fd82938d92e0e6
+  marimo: 0.25.2
 ---
 
 *Part 2 of 6 in [IAEG 2026 notebooks](index.md).*
 
 :::note[Static notebook page]
-This page shows the notebook's text and code. It is [static](../../reference/glossary.md#page-mode): nothing runs, so its outputs, sliders and buttons aren't here. [See the notebook on GitHub](https://github.com/bedrock-engineer/iaeg2026-soft-soil-egm/blob/966ef9d03589870da209e3c05a7bec7e3ee1be62/notebooks/02_simulation_domains.py).
+This page is [static](../../reference/glossary.md#page-mode): nothing runs. Under each cell is the output it gave in one run with every control at its default value; moving a control doesn't run the notebook again. [See the notebook on GitHub](https://github.com/bedrock-engineer/iaeg2026-soft-soil-egm/blob/a5952a6e68e0682d4ea0c2f4b3eab41628edec76/notebooks/02_simulation_domains.py).
 :::
 
 A **simulation domain** is a group of GeoTOP voxels that share one variogram and one set of
@@ -19,6 +23,9 @@ model it fills, how many CPTs condition it and whether its CPT data differ from 
 
 Reads the BimDataFrame of GeoTOP voxels and the CPT table that `01_get_data.py` writes into
 `data/`.
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell</summary>
 
 ```python
 import json
@@ -34,7 +41,6 @@ import numpy as np
 import polars as pl
 import pyproj
 import traitlets
-from marimo_lens import Lens
 from specklewidgets import GeoSpeckleViewer
 from specklewidgets.bim import bim_objects
 from specklewidgets.geo import pdok_3d_buildings
@@ -46,16 +52,12 @@ pyproj.network.set_network_enabled(True)
 alt.data_transformers.disable_max_rows()
 ```
 
-<details class="group">
-<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell</summary>
-
-```python
-# marimo-lens: select a region of any output and add a note for the notebook agent
-lens = Lens()
-lens
-```
-
 </details>
+
+<marimo-cell class="not-content" name="cell-2" data-marimo-studio-site="site-ab3b73b7aa9042f75a1e46601b778fae1f25214a42ef6f04d3e8e276378cbf8e"></marimo-cell>
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>inputs</code></summary>
 
 ```python
 DATA_DIR = Path(mo.notebook_dir()).parent / "data"
@@ -71,6 +73,11 @@ SAMPLE_DOMAINS_PARQUET = DATA_DIR / "sample_domains.parquet"
 domains_json = mo.watch.file(DOMAINS_JSON)
 ```
 
+</details>
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>read_inputs</code></summary>
+
 ```python
 mo.stop(
     not (Path(geotop_parquet).exists() and Path(cpts_parquet).exists()),
@@ -83,6 +90,10 @@ cpts = pl.read_parquet(Path(cpts_parquet))
 voxels = geotop_bimdf.select("id", pl.col("properties").struct.field("GeoTOP").struct.unnest())
 mo.md(f"**{voxels.height} GeoTOP voxels** in {voxels.select('x', 'y').n_unique()} columns, **{cpts['bro_id'].n_unique()} CPTs**.")
 ```
+
+</details>
+
+<marimo-cell class="not-content" name="read_inputs" data-marimo-studio-site="site-cce322e1ef774a8877bd1af82ff0dd4a0b96cc1668d089d9a18f1642e35ff642"></marimo-cell>
 
 ## Choose the domains
 
@@ -161,6 +172,8 @@ preset
 ```
 
 </details>
+
+<marimo-cell class="not-content" name="presets" data-marimo-studio-site="site-b659d56c31b66555a51f3fcd075f517dbefce13a32351fc9945f43aa92f65904"></marimo-cell>
 
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>controls</code></summary>
@@ -301,6 +314,11 @@ mo.vstack(
 
 </details>
 
+<marimo-cell class="not-content" name="controls" data-marimo-studio-site="site-b7ca2c237741ea47f49092c0d3547f870358d605f3ea838b9868b252f6282385"></marimo-cell>
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>samples</code></summary>
+
 ```python
 # CPT readings averaged per voxel they pass through: the column from x and y (its south-west corner),
 # the 0.5 m level from the nearest voxel center
@@ -322,6 +340,11 @@ samples = (
     .rename({"voxel_z": "z"})
 )
 ```
+
+</details>
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>domains</code></summary>
 
 ```python
 # Each voxel's domain from the controls; null where it is not simulated
@@ -352,6 +375,11 @@ DOMAIN_COLORS = {
 }
 domain_scale = alt.Scale(domain=list(DOMAIN_COLORS), range=list(DOMAIN_COLORS.values()))
 ```
+
+</details>
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>domain_summary</code></summary>
 
 ```python
 _per_cpt = sample_domains.group_by("domain", "bro_id").agg((pl.len() * 0.5).alias("meters"))
@@ -394,6 +422,8 @@ domain_summary = (
     .select("color", "domain", pl.all().exclude("color", "domain"))
 )
 ```
+
+</details>
 
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>domain_table</code></summary>
@@ -450,6 +480,8 @@ alt.hconcat(_share, _cpts).resolve_scale(y="shared")
 ```
 
 </details>
+
+<marimo-cell class="not-content" name="coverage" data-marimo-studio-site="site-387880daad2ce68d24618a4f93c99ef31923fa9ffe3b33088293d6b426bf4c19"></marimo-cell>
 
 ## 3 · Cross-sections
 
@@ -536,6 +568,8 @@ cross_sections
 
 </details>
 
+<marimo-cell class="not-content" name="cross_sections" data-marimo-studio-site="site-bca0da0479a5997278fcc34251123fd7746b34ff7b0642db6482602ca20aba3b"></marimo-cell>
+
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>domain_viewer</code></summary>
 
@@ -548,6 +582,8 @@ mo.vstack([cut_sections, domain_viewer])
 ```
 
 </details>
+
+<marimo-cell class="not-content" name="domain_viewer" data-marimo-studio-site="site-42caee51ae58f986ca35ba7cb9d671763b554e38284bae00bee51533812b62b5"></marimo-cell>
 
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>domain_viewer_objects</code></summary>
@@ -600,6 +636,9 @@ section_view.domain_of = (
 ```
 
 </details>
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>voxel_bimdf</code></summary>
 
 ```python
 def styled_bimdf(bimdf, name, color):
@@ -656,6 +695,8 @@ cpt_sticks = bpl.to_crs(
 )
 ```
 
+</details>
+
 ## 4 · Do the domains separate the CPT data?
 
 The 0.5 m CPT samples per domain, from the softest to the stiffest. Domains are useful when their
@@ -682,6 +723,8 @@ alt.hconcat(_qc, _rf).resolve_scale(y="shared")
 
 </details>
 
+<marimo-cell class="not-content" name="separation" data-marimo-studio-site="site-4795a3986080229d5a6b4af7e1ddf5860277adcc830e17afb7a5222a681786ed"></marimo-cell>
+
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>qc_rf</code></summary>
 
@@ -703,6 +746,8 @@ _pick = alt.selection_point(fields=["domain"], bind="legend")
 ```
 
 </details>
+
+<marimo-cell class="not-content" name="qc_rf" data-marimo-studio-site="site-985f18ef29b7a87235015a1f6a59642698c13f4448cf103c19de0a24eab70bce"></marimo-cell>
 
 ## 5 · Save the simulation domains
 
@@ -730,6 +775,8 @@ save_domains
 
 </details>
 
+<marimo-cell class="not-content" name="domain_definition" data-marimo-studio-site="site-9350b5a51d10ba6f746d2040f08b4595e3700ebfd0bf578f0ddc142232fac748"></marimo-cell>
+
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>saved_status</code></summary>
 
@@ -752,6 +799,8 @@ _status
 ```
 
 </details>
+
+<marimo-cell class="not-content" name="saved_status" data-marimo-studio-site="site-1ac1f1638c77bf1b3fab374599157bcf250d2c6198048773b6027e79d42c25c4"></marimo-cell>
 
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>save</code></summary>

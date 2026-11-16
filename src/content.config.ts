@@ -19,6 +19,9 @@ const facets = z.object({
   // Citekeys rehype-citation lists in the page's references without a citation;
   // ["@*"] lists all of bibliography.json, as reference/bibliography.md does.
   noCite: z.array(z.string()).optional(),
+  // A static notebook page with saved outputs: the marimo Studio view that holds
+  // them. Written by scripts/docs/notebook_pages.py; MarkdownContent.astro loads it.
+  notebookOutputs: z.object({ view: z.string(), revision: z.string(), marimo: z.string() }).optional(),
 });
 
 export const collections = {

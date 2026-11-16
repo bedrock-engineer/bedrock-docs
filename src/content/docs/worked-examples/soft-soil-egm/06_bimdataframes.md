@@ -5,12 +5,16 @@ title: BimDataFrames
 editUrl: https://github.com/bedrock-engineer/iaeg2026-soft-soil-egm/edit/main/notebooks/06_bimdataframes.py
 sidebar:
   order: 6
+notebookOutputs:
+  view: soft-soil-egm-06-bimdataframes
+  revision: 6be39186b506087244823381a4d72edaecbf9b3f427be75fdfc0c3e9b0ea2d14
+  marimo: 0.25.2
 ---
 
 *Part 6 of 6 in [IAEG 2026 notebooks](index.md).*
 
 :::note[Static notebook page]
-This page shows the notebook's text and code. It is [static](../../reference/glossary.md#page-mode): nothing runs, so its outputs, sliders and buttons aren't here. [See the notebook on GitHub](https://github.com/bedrock-engineer/iaeg2026-soft-soil-egm/blob/966ef9d03589870da209e3c05a7bec7e3ee1be62/notebooks/06_bimdataframes.py).
+This page is [static](../../reference/glossary.md#page-mode): nothing runs. Under each cell is the output it gave in one run with every control at its default value; moving a control doesn't run the notebook again. [See the notebook on GitHub](https://github.com/bedrock-engineer/iaeg2026-soft-soil-egm/blob/a5952a6e68e0682d4ea0c2f4b3eab41628edec76/notebooks/06_bimdataframes.py).
 :::
 
 A classified run from `05_cpt_classification.py` as two bimpolars BimDataFrames, in the same site CRS as the
@@ -24,6 +28,9 @@ GeoTOP voxels of `01_get_data.py`, written as GeoParquet to `data/bimdataframes/
 
 Each row carries the summary statistics of what it merges, in the property set `CPT` or `SBTn volume`.
 
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell</summary>
+
 ```python
 import json
 from pathlib import Path
@@ -35,7 +42,6 @@ import polars as pl
 import pyproj
 import pyvista as pv
 import xarray as xr
-from marimo_lens import Lens
 from specklewidgets import GeoSpeckleViewer, models_gz
 from specklewidgets.bim import bim_objects
 from specklewidgets.geo import pdok_3d_buildings
@@ -48,16 +54,12 @@ from cpt_robertson_classification import SOIL_BEHAVIOR_COLORS, SOIL_BEHAVIOR_TYP
 pyproj.network.set_network_enabled(True)
 ```
 
-<details class="group">
-<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell</summary>
-
-```python
-# marimo-lens: select a region of any output and add a note for the notebook agent
-lens = Lens()
-lens
-```
-
 </details>
+
+<marimo-cell class="not-content" name="cell-2" data-marimo-studio-site="site-ab3b73b7aa9042f75a1e46601b778fae1f25214a42ef6f04d3e8e276378cbf8e"></marimo-cell>
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>inputs</code></summary>
 
 ```python
 DATA_DIR = Path(mo.notebook_dir()).parent / "data"
@@ -70,6 +72,8 @@ PIT = {"x": (121800, 122080), "y": (488650, 488770)}
 CPT_RADIUS = 1.0
 CPT_SIDES = 16
 ```
+
+</details>
 
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>read_inputs</code></summary>
@@ -422,6 +426,8 @@ revit_bimdf.write_parquet(BIMDATAFRAMES_DIR / "rvt_advanced_sample_combined_arch
 
 </details>
 
+<marimo-cell class="not-content" name="revit_model" data-marimo-studio-site="site-472addccf2e4beacc26454174a0475e2ff17efc49f325b8197f25c61dc89ba71"></marimo-cell>
+
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>viewer_controls</code></summary>
 
@@ -473,6 +479,8 @@ mo.hstack([bim_viewer, viewer_controls], widths=[5, 2], align="start")
 
 </details>
 
+<marimo-cell class="not-content" name="viewer" data-marimo-studio-site="site-a633c9f9b548b8bbe078b1ae3f12099e93a5b3c37b5e6e09c4ac6de821f9f6bc"></marimo-cell>
+
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>viewer_models</code></summary>
 
@@ -505,6 +513,8 @@ mo.vstack([_row for _row in _rows if _row.height])
 
 </details>
 
+<marimo-cell class="not-content" name="viewer_selection" data-marimo-studio-site="site-f165fe9811149115afb495d5b385180e5c359135e96f0cc35215d5328103d8ee"></marimo-cell>
+
 ## 4 · Publish to Speckle
 
 Each BimDataFrame as a new version of a model on a Speckle server, in the site CRS's coordinates, so that the models
@@ -524,6 +534,8 @@ speckle_server
 ```
 
 </details>
+
+<marimo-cell class="not-content" name="speckle_server_input" data-marimo-studio-site="site-7bb1f99aee2a14fcda20fd209ace09547531cb7b0c3016063c6811fd6aaac4bc"></marimo-cell>
 
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>speckle_sign_in</code></summary>
@@ -546,6 +558,8 @@ None if local_speckle else mo.vstack(
 
 </details>
 
+<marimo-cell class="not-content" name="speckle_sign_in" data-marimo-studio-site="site-30bcdd922042534c5b790e5852c46893c138abb1d7f3ea86a08e309886a99726"></marimo-cell>
+
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>speckle_signed_in_as</code></summary>
 
@@ -559,6 +573,8 @@ mo.md(
 ```
 
 </details>
+
+<marimo-cell class="not-content" name="speckle_signed_in_as" data-marimo-studio-site="site-f7ed2e1432001fb7e3cd661e5a86fd34b4bc309f7619a633e7727cddef3be829"></marimo-cell>
 
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>speckle_targets</code></summary>
@@ -581,6 +597,8 @@ speckle_project
 ```
 
 </details>
+
+<marimo-cell class="not-content" name="speckle_targets" data-marimo-studio-site="site-e4e5cc0aea8153e60cae0c15677bee05cc4ec3ee297129efd1123230809a3f8f"></marimo-cell>
 
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>speckle_model_choices</code></summary>

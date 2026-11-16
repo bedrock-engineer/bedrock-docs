@@ -10,7 +10,7 @@ sidebar:
 *Part 4 of 6 in [IAEG 2026 notebooks](index.md).*
 
 :::note[Static notebook page]
-This page shows the notebook's text and code. It is [static](../../reference/glossary.md#page-mode): nothing runs, so its outputs, sliders and buttons aren't here. [See the notebook on GitHub](https://github.com/bedrock-engineer/iaeg2026-soft-soil-egm/blob/966ef9d03589870da209e3c05a7bec7e3ee1be62/notebooks/04_simulation.py).
+This page shows the notebook's text and code. It is [static](../../reference/glossary.md#page-mode): nothing runs, so its outputs, sliders and buttons aren't here. [See the notebook on GitHub](https://github.com/bedrock-engineer/iaeg2026-soft-soil-egm/blob/a5952a6e68e0682d4ea0c2f4b3eab41628edec76/notebooks/04_simulation.py).
 :::
 
 Conditional Gaussian simulation of CPT parameters in each simulation domain: many equally likely
@@ -23,6 +23,9 @@ saves (`notebooks/variograms.json` and `data/simulation_samples_<height>cm.parqu
 detrended as in `03` and turned into normal scores, the scores are simulated with the domain's
 variogram, conditioned on the CPTs by simple kriging, and the simulated scores are transformed back
 through the domain's distribution of the CPT values, with the trend added again.
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell</summary>
 
 ```python
 import hashlib
@@ -40,7 +43,6 @@ import numpy as np
 import polars as pl
 import traitlets
 import xarray as xr
-from marimo_lens import Lens
 from scipy.linalg import pinvh
 from scipy.spatial.distance import cdist
 
@@ -48,16 +50,10 @@ from scipy.spatial.distance import cdist
 alt.data_transformers.disable_max_rows()
 ```
 
-<details class="group">
-<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell</summary>
-
-```python
-# marimo-lens: select a region of any output and add a note for the notebook agent
-lens = Lens()
-lens
-```
-
 </details>
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>inputs</code></summary>
 
 ```python
 DATA_DIR = Path(mo.notebook_dir()).parent / "data"
@@ -70,6 +66,8 @@ domains_json = mo.watch.file(DOMAINS_JSON)
 variograms_json = mo.watch.file(VARIOGRAMS_JSON)
 voxels_parquet = mo.watch.file(DATA_DIR / "voxel_domains.parquet")
 ```
+
+</details>
 
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>read_inputs</code></summary>
@@ -899,6 +897,9 @@ variograms and these correlations, and qc is simulated again with it when it is 
 simulated: co-simulated with qc as well, it would differ from fs / qc in each realization, so it
 follows from each realization's qc and fs instead.
 
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>grid</code></summary>
+
 ```python
 # The settings of the last Simulate, or the defaults until it is pressed, with the parameters that the
 # chosen ones are co-simulated with, in PARAMETERS' order
@@ -943,6 +944,11 @@ mo.md(
     f"{settings['vertical'] * 100:g} cm."
 )
 ```
+
+</details>
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>conditioning</code></summary>
 
 ```python
 _inverse_normal = NormalDist().inv_cdf
@@ -993,6 +999,11 @@ mo.vstack(
     ]
 ) if correlations else None
 ```
+
+</details>
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>simulation_runs</code></summary>
 
 ```python
 # Raise when the simulation method changes, so that runs saved before are not reused
@@ -1053,3 +1064,5 @@ run_definition = {
 _key = hashlib.sha256(json.dumps(run_definition, sort_keys=True).encode()).hexdigest()[:12]
 run_path = SIMULATIONS_DIR / f"{'-'.join(parameter_definitions)}_{_key}.nc"
 ```
+
+</details>

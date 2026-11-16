@@ -5,12 +5,16 @@ title: Get the data
 editUrl: https://github.com/bedrock-engineer/iaeg2026-soft-soil-egm/edit/main/notebooks/01_get_data.py
 sidebar:
   order: 1
+notebookOutputs:
+  view: soft-soil-egm-01-get-data
+  revision: 4d7965df340f91611b5f8976018ef3cef4b933fb21fdf650c5c72b22f8a0e191
+  marimo: 0.25.2
 ---
 
 *Part 1 of 6 in [IAEG 2026 notebooks](index.md).*
 
 :::note[Static notebook page]
-This page shows the notebook's text and code. It is [static](../../reference/glossary.md#page-mode): nothing runs, so its outputs, sliders and buttons aren't here. [See the notebook on GitHub](https://github.com/bedrock-engineer/iaeg2026-soft-soil-egm/blob/966ef9d03589870da209e3c05a7bec7e3ee1be62/notebooks/01_get_data.py).
+This page is [static](../../reference/glossary.md#page-mode): nothing runs. Under each cell is the output it gave in one run with every control at its default value; moving a control doesn't run the notebook again. [See the notebook on GitHub](https://github.com/bedrock-engineer/iaeg2026-soft-soil-egm/blob/a5952a6e68e0682d4ea0c2f4b3eab41628edec76/notebooks/01_get_data.py).
 :::
 
 Start from the approximate footprint of the model's Floors elements. Adjust the buffer, inspect the touched GeoTOP columns and the BRO's CPTs and geotechnical boreholes in them, then download the selected data. Everything under `data/` is downloaded, so Git ignores it.
@@ -36,7 +40,6 @@ import polars as pl
 import pyproj
 import shapely
 import xarray as xr
-from marimo_lens import Lens
 from specklewidgets import GeoSpeckleViewer
 from specklewidgets.geo import osm_ground_map, pdok_3d_buildings
 
@@ -46,16 +49,7 @@ pyproj.network.set_network_enabled(True)
 
 </details>
 
-<details class="group">
-<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>lens</code></summary>
-
-```python
-# marimo-lens: select a region of any output and add a note for the notebook agent
-lens = Lens()
-lens
-```
-
-</details>
+<marimo-cell class="not-content" name="cell-2" data-marimo-studio-site="site-ab3b73b7aa9042f75a1e46601b778fae1f25214a42ef6f04d3e8e276378cbf8e"></marimo-cell>
 
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>settings</code></summary>
@@ -77,6 +71,8 @@ buffer_distance
 ```
 
 </details>
+
+<marimo-cell class="not-content" name="settings" data-marimo-studio-site="site-aa68bd699ee8597c34d66ce496c7ebd099bc2882c62d5b0b58b5799364f59c32"></marimo-cell>
 
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>building_footprint</code></summary>
@@ -200,6 +196,8 @@ mo.md(
 
 </details>
 
+<marimo-cell class="not-content" name="selection" data-marimo-studio-site="site-211b87cd0581494f7b18981e25824f9bcfc3c43969a7aee43dfaa59cf046d373"></marimo-cell>
+
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>selection_map</code></summary>
 
@@ -256,6 +254,8 @@ selection_map
 
 </details>
 
+<marimo-cell class="not-content" name="selection_map" data-marimo-studio-site="site-3b8bd807fb99742d5a863180e287f1a36d4008de7cc364a379002b13df8bacc5"></marimo-cell>
+
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>download_controls</code></summary>
 
@@ -265,6 +265,8 @@ mo.vstack([download_selected, mo.md("Fetches GeoTOP voxel values and BRO source 
 ```
 
 </details>
+
+<marimo-cell class="not-content" name="download_controls" data-marimo-studio-site="site-16934363fb0361e47afee2ed6a2e37a44b68f4d9b573e517936fb250b859a9b3"></marimo-cell>
 
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>download</code></summary>
@@ -366,10 +368,18 @@ mo.ui.tabs(
 
 </details>
 
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>geotop_file</code></summary>
+
 ```python
 # The voxels' file: the cells that read it run again when a download replaces it
 geotop_nc = mo.watch.file(DATA_DIR / "geotop.nc")
 ```
+
+</details>
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>geotop_read</code></summary>
 
 ```python
 mo.stop(not Path(geotop_nc).exists(), mo.md("Download the selected data first."))
@@ -378,6 +388,13 @@ with xr.open_dataset(geotop_nc) as _geotop_nc:
     geotop_xr = _geotop_nc.load()
 geotop_xr
 ```
+
+</details>
+
+<marimo-cell class="not-content" name="geotop_read" data-marimo-studio-site="site-714efe9e730255f611d9774b78ae6822dcce764d62f9924d3354d2f33016f899"></marimo-cell>
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>geotop_voxels</code></summary>
 
 ```python
 # One row per voxel with a value. x, y and z are the xarray indices, which polars needs as columns.
@@ -415,6 +432,11 @@ mo.ui.table(
 )
 ```
 
+</details>
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>geotop_units</code></summary>
+
 ```python
 # One row per geological unit, from the top down: its topmost voxel, with the number of voxels in the unit.
 # The unit and soil type come first, in their GeoTOP colors.
@@ -440,11 +462,21 @@ def _style(row, column, value):
 mo.ui.table(_units.drop("strat_hex", "lithok_hex"), style_cell=_style, page_size=_units.height, selection=None)
 ```
 
+</details>
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>voxel_size</code></summary>
+
 ```python
 # GeoTOP's x and y are the south-west corners of its 100 m columns (see geotop_cells); z is the
 # center of each 0.5 m voxel
 VOXEL_SIZE = (100.0, 100.0, 0.5)
 ```
+
+</details>
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>geotop_boxes</code></summary>
 
 ```python
 # The 12 triangles of a box whose corners 0-3 are at the bottom and 4-7 at the top, each
@@ -483,6 +515,11 @@ geotop_rd = bpl.BimDataFrame(
 geotop_rd
 ```
 
+</details>
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>geotop_bimdf</code></summary>
+
 ```python
 # The site origin: the plan center of the GeoTOP columns at NAP 0 m, with the axes along RD's.
 # GeoSpeckleViewer draws a model near its CRS's origin.
@@ -497,6 +534,8 @@ geotop_bimdf = bpl.to_crs(geotop_rd, site_crs)
 geotop_bimdf.write_parquet(DATA_DIR / "geotop_bimdf.parquet")
 geotop_bimdf
 ```
+
+</details>
 
 ### GeoTOP in the GeoSpeckleViewer
 
@@ -517,6 +556,8 @@ color_by
 
 </details>
 
+<marimo-cell class="not-content" name="viewer_color" data-marimo-studio-site="site-8e8e15d2268b02e36889a2c97de718dcc403df7b9bc564e30ed589854abb5b60"></marimo-cell>
+
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>viewer</code></summary>
 
@@ -535,6 +576,11 @@ geotop_viewer
 
 </details>
 
+<marimo-cell class="not-content" name="viewer" data-marimo-studio-site="site-a633c9f9b548b8bbe078b1ae3f12099e93a5b3c37b5e6e09c4ac6de821f9f6bc"></marimo-cell>
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>viewer_selection</code></summary>
+
 ```python
 # The voxels selected in the GeoSpeckleViewer
 selected_voxels = geotop_bimdf.filter(
@@ -542,3 +588,5 @@ selected_voxels = geotop_bimdf.filter(
 )
 selected_voxels.select("id", "name", "class", pl.col("properties").struct.field("GeoTOP").struct.unnest())
 ```
+
+</details>

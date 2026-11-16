@@ -10,7 +10,7 @@ sidebar:
 *Part 5 of 6 in [IAEG 2026 notebooks](index.md).*
 
 :::note[Static notebook page]
-This page shows the notebook's text and code. It is [static](../../reference/glossary.md#page-mode): nothing runs, so its outputs, sliders and buttons aren't here. [See the notebook on GitHub](https://github.com/bedrock-engineer/iaeg2026-soft-soil-egm/blob/966ef9d03589870da209e3c05a7bec7e3ee1be62/notebooks/05_cpt_classification.py).
+This page shows the notebook's text and code. It is [static](../../reference/glossary.md#page-mode): nothing runs, so its outputs, sliders and buttons aren't here. [See the notebook on GitHub](https://github.com/bedrock-engineer/iaeg2026-soft-soil-egm/blob/a5952a6e68e0682d4ea0c2f4b3eab41628edec76/notebooks/05_cpt_classification.py).
 :::
 
 The soil behavior type of the simulated cells: each realization of a run from `04_simulation.py` classified with
@@ -22,6 +22,9 @@ realizations in each zone is that zone's probability in the cell.
 
 A soil behavior type is what a CPT can tell: how the soil behaves under the cone, not what it is made of,
 which is what GeoTOP's lithology classes describe. A cell holds one qc and one fs per realization, so layers thinner than a cell do not show.
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell</summary>
 
 ```python
 import hashlib
@@ -36,7 +39,6 @@ import numpy as np
 import polars as pl
 import traitlets
 import xarray as xr
-from marimo_lens import Lens
 
 from cpt_robertson_classification import GROUNDWATER_DEPTH, SOIL_BEHAVIOR_COLORS, SOIL_BEHAVIOR_TYPES, robertson
 
@@ -44,16 +46,10 @@ from cpt_robertson_classification import GROUNDWATER_DEPTH, SOIL_BEHAVIOR_COLORS
 alt.data_transformers.disable_max_rows()
 ```
 
-<details class="group">
-<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell</summary>
-
-```python
-# marimo-lens: select a region of any output and add a note for the notebook agent
-lens = Lens()
-lens
-```
-
 </details>
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>inputs</code></summary>
 
 ```python
 DATA_DIR = Path(mo.notebook_dir()).parent / "data"
@@ -69,6 +65,8 @@ COLUMN = 100.0
 VOXEL = 0.5
 GAMMA_MISSING = 18.0
 ```
+
+</details>
 
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>read_inputs</code></summary>

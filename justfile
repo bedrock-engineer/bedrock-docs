@@ -19,6 +19,10 @@ sources:
 pages:
     uv run scripts/docs/notebook_pages.py
 
+# save a static entry's notebook outputs, from a checkout with its data; then run `just pages`
+outputs to checkout:
+    uv run scripts/docs/notebook_outputs.py {{to}} --checkout {{checkout}}
+
 # build the site and check every link
 build:
     pnpm build

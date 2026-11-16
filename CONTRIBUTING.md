@@ -90,7 +90,21 @@ Each notebook's [page mode](src/content/docs/reference/glossary.md#page-mode) is
 | `islands` | `x.mdx`, with a marimo island per cell; cells that show their code in marimo get an editable code cell | at build time, then in the reader's browser through [Pyodide](src/content/docs/reference/glossary.md#pyodide) | notebooks whose packages Pyodide has, and that need no private data |
 | `static` | `x.md`, with the notebook's text and its code as code blocks; cells that hide their code in marimo become closed folds | nothing | notebooks that need data or packages a reader doesn't have |
 
-A static page has no outputs yet. The next step is to save each run with `marimo export session` where the data is, and show those saved outputs on the page.
+### Saved outputs on static pages
+
+A static page can show what each cell output in one run, with every control at its default value. [`scripts/docs/notebook_outputs.py`](scripts/docs/notebook_outputs.py) makes that run, where the data is:
+
+```sh
+just outputs worked-examples/soft-soil-egm ../../Repos/iaeg2026-soft-soil-egm.worktrees/<checkout>
+just pages
+```
+
+The checkout must be at the entry's `rev`. For each notebook, marimo Studio prepares a view with its Prepared (zero-python) runtime: the outputs, rendered later by marimo's own frontend in the reader's browser, with no Python. Two files come out of it:
+
+- `public/notebook-outputs/`: Studio's runtime and one view per notebook. Not committed yet: about 20 MB of runtime plus each notebook's outputs, rewritten by every run. A build without it shows the static pages without outputs.
+- `<folder>/notebook-outputs.json`: per notebook, its view and the host of each cell with an output, by the SHA-256 of the cell's code. Committed; `just pages` puts each host under its cell.
+
+Controls on these pages show their default and do nothing. A cell whose output calls Python, such as an `mo.ui.table`, can't be prepared: the script leaves it out and lists it under `dropped`.
 
 ### Tutorials
 

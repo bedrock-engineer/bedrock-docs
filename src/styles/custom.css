@@ -278,6 +278,38 @@ a {
 main .sl-container {
   margin-inline: auto;
 }
+
+/* A saved notebook output wider than the content column, such as a wide
+   table, scrolls sideways within the column instead of running under the
+   "On this page" sidebar. */
+marimo-cell {
+  display: block;
+  overflow-x: auto;
+
+  /* marimo Studio themes every output control from a few base colors, and
+     derives the rest (muted text, surfaces, focus rings) from the inherited
+     text color. Unset, a switch's knob is transparent and its track black or
+     white. Starlight's variables follow the light and dark theme. */
+  --marimo-cell-background: var(--sl-color-bg);
+  --marimo-cell-accent: var(--sl-color-accent);
+  --marimo-cell-border-color: var(--sl-color-gray-4);
+  --marimo-cell-monospace-font: var(--font-mono);
+}
+
+/* marimo stripes a Markdown table in an island with its light palette, which
+   it sets on the island itself. In a dark island that leaves light text on
+   white rows, so give a dark island the site's own dark row colors. */
+[data-marimo-theme="dark"] marimo-island {
+  --card: var(--sl-color-bg);
+  --lime-2: var(--sl-color-gray-6);
+}
+
+/* marimo prints a cell's console output unwrapped, so one long line widens
+   the whole page. Wrap it in the saved outputs of static notebook pages. */
+marimo-cell .console-output-area * {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
 /* stylelint-enable selector-max-class */
 
 /* https://starlight.astro.build/guides/css-and-tailwind/#color-theme-editor */

@@ -1,0 +1,40 @@
+---
+// Shows a static notebook page's saved outputs in its <marimo-cell> hosts, which
+// scripts/docs/notebook_pages.py puts under each cell's code. The outputs are a
+// marimo Studio view prepared with the zero-python runtime, which renders them
+// with marimo's own frontend and runs no Python (see scripts/docs/notebook_outputs.py).
+//
+// This is the boot code of the page Studio 0.4.1 exports for a view: a mount
+// config, the runtime's styles and module, and the element the runtime mounts in.
+// Change it together with the Studio version in notebook_outputs.py.
+interface Props {
+  view: string;
+  revision: string;
+  marimo: string;
+}
+
+const { view, revision, marimo } = Astro.props;
+const root = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/notebook-outputs/_marimo-studio`;
+const config = {
+  supportUrl: `${root}/views/${view}`,
+  version: marimo,
+  revision,
+  runtime: "zero-python",
+  runtimeExplicit: false,
+  replay: false,
+};
+const runtimeStylesheets = ["cells", "glide-data-editor", "swiper-component", "mount", "zero-python"];
+---
+
+<div id="marimo-runtime-root" hidden></div>
+<marimo-filename hidden>notebook.py</marimo-filename>
+<script is:inline define:vars={{ config }}>
+  Object.defineProperty(window, "__MARIMO_MOUNT_CONFIG__", {
+    value: Object.freeze(config),
+    writable: false,
+    configurable: false,
+    enumerable: true,
+  });
+</script>
+{runtimeStylesheets.map((name) => <link rel="stylesheet" crossorigin="anonymous" href={`${root}/assets/zero-python/${name}.css`} />)}
+<script is:inline type="module" src={`${root}/assets/zero-python.js`}></script>

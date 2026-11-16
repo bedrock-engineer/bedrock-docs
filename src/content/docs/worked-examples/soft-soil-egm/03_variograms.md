@@ -5,12 +5,16 @@ title: Variograms
 editUrl: https://github.com/bedrock-engineer/iaeg2026-soft-soil-egm/edit/main/notebooks/03_variograms.py
 sidebar:
   order: 3
+notebookOutputs:
+  view: soft-soil-egm-03-variograms
+  revision: 03d728469ad6573d1109a7023e5c4ec74378eac9707fb22bd951c19146050fcd
+  marimo: 0.25.2
 ---
 
 *Part 3 of 6 in [IAEG 2026 notebooks](index.md).*
 
 :::note[Static notebook page]
-This page shows the notebook's text and code. It is [static](../../reference/glossary.md#page-mode): nothing runs, so its outputs, sliders and buttons aren't here. [See the notebook on GitHub](https://github.com/bedrock-engineer/iaeg2026-soft-soil-egm/blob/966ef9d03589870da209e3c05a7bec7e3ee1be62/notebooks/03_variograms.py).
+This page is [static](../../reference/glossary.md#page-mode): nothing runs. Under each cell is the output it gave in one run with every control at its default value; moving a control doesn't run the notebook again. [See the notebook on GitHub](https://github.com/bedrock-engineer/iaeg2026-soft-soil-egm/blob/a5952a6e68e0682d4ea0c2f4b3eab41628edec76/notebooks/03_variograms.py).
 :::
 
 A variogram per simulation domain describes how fast a CPT parameter loses its correlation with
@@ -25,6 +29,9 @@ height's variograms, since both only hold at their own height. The variograms ar
 (log₁₀ of qc and fs), optionally without its linear trend with depth, ranked and mapped onto a
 standard normal distribution. Their sill is therefore 1.
 
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell</summary>
+
 ```python
 import json
 from datetime import datetime
@@ -36,22 +43,17 @@ import gstools as gs
 import marimo as mo
 import numpy as np
 import polars as pl
-from marimo_lens import Lens
 
 # The charts take thousands of CPT sample pairs
 alt.data_transformers.disable_max_rows()
 ```
 
-<details class="group">
-<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell</summary>
-
-```python
-# marimo-lens: select a region of any output and add a note for the notebook agent
-lens = Lens()
-lens
-```
-
 </details>
+
+<marimo-cell class="not-content" name="cell-2" data-marimo-studio-site="site-ab3b73b7aa9042f75a1e46601b778fae1f25214a42ef6f04d3e8e276378cbf8e"></marimo-cell>
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>inputs</code></summary>
 
 ```python
 DATA_DIR = Path(mo.notebook_dir()).parent / "data"
@@ -70,6 +72,11 @@ def samples_path(height):
 variograms_json = mo.watch.file(VARIOGRAMS_JSON)
 ```
 
+</details>
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>read_inputs</code></summary>
+
 ```python
 mo.stop(
     not all(Path(_f).exists() for _f in (domains_json, voxels_parquet, cpts_parquet)),
@@ -82,6 +89,8 @@ DOMAIN_COLORS = domain_definition["colors"]
 voxels = pl.read_parquet(Path(voxels_parquet)).filter(pl.col("domain").is_not_null())
 cpts = pl.read_parquet(Path(cpts_parquet))
 ```
+
+</details>
 
 ## 1 · The data per domain
 
@@ -130,6 +139,8 @@ mo.hstack([parameters, sample_height, detrend], justify="start", gap=2)
 
 </details>
 
+<marimo-cell class="not-content" name="parameter" data-marimo-studio-site="site-d1c34004fd38ba4ba0acbc6f83f65fda74f588d6981faa9352f3a6d456078612"></marimo-cell>
+
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>samples</code></summary>
 
@@ -166,6 +177,11 @@ mo.md(
 ```
 
 </details>
+
+<marimo-cell class="not-content" name="samples" data-marimo-studio-site="site-319b74247d6d6dcdb92b242603245dd0755c8c441f75c90ad28ab85cf2c97bff"></marimo-cell>
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>scores</code></summary>
 
 ```python
 mo.stop(not parameters.value, mo.md("Choose at least one parameter."))
@@ -210,6 +226,8 @@ scores = (
 )
 ```
 
+</details>
+
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>data_table</code></summary>
 
@@ -237,6 +255,9 @@ mo.ui.table(
 
 </details>
 
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>lags</code></summary>
+
 ```python
 # The experimental variograms: vertically up to MAX_LAG["vertical"] along each CPT, in steps of the
 # samples' height; horizontally up to MAX_LAG["horizontal"] between CPTs at one level, in bins of
@@ -247,6 +268,11 @@ MIN_PAIRS = 30
 # The length scales a fit and the sliders can take, in m
 LEN_SCALE_BOUNDS = {"vertical": [0.1, 10.0], "horizontal": [5.0, 1000.0]}
 ```
+
+</details>
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>experimental</code></summary>
 
 ```python
 # Half the mean squared difference between the normal scores of pairs of samples of one parameter in one
@@ -275,6 +301,11 @@ _horizontal = (
 )
 experimental = pl.concat([_vertical, _horizontal], how="diagonal").sort("parameter", "domain", "direction", "lag")
 ```
+
+</details>
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>fit</code></summary>
 
 ```python
 def _fit(model_name, points, nugget, len_scale_bounds):
@@ -345,6 +376,13 @@ best_models = {
 best_models
 ```
 
+</details>
+
+<marimo-cell class="not-content" name="fit" data-marimo-studio-site="site-6fbb4e46bc5fb2eda857352c18f18c00cc9148caf72fd158223476605b549421"></marimo-cell>
+
+<details class="group">
+<summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>saved_variograms</code></summary>
+
 ```python
 # The variograms saved before, per sample height and parameter; empty until they are saved. Each parameter's
 # carry when they were saved and the date of the simulation domains they were fitted on: SAVE_DATES.
@@ -353,6 +391,8 @@ saved_variograms = json.loads(Path(variograms_json).read_text(encoding="utf-8"))
 # Those of the chosen sample height
 saved_at_height = saved_variograms.get(f"{sample_height.value:g}", {})
 ```
+
+</details>
 
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>variograms_intro</code></summary>
@@ -381,6 +421,8 @@ directions share the nugget. Each chosen parameter has its own models and slider
 ```
 
 </details>
+
+<marimo-cell class="not-content" name="variograms_intro" data-marimo-studio-site="site-63938e9bf0e504caf3194bf38bc8d487b1a6ea9b595d1ea6342d6482c8f84c1e"></marimo-cell>
 
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>model_choice</code></summary>
@@ -559,6 +601,8 @@ mo.vstack([_row(shown_parameter.value, _domain) for _domain in DOMAIN_COLORS], g
 
 </details>
 
+<marimo-cell class="not-content" name="variogram_rows" data-marimo-studio-site="site-e899e83bfe960c9d58c13b9a42822d3ff3e253a1fb9ba34123dbba941a0f23b3"></marimo-cell>
+
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>variograms</code></summary>
 
@@ -636,6 +680,8 @@ save_variograms
 
 </details>
 
+<marimo-cell class="not-content" name="variogram_definition" data-marimo-studio-site="site-866eee65289c3ccfc528aa784245f1a28c91d4e34042aa83b54ab30cad9cbcad"></marimo-cell>
+
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>saved_status</code></summary>
 
@@ -664,6 +710,8 @@ mo.vstack([_status(_name) for _name in parameters.value])
 ```
 
 </details>
+
+<marimo-cell class="not-content" name="saved_status" data-marimo-studio-site="site-1ac1f1638c77bf1b3fab374599157bcf250d2c6198048773b6027e79d42c25c4"></marimo-cell>
 
 <details class="group">
 <summary class="cursor-pointer text-sm text-doc-muted group-open:mb-2">Hidden cell: <code>save</code></summary>
