@@ -14,4 +14,4 @@ How detailed the model must be, and how far it must reach, follows from the anal
 
 Planned pages: stratigraphy from CPTs and boreholes, using national models such as [GeoTOP](../reference/glossary.md#geotop), and geostatistics with [variograms](../reference/glossary.md#variogram) and [conditional simulation](../reference/glossary.md#conditional-simulation) to show how uncertain the ground is between data points.
 
-The worked example [Probabilistic soft-soil ground model (IAEG 2026)](../worked-examples/iaeg-2026/index.md) builds a probabilistic EGM from GeoTOP and CPTs.
+The worked example [Soft soil EGM](../worked-examples/soft-soil-egm/index.md) builds a probabilistic EGM from GeoTOP and CPTs.

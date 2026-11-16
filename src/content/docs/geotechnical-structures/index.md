@@ -14,19 +14,19 @@ The structures follow the clauses of EN 1997-3:2025, plus four that other codes 
 
 | Structure | Stability | Deformation | Groundwater flow | Dynamics |
 | --- | --- | --- | --- | --- |
-| Slopes, cuttings and embankments | 3 | 2 | 2 | 2 |
+| [Slopes, cuttings and embankments](slopes-cuttings-and-embankments.md) | 3 | 2 | 2 | 2 |
 | [Spread foundations](spread-foundations.md) | 4 | 2 | 1 | 1 |
-| Piled foundations | 3 | 4 |  | 2 |
-| Retaining structures | 4 | 2 | 2 |  |
-| Anchors | 3 | 1 |  |  |
-| Reinforced fill structures | 3 | 2 |  |  |
-| Soil nailed structures | 2 | 1 | 1 |  |
-| Rock bolts and rock surface support | 2 | 1 |  | 1 |
-| Ground improvement | 1 | 3 |  | 1 |
-| Groundwater control |  | 1 | 5 |  |
-| Underground structures | 2 | 3 | 1 | 1 |
-| Dams | 2 | 1 | 2 | 1 |
-| Pavements and subgrades | 1 | 3 | 1 | 1 |
-| Pipelines and buried structures | 4 | 2 | 1 | 1 |
+| [Piled foundations](piled-foundations.md) | 3 | 4 |  | 2 |
+| [Retaining structures](retaining-structures.md) | 4 | 2 | 2 |  |
+| [Anchors](anchors.md) | 3 | 1 |  |  |
+| [Reinforced fill structures](reinforced-fill-structures.md) | 3 | 2 |  |  |
+| [Soil nailed structures](soil-nailed-structures.md) | 2 | 1 | 1 |  |
+| [Rock bolts and rock surface support](rock-bolts-and-rock-surface-support.md) | 2 | 1 |  | 1 |
+| [Ground improvement](ground-improvement.md) | 1 | 3 |  | 1 |
+| [Groundwater control](groundwater-control.md) |  | 1 | 5 |  |
+| [Underground structures](underground-structures.md) | 2 | 3 | 1 | 1 |
+| [Dams](dams.md) | 2 | 1 | 2 | 1 |
+| [Pavements and subgrades](pavements-and-subgrades.md) | 1 | 3 | 1 | 1 |
+| [Pipelines and buried structures](pipelines-and-buried-structures.md) | 4 | 2 | 1 | 1 |
 
-So far only [Spread foundations](spread-foundations.md) has a page.
+Spread foundations is the most worked-out page so far, with an explanation fold and a link to its [bearing capacity](../geotechnical-analyses/bearing-capacity.mdx) method page. The others list the checks and software, still without method pages to link to.

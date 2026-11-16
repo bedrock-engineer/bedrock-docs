@@ -28,7 +28,7 @@ marimo isn't our package, so its API reference stays on [docs.marimo.io](https:/
 ## Where you'll meet it here
 
 - [Bearing capacity](../../geotechnical-analyses/bearing-capacity.mdx): an explorable with sliders for the friction angle and the footing's width and depth.
-- [IAEG 2026](../../worked-examples/iaeg-2026/index.md): six notebooks that go from CPTs and GeoTOP to a probabilistic soil model.
+- [Soft soil EGM](../../worked-examples/soft-soil-egm/index.md): six notebooks that go from CPTs and GeoTOP to a probabilistic soil model.
 - [Getting started with SymEval](../symeval/getting-started.py): calculations with units, step by step.
 
 ---

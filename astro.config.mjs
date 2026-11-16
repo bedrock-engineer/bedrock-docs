@@ -119,7 +119,7 @@ export default defineConfig({
           label: "Worked examples",
           items: [
             { slug: "worked-examples" },
-            { label: "IAEG 2026 soft-soil model", items: [{ autogenerate: { directory: "worked-examples/iaeg-2026" } }] },
+            { label: "Soft soil EGM", items: [{ autogenerate: { directory: "worked-examples/soft-soil-egm" } }] },
           ],
         },
         {

@@ -1,5 +1,5 @@
 ---
-title: Probabilistic soft-soil ground model (IAEG 2026)
+title: Soft soil EGM
 description: GeoTOP voxels and BRO CPTs turned into a probabilistic soil model under a building, next to its BIM model. Open source, made for the IAEG 2026 conference.
 type: worked-example
 stage: [ground-investigation, engineering-geological-model]
@@ -10,7 +10,7 @@ sidebar:
   order: 0
 ---
 
-**Where this fits:** [Docs Atlas](../../index.md) › [Worked examples](../index.md) › IAEG 2026, an example of [ground modeling](../../ground-modeling/index.md)
+**Where this fits:** [Docs Atlas](../../index.md) › [Worked examples](../index.md) › Soft soil EGM, an example of [ground modeling](../../ground-modeling/index.md)
 
 For the IAEG 2026 conference we built an open-source workflow that turns [GeoTOP](../../reference/glossary.md#geotop) voxels and BRO [CPTs](../../reference/glossary.md#cpt) into a probabilistic soil model under a building in soft Dutch ground, and shows it next to the building's BIM model.
 

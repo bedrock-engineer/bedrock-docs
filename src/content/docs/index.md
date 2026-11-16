@@ -71,11 +71,11 @@ The cycle runs again whenever one of three things happens: new ground investigat
 
 ## Where to read on
 
-- **[Geotechnical structures](geotechnical-structures/index.md):** one page per structure, with what to check on the structure and around it. So far: [Spread foundations](geotechnical-structures/spread-foundations.md).
+- **[Geotechnical structures](geotechnical-structures/index.md):** one page per structure, from slopes and spread foundations to pipelines, with what to check on the structure and around it.
 - **[Geotechnical analyses](geotechnical-analyses/index.md):** the analysis methods that turn the EGM into a GDM and verify each check. So far: [Bearing capacity](geotechnical-analyses/bearing-capacity.mdx), with an explorable.
 - **[Ground modeling](ground-modeling/index.md):** from ground investigation data to the engineering geological model.
 - **[Ground investigation](ground-investigation/index.md):** existing data first, then fieldwork and lab tests.
 - **[Fundamentals](fundamentals/index.md):** concepts that recur across the docs, in geomechanics and geospatial data.
-- **[Worked examples](worked-examples/index.md):** problems worked through end to end. So far: [Probabilistic soft-soil ground model (IAEG 2026)](worked-examples/iaeg-2026/index.md).
+- **[Worked examples](worked-examples/index.md):** problems worked through end to end. So far: [Soft soil EGM](worked-examples/soft-soil-egm/index.md), made for IAEG 2026.
 - **[Tools](tools/index.md):** marimo, SymEval and cpt-anywidget, each with its own tutorials, guides and reference.
 - **[Reference](reference/index.md):** the [Glossary](reference/glossary.md) and the [Bibliography](reference/bibliography.md).

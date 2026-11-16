@@ -4,6 +4,8 @@ description: Pad and strip footings, mats and rafts. What Eurocode 7 makes you c
 type: structure
 eurocode: EN 1997-3:2025 Clause 5
 analysis_types: [stability, deformation, groundwater-flow, dynamics]
+sidebar:
+  order: 2
 ---
 
 **Where this fits:** [Docs Atlas](../index.md) › [Geotechnical structures](index.md) › Spread foundations (EN 1997-3 Clause 5)
