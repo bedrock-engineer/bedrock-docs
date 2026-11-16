@@ -5,5 +5,3 @@ dist/
 .venv/
 __marimo__/
 __pycache__/
-# Saved notebook outputs: large, and rewritten by every run of notebook_outputs.py.
-public/notebook-outputs/
