@@ -296,12 +296,18 @@ marimo-cell {
   --marimo-cell-monospace-font: var(--font-mono);
 }
 
-/* marimo stripes a Markdown table in an island with its light palette, which
-   it sets on the island itself. In a dark island that leaves light text on
-   white rows, so give a dark island the site's own dark row colors. */
-[data-marimo-theme="dark"] marimo-island {
-  --card: var(--sl-color-bg);
-  --lime-2: var(--sl-color-gray-6);
+/* marimo keeps a Markdown table in an island light, with white and pale lime
+   rows, also when the island is dark, so the whole table keeps its light-mode
+   look. @marimo-team/mdx-marimo themes the shadow roots of math and controls
+   from its public variables; the text outside them takes the private
+   foreground, which it resolves once on the island host. In dark mode
+   Starlight's white and gray-2 are the light shades. */
+[data-marimo-theme="dark"] marimo-island table {
+  --marimo-island-foreground: var(--sl-color-black);
+  --marimo-island-background: var(--sl-color-white);
+  --marimo-island-surface: var(--sl-color-white);
+  --marimo-island-border: var(--sl-color-gray-2);
+  --_marimo-island-foreground: var(--sl-color-black);
 }
 
 /* marimo prints a cell's console output unwrapped, so one long line widens
