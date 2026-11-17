@@ -59,7 +59,8 @@ export default defineConfig(
     languageOptions: { globals: globals.node },
   },
   {
-    files: ["src/scripts/**/*.js"],
+    // Web components: plain browser scripts.
+    files: ["src/components/**/*.js"],
     languageOptions: { globals: globals.browser },
   },
 
@@ -76,7 +77,7 @@ export default defineConfig(
         // i.e. exactly the invented class names the rule is meant to stop.
         detectComponentClasses: false,
         // The defaults read class attributes and variables named classNames,
-        // classes or styles. The remark plugins and glossary.js build markup
+        // classes or styles. The remark plugins and popup-link.js build markup
         // in JS, so they keep their classes in a `classNames` variable; this
         // also reads it when it is an object of class strings.
         selectors: [

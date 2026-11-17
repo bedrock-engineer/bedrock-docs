@@ -13,7 +13,7 @@ src/content/docs/       the pages (Starlight reads only this folder)
 ├── ground-investigation/  fundamentals/  worked-examples/
 ├── tools/<tool>/       tool page, getting started, guides, examples, reference
 └── reference/          glossary and other look-up pages
-src/components/ plugins/ scripts/ styles/   glossary hovers, Learn more folds, marimo runtime
+src/components/ plugins/ styles/   pop-up links, Learn more folds, marimo runtime
 sources.yaml            files copied from other repositories, pinned, and notebook page modes
 scripts/docs/           Python, run with uv: copy sources, turn notebooks into pages
 ```

@@ -1,8 +1,7 @@
 // Glossary links and relative page links.
-// - A link to glossary.md#<term> is wrapped in a <span data-term data-definition>
-//   carrying the term's first paragraph, which src/scripts/glossary.js shows on hover.
-//   The span's classes give the link inside a dotted underline and a help cursor.
-//   A term is a ### heading in the glossary; its first paragraph is the hover text.
+// - A link to glossary.md#<term> becomes a pop-up link (popup-link.mjs) carrying
+//   the term's first paragraph, which src/components/popup-link.js shows in a card.
+//   A term is a ### heading in the glossary; its first paragraph is the card's text.
 //   Aliases in parentheses at the end of the heading are link targets too.
 // - Any relative .md or .mdx link, or .py link to a marimo notebook, is rewritten to
 //   its Starlight route, so the source stays a plain link that works on GitHub and in
@@ -16,19 +15,11 @@ import { toString } from "mdast-util-to-string";
 import remarkParse from "remark-parse";
 import { unified } from "unified";
 import { visit } from "unist-util-visit";
-
-// Also used by rehype-citation-cards.mjs, so citations look like glossary links.
-export const classNames = [
-  "*:underline",
-  "*:decoration-dotted",
-  "*:decoration-2",
-  "*:underline-offset-3",
-  "*:cursor-help",
-];
+import { popupLinkProperties, popupLinkTag } from "./popup-link.mjs";
 
 const glossaryTerm = ({ title, definition }) => ({
-  hName: "span",
-  hProperties: { className: [...classNames], dataTerm: title, dataDefinition: definition },
+  hName: popupLinkTag,
+  hProperties: popupLinkProperties({ term: title, definition }),
 });
 
 // A term heading may end in its aliases: "Cone penetration test (CPT)", or
