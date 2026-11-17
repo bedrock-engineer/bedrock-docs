@@ -41,7 +41,8 @@ const citations = [rehypeCitation, {
   tooltipAttribute: "data-citation",
 }];
 const rehypePlugins = [citations, rehypeCitationCards, rehypeHeadingIds, rehypeKatex];
-const glossaryScript = readFileSync(new URL("./src/scripts/glossary.js", import.meta.url), "utf8");
+// Defines <popup-link>, the card for glossary terms and citations.
+const popupLinkScript = readFileSync(new URL("./src/components/popup-link.js", import.meta.url), "utf8");
 
 // mdx-marimo runs uv to compile the marimo cells. Without this it picks the uv of the
 // @manzt/uv npm package, whose install script pnpm skips; on Windows it would also spawn
@@ -104,7 +105,7 @@ export default defineConfig({
       ],
       logo: { src: "./src/assets/bedrock.svg" },
       favicon: "/bedrock.svg",
-      head: [{ tag: "script", content: glossaryScript }],
+      head: [{ tag: "script", content: popupLinkScript }],
       lastUpdated: true,
       editLink: { baseUrl: "https://github.com/bedrock-engineer/bedrock-docs/edit/main/" },
       social: [{ icon: "github", label: "GitHub", href: "https://github.com/bedrock-engineer/bedrock-docs" }],

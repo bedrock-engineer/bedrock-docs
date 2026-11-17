@@ -1,12 +1,12 @@
 ---
 title: Glossary
-description: Every term these docs use, with one meaning each. Pages link here, and hovering a link shows the definition.
+description: Every term these docs use, with one meaning each. Pages link here, and hovering or tapping a link shows the definition.
 type: reference
 sidebar:
   order: 1
 ---
 
-Every term on this page keeps one meaning across the docs. Where a page links a term, hovering or focusing the link shows the first paragraph under its heading.
+Every term on this page keeps one meaning across the docs. Where a page links a term, hovering, focusing or tapping the link shows the first paragraph under its heading. On a phone, tap it again to come here.
 
 ## Ground
 

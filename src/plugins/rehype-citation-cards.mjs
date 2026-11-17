@@ -1,12 +1,12 @@
-// Citation hover cards, after rehype-citation has turned [@citekey] into links.
+// Citation cards, after rehype-citation has turned [@citekey] into links.
 // - rehype-citation puts each entry's full reference in the link's data-citation
-//   attribute (its tooltipAttribute option). This moves it onto a wrapping
-//   <span data-definition>, the element src/scripts/glossary.js shows a card for,
-//   so citations get the same card and the same dotted underline as glossary terms.
+//   attribute (its tooltipAttribute option). This moves it onto a wrapping pop-up
+//   link (popup-link.mjs), so citations get the same card and the same dotted
+//   underline as glossary terms.
 // - rehype-citation appends the cited entries as <div id="refs"> without a heading;
 //   this puts a "References" heading above it, as Quarto does.
 import { visit } from "unist-util-visit";
-import { classNames } from "./remark-glossary.mjs";
+import { popupLinkProperties, popupLinkTag } from "./popup-link.mjs";
 
 export function rehypeCitationCards() {
   return (tree) => {
@@ -18,8 +18,8 @@ export function rehypeCitationCards() {
       delete node.properties.dataCitation;
       parent.children[index] = {
         type: "element",
-        tagName: "span",
-        properties: { className: [...classNames], dataDefinition: reference },
+        tagName: popupLinkTag,
+        properties: popupLinkProperties({ definition: reference }),
         children: [node],
       };
     });

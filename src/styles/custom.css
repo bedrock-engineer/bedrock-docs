@@ -62,7 +62,7 @@
   --font-condensed: "IBM Plex Sans Condensed", sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
 
-  /* Glossary hover card: 22rem, but never wider than the screen minus a margin. */
+  /* The <popup-link> card: 22rem, but never wider than the screen minus a margin. */
   --container-card: min(22rem, calc(100vw - 24px));
 
   /* Theme toggle indicator: overshoots a little before it settles. */
